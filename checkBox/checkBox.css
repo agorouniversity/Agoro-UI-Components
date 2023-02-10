@@ -1,0 +1,52 @@
+.radio .radioItem .checkmark {
+  border-radius: 0.3rem;
+}
+
+.radio .radioItem input:checked ~ .checkmark .checkmarkContainer {
+  
+  animation: radioBounce 1s cubic-bezier(0.280, 0.840, 0.420, 1) 0s;
+  animation-fill-mode: forwards;
+}
+
+.radio .radioItem .checkmark .checkmarkContainer {
+  border-radius: 0.2rem;
+  width: 100%;
+  height: 100%;
+  background-color: var(--lightGray);
+  transform: scale(0);
+}
+
+.radio .radioItem .checkmark::after {
+  border-radius: 0.3rem;
+}
+
+.checkmarkBg {
+  transform: scale(1) rotate(45deg);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.checkmarkStem {
+  position: absolute;
+  width: 3px;
+  height: 20px;
+  border: 1px solid var(--blue);
+  border-radius: 0.1em;
+  background-color: var(--blue);
+  left: 12px;
+  top: 0px;
+  transform: rotate(-12deg);
+}
+
+.checkmarkKick {
+  position: absolute;
+  width: 8px;
+  height: 3px;
+  border: 1px solid var(--blue);
+  border-radius: 0.1em;
+  background-color: var(--blue);
+  left: 6px;
+  top: 17px;
+}

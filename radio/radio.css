@@ -1,0 +1,91 @@
+.base.radio {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  background-color: transparent;
+}
+
+.radio .radioItem {
+  background-color: transparent;
+  padding: 10px;
+  border-radius: 0.65rem;
+  margin: 0px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: left;
+}
+
+.radio .radioItem:hover {
+  background-color: var(--lightGray);
+  cursor: pointer;
+}
+
+.radio .radioItem .label {
+  margin-top: 2px;
+}
+
+.radio .radioItem input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radio .radioItem .radiomark,
+.radio .radioItem .checkmark {
+  background-color: transparent;
+  position: relative;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.radio .radioItem input:checked ~ .radiomark:before {
+  animation: radioBounce 1s cubic-bezier(0.280, 0.840, 0.420, 1) 0s;
+  animation-fill-mode: forwards;
+}
+
+.radio .radioItem .radiomark::before {
+  position: absolute;
+  z-index: 0;
+  display: block;
+  content: '';
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 5px solid var(--lightGray);
+  background: var(--blue);
+  transform: scale(0);
+}
+
+.radio .radioItem .radiomark::after,
+.radio .radioItem .checkmark::after {
+  position: absolute;
+  z-index: 2;
+  content: '';
+  height: 25px;
+  width: 25px;
+  border: 2px solid var(--gray);
+  border-radius: 50%;
+}
+
+@keyframes radioBounce {
+  0% {
+    transform: scale(0);
+  }
+  20% {
+    transform: scale(1.3);
+  }
+  30% {
+    transform: scale(0.9);
+  }
+  40% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
