@@ -13,8 +13,10 @@ id=<string>
 className=<string>
 placeholder=<string>
 defaultValue=<string>
+onChange=<function>
 type='text'(default) , 'email' , 'password' , etc.
-size='full' or 'medium' or omit for small
+size='small'(default) , 'medium', 'full
+multiline=<boolean>
 required
 ```
 
