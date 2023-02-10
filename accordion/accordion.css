@@ -50,6 +50,7 @@
 .accordion .section-title {
   width: 100%;
   padding: 8px;
+  border-radius: 0.3rem;
   transition: transform 0.2s ease 0s;
 }
 
