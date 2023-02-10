@@ -1,0 +1,6 @@
+.base {
+  background: var(--white);
+  margin: 10px;
+  font-size: 1.1rem;
+  font-family: inherit;
+}
