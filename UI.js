@@ -6,3 +6,4 @@ Components exported below for easy import:
   import { ButtonA, ButtonB, TextInput, Accordian } from './components/UI/UI';
 */
 export { TextInput } from './textInput/textInput';
+export { ButtonA, ButtonB } from './buttons/buttons';
