@@ -1,0 +1,121 @@
+.card .title.calendarHeading {
+  padding: 0 !important;
+}
+
+.card.calendar .content {
+  display: grid;
+  grid-template-columns: repeat(5, calc(100% / 5));
+  padding: 0 !important;
+  position: relative;
+}
+
+.card.calendar .content .date .dateHeading {
+  margin: 0;
+  padding-bottom: 10px;
+  text-align: right;
+  color: var(--bg);
+  border-radius: inherit;
+}
+
+.card.calendar .content .headerBg {
+  background-color: var(--primary);
+  position: absolute;
+  width: 100%;
+  height: calc(1.17rem + 20px);
+  z-index: 0;
+  box-shadow: 0 0 0 1.5px var(--primary);
+  border-radius: 0.57rem 0.57rem 0 0px;
+}
+
+.card.calendar .content .date {
+  padding: 10px 4px 10px 4px;
+  position: relative;
+  z-index: 2;
+}
+
+.card.calendar .content .date:not(:last-child) {
+  border-right: 2px solid var(--lightGray);
+}
+
+.card .title.calendar span {
+  text-align: right;
+}
+
+.dateBody,
+.dateBody ul,
+.dateBody li {
+  width: 100%;
+  overflow: hidden;
+}
+
+.dateBody .more {
+  display: block;
+  width: 100%;
+  text-align: right;
+  color: var(--gray);
+}
+
+.dateBody ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dateBody ul li div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.dateBody ul li div span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: keep-all;
+  white-space: nowrap;
+  flex-shrink: 2;
+}
+
+.dateBody ul li div span:nth-child(2) {
+  flex-grow: 2;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.dateBody .mobile {
+  display: none;
+}
+
+@media screen and (max-width: 500px) {
+  .card.calendar .content .date .dateHeading .dayMonth {
+    display: none;
+  }
+
+  .card.calendar .content .date .dateBody ul,
+  .card.calendar .content .date .dateBody .more {
+    display: none;
+  }
+
+  .card.calendar .content .date .dateBody .mobile {
+    display: block;
+    background-color: var(--lightSecondary);
+    color: var(--gray);
+    font-weight: bold;
+    border-radius: 0.3rem;
+    width: 100%;
+    padding: 0.2rem;
+    text-align: center;
+  }
+
+  .card.calendar .content .dateBody {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 4px;
+  }
+
+  .card.calendar .content .date {
+    padding-bottom: 6px;
+  }
+}

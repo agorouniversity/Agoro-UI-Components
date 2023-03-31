@@ -18,3 +18,4 @@ export { Loading } from './loading/loading';
 export { Icon } from './icons/icons';
 export { Header } from './header/header';
 export { Login } from './login/login';
+export { Calendar, Upcoming } from './calendarstrip/calendarstrip';
