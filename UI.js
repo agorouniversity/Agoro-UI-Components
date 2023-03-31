@@ -20,3 +20,4 @@ export { Header } from './header/header';
 export { Login } from './login/login';
 export { Calendar, Upcoming } from './calendarstrip/calendarstrip';
 export { Select, MultiSelect } from './select/select';
+export { Tabs } from './tabs/tabs';

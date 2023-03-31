@@ -1,0 +1,43 @@
+.tabs {
+  width: calc(100% - 20px);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.tabs .titles {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.tabs .titles .title {
+  padding: 8px 10px 8px 10px;
+  border-radius: 0.3rem;
+  border: none;
+  background-color: transparent;
+  color: var(--gray);
+  font-size: 1.17rem;
+  font-weight: bolder;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.tabs .titles .title:hover {
+  background-color: var(--lightPrimary);
+}
+
+.tabs .titles .title.selected {
+  background-color: var(--primary);
+  color: var(--bg);
+}
+
+.tabs .tabBody .tab .content {
+  padding: 10px;
+}
+
+.tabs .tabBody .card.tab {
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+}
