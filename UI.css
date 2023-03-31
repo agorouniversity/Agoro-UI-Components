@@ -4,3 +4,40 @@
   font-size: 1.1rem;
   font-family: inherit;
 }
+
+html {
+  color: var(--gray);
+}
+
+a {
+  color: var(--secondary);
+  text-decoration: none;
+}
+
+.link:hover {
+  filter: opacity(75%);
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.7rem;
+}
+
+h3 {
+  font-size: 1.17rem;
+}
+
+h1, h2, h3 {
+  margin: 0.75rem 0 0.75rem 0;
+}
+
+p {
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+button:hover {
+  cursor: pointer;
+}

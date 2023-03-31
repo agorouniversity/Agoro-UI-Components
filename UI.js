@@ -10,3 +10,4 @@ export { Radio } from './radio/radio';
 export { CheckBox } from './checkBox/checkBox';
 export { ButtonA, ButtonB } from './buttons/buttons';
 export { TextInput } from './textInput/textInput';
+export { Card } from './card/card';

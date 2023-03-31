@@ -1,0 +1,51 @@
+.card {
+  padding: 10px;
+  width: fit-content;
+  word-break: break-word;
+  border-radius: 0.65rem;
+  display: inline-block;
+}
+
+.card .content {
+  width: 100%;
+  border-radius: 0.65rem;
+  border: 2px solid var(--lightGray);
+  box-sizing: border-box;
+  box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.35);
+  color: var(--gray);
+  margin: 0;
+}
+
+.card.full {
+  width: calc(100% - 20px);
+}
+
+.card.medium {
+  width: 20rem;
+}
+
+.card .content .title {
+  border-radius: 0.57rem 0.57rem 0 0px;
+  box-shadow: 0 0 0 1.5px var(--primary);
+  position: relative;
+	color: var(--bg);
+	background-color: var(--primary);
+	padding: 10px;
+}
+
+.card .content .title h3 {
+  margin: 0;
+}
+
+.card .content .body {
+  padding: 10px;
+}
+
+.card.click {
+  cursor: pointer;
+  transition: transform 0.2s ease 0s;
+}
+
+.card.click:hover {
+  transform: scale(105%);
+}
