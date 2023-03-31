@@ -1,20 +1,44 @@
+.textInputLabel {
+  display: inline-block;
+  font-size: 1.17rem;
+  font-weight: bolder;
+  width: fit-content;
+}
+
+.textInputLabel input, input.textInput {
+  box-sizing: border-box;
+}
+
+.textInputLabel .textInput.full {
+  width: 100%;
+}
+
+.textInputLabel .textInput {
+  margin: 0;
+}
+
+.textInputLabel span {
+  line-height: 2rem;
+}
+
 .textInput {
   border: 2px solid var(--gray);
   color: var(--gray);
   border-radius: 0.3rem;
   padding: 7px 10px 10px 10px;
   vertical-align: middle;
+  width: fit-content;
 }
 
 .textInput:focus {
   outline: none;
-  border-color: var(--blue);
+  border-color: var(--primary);
 }
 
-.textInput.medium {
+.textInput.medium, .textInputLabel.medium {
   width: 20rem;
 }
 
-.textInput.full {
-  width: calc(100% - 20px - 20px - 0.3rem);
+.textInputLabel.full, .textInput.full {
+  width: calc(100% - 20px);
 }

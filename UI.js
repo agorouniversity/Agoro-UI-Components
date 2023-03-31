@@ -16,3 +16,5 @@ export { Frame } from './frame/frame';
 export { Sidebar } from './sidebar/sidebar';
 export { Loading } from './loading/loading';
 export { Icon } from './icons/icons';
+export { Header } from './header/header';
+export { Login } from './login/login';
