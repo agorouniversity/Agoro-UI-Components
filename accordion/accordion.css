@@ -4,6 +4,7 @@
   color: var(--gray);
   padding: 10px;
   margin: 0px;
+  word-break: break-word;
 }
 
 .accordion:last-child {
@@ -22,7 +23,7 @@
   height: 0.45rem;
   left: 0.15rem;
   position: relative;
-  top: 0.15rem;
+  top: 0.25rem;
   transform: rotate(45deg);
   vertical-align: top;
   width: 0.45rem;
@@ -30,7 +31,7 @@
   transition: transform 0.5s ease;
 }
 
-.accordion .section .cvright.section-title::after {
+.accordion .tableArrow::after, .cvright::after {
   border-style: solid;
   border-width: 0.30rem 0.30rem 0 0;
   content: '';
@@ -38,13 +39,18 @@
   height: 0.45rem;
   left: auto;
   float: right;
-  right: 0.15em;
+  right: 0.25em;
   position: relative;
   top: 0.15rem;
   transform: rotate(45deg);
   width: 0.45rem;
   margin-right: 20px;
   transition: transform 0.5s ease;
+  background-color: transparent;
+}
+
+.accordion .tableArrow::after {
+  top: 0rem;
 }
 
 .accordion .section-title {
@@ -53,24 +59,58 @@
   transition: transform 0.2s ease 0s;
 }
 
-.accordion .section-title.selected, .accordion .section-title:hover {
+.accordion .section-title.selected, 
+.accordion .section-title:hover {
   cursor: pointer;
-  background-color: var(--blue);
-  color: var(--white);
+  background-color: var(--primary);
+  color: var(--bg);
   transform: scale(102%);
+  transform-origin: center;
   box-shadow: -1px 5px 24px 1px rgba(0,0,0,0.3);
   -webkit-box-shadow: -1px 5px 24px 1px rgba(0,0,0,0.3);
   -moz-box-shadow: -1px 5px 24px 1px rgba(0,0,0,0.3);
 }
 
+.accordion .section-title .tableArrow,
+.accordion .section-title,
+.accordion .section-title .cell:first-child,
+.accordion .section-title .cell {
+  border: 1px solid transparent;
+}
+
+.accordion .section-title.selected, 
+.accordion .section-title:hover .tableArrow,
+.accordion .section-title.selected .tableArrow {
+  border: 1px solid var(--primary);
+  border-radius: 0 0.3rem 0.3rem 0;
+}
+
+.accordion .section-title.selected {
+  border: 1px solid var(--primary);
+  border-radius: 0.3rem;
+}
+
+.accordion .section-title:hover .cell:first-child,
+.accordion .section-title.selected .cell:first-child {
+  border: 1px solid var(--primary);
+  border-radius: 0.3rem 0 0 0.3rem;
+}
+
+.accordion .section-title.selected, 
+.accordion .section-title:hover .cell,
+.accordion .section-title.selected .cell {
+  border: 1px solid var(--primary);
+}
+
 .accordion .section .section-title.selected::before,
-.accordion .section .section-title.selected::after {
+.accordion .section .section-title.selected::after,
+.accordion .section .section-title.selected .tableArrow::after {
   transform: rotate(135deg);
 }
 
 .accordion .section-content {
   max-height: 0px;
-  overflow: hidden;
+  overflow-y: hidden;
   display: block;
   transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
 }
@@ -78,4 +118,100 @@
 .accordion .section-content.selected {
   max-height: 9000px;
   transition: max-height 2s ease;
+}
+
+/*Table*/
+
+.accordion.table {
+  border-collapse: separate;
+  box-sizing: border-box;
+  border-spacing: 0;
+}
+
+.accordion.table .tableSection {
+  border-bottom: none;
+  box-shadow: 0px 2.5px 0px 0px var(--lightGray);
+  -webkit-box-shadow: 0px 2.5px 0px 0px var(--lightGray);
+  -moz-box-shadow: 0px 2.5px 0px 0px var(--lightGray);
+}
+
+.tableSection .tableRow .cell:first-child {
+  padding: 8px 0px 8px 8px;
+  border-radius: 0.3rem 0 0 0;
+}
+
+.tableSection .tableRow .cell:nth-last-child(2) {
+  width: 1%;
+  white-space: nowrap;
+  padding-right: 1rem;
+}
+
+.tableSection .tableRow .tableArrow {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.tableSection .tableRow .cell {
+  padding-right: 8px;
+}
+
+.accordion .tableSection .section-content {
+  display: table-row;
+  position: relative;
+  height: 0px;
+  transition: max-height 0.5s ease;
+}
+
+.accordion .tableSection .section-content .tableContent {
+  padding: 0 !important;
+}
+
+.accordion .tableSection .section-content .contentRow {
+  max-height: 0px;
+  overflow-y: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.accordion .tableSection .selected.section-content {
+  transition: max-height 2s ease;
+}
+
+.accordion .tableSection .selected.section-content .contentRow {
+  transition: max-height 2s ease;
+  max-height: 9000px;
+}
+
+.accordion .tableSection .selected.section-content {
+  max-height: 9000px;
+}
+
+.accordion.table .headingRow .cell {
+  text-align: left;
+}
+
+.accordion.table .headingRow .cell:first-child {
+  text-align: left;
+  padding-left: 8px;
+}
+
+.accordion.table .headingRow {
+  display: table-header-group;
+}
+
+.accordion.table .headingRow th {
+  position: sticky;
+}
+
+.accordion.table .cell {
+  display: table-cell;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space:normal;
+}
+
+@media screen and (max-width: 600px) {
+  .tableSection .tableRow .cell:nth-last-child(2) {
+    width: auto;
+    white-space: normal;
+  }
 }

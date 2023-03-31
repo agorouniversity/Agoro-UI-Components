@@ -1,0 +1,66 @@
+.tableList .heading th {
+  text-align: left;
+}
+
+.tableList .heading h3 {
+  margin: 0rem 0 0.5rem 0;
+}
+
+.tableList {
+  padding: 10px;
+  max-width: calc(100% - 20px);
+  border-collapse: collapse;
+}
+
+.tableList.full table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableList table {
+  border-collapse: collapse;
+}
+
+.tableList td {
+  padding: 10px 0 10px 0;
+}
+
+.tableList .items td:not(:last-child),
+.tableList .heading th:not(:last-child) {
+  padding-right: 1rem;
+}
+
+.tableList.medium .items td:not(:last-child) {
+  padding-right: 6rem;
+}
+
+.tableList .items td:last-child,
+.tableList .heading th:last-child {
+  /*text-align: right;*/
+  width: 1%;
+  white-space: nowrap;
+}
+
+.tableList tr.items {
+  border-bottom: 3px solid var(--lightGray);
+}
+
+.tableList.full {
+  width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  .tableList .items td:not(:last-child) {
+    padding-right: 1rem !important;
+  }
+
+  .tableList table {
+    width: 100%;
+  }
+
+  .tableList .items td:last-child,
+  .tableList .heading th:last-child {
+    width: auto;
+    white-space: normal;
+  }
+}

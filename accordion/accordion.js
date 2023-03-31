@@ -8,19 +8,41 @@ const AccordionItem = (props) => {
   const context = useContext(Context);
 
   return (
-    <div
-      className={`section${context.table ? ' tableSection' : ''}`}
-    >
-      {props.children}
-    </div>
+    <>
+      {context.table
+        ? <tbody
+            className='section tableSection'
+          >
+            {props.children}
+          </tbody>
+        : <div
+            className='section'
+          >
+            {props.children}
+          </div>
+      }
+    </>
   );
 }
 
 const AccordionCol = (props) => {
+  const context = useContext(Context);
+
   return(
-    <td>
-      {props.children}
-    </td>
+    <>
+      {context.heading
+        ? <th
+            className='cell'
+          >
+            {props.children}
+          </th>
+        : <td
+            className='cell'
+          >
+            {props.children}
+          </td>
+      }
+    </>
   )
 }
 
@@ -66,15 +88,23 @@ const AccordionTitle = (props) => {
   }
 
   return (
-    <div 
-      className={`section-title ${context.table ? 'tableRow ' : (context.cv === 'right' ? 'cvright ' : 'cvleft ') }${selected ? 'selected' : ''}`.trim()}
-      onClick={() => select()}
-    >
-      {props.children}
-      {context.table &&
-        <td className='tableArrow'></td>
+    <>
+      {context.table
+        ? <tr 
+            className={`section-title tableRow${selected ? ' selected' : ''}`}
+            onClick={() => select()}
+          >
+            {props.children}
+            <td className='tableArrow'></td>
+          </tr>
+        : <div 
+            className={`section-title ${context.cv === 'right' ? 'cvright ' : 'cvleft '}${selected ? 'selected' : ''}`.trim()}
+            onClick={() => select()}
+          >
+            {props.children}
+          </div>
       }
-    </div>
+    </>
   );
 }
 
@@ -82,22 +112,64 @@ const AccordionTitle = (props) => {
 const AccordionContent = (props) => {
   const context = useContext(Context);
 
-  useEffect(() => {
-  }, [context.open])
-
   return(
-    <div className={`section-content ${context.open[context.index] ? 'selected' : ''}`.trim()}>
-      <td colspan={2}>
-        {props.children}
-      </td>
-    </div>
+    <>
+      {context.table
+        ? <tr
+            className={`section-content${context.open[context.index] ? ' selected ' : ' '}`}
+          >
+            <td 
+              className='tableContent'
+              colSpan='10'
+            >
+              <div 
+                className='contentRow'
+              >
+                <br></br>
+                {props.children}
+                <br></br>
+                <br></br>
+              </div>
+            </td>
+          </tr>
+        : <div
+            className={`section-content${context.open[context.index] ? ' selected' : ''}`}
+          >
+            <div 
+              className='contentRow'
+            >
+              <br></br>
+              {props.children}
+              <br></br>
+              <br></br>
+            </div>
+          </div>
+      }
+    </>
   );
-} 
+}
+
+const AccordionHeading = (props) => {
+  return(
+    <thead
+      className='headingRow'
+    >
+      <tr>
+        <Context.Provider
+          value={{heading: true}}
+        >
+          {props.children}
+        </Context.Provider>
+      </tr>
+    </thead>
+  );
+}
 
 Accordion.Item = AccordionItem;
 Accordion.Title = AccordionTitle;
 Accordion.Content = AccordionContent;
 Accordion.Col = AccordionCol;
+Accordion.Heading = AccordionHeading;
 
 /*Accordion wrapper component*/
 export function Accordion (props) {
@@ -111,37 +183,69 @@ export function Accordion (props) {
     } else {
       setChildren([...props.children]);
     }
-  }, [props.children])
+  }, [props.children]);
 
   return (
-    <div
-      className={`base accordion${props.table ? ' table' : ''}`}
-    >
-     
-      {children.length > 0 && 
-        <>
-          {children.map((x, i) => {
-            return(
-              <Context.Provider 
-                value={{
-                  index: i,
-                  default: start,
-                  multi: props.multi || false,
-                  open: open,
-                  cv: props.arrow,
-                  table: props.table,
-                  setOpen,
-                  setStart
-                }}
-                key={i}
-              >
-                {x}
-              </Context.Provider>
-            );
-          })}
-        </>
+    <>
+      {props.table
+        ? <table
+            id={props.id}
+            className='base accordion table'
+          >
+            {children.length > 0 && 
+              <>
+                {children.map((x, i) => {
+                  return(
+                    <Context.Provider 
+                      value={{
+                        index: i,
+                        default: start,
+                        multi: props.multi || false,
+                        open: open,
+                        cv: props.arrow,
+                        table: props.table,
+                        setOpen,
+                        setStart
+                      }}
+                      key={i}
+                    >
+                      {x}
+                    </Context.Provider>
+                  );
+                })}
+              </>
+            }
+          </table>
+        : <div
+            table={props.table}
+            id={props.id}
+            className='base accordion'
+          >
+            {children.length > 0 && 
+              <>
+                {children.map((x, i) => {
+                  return(
+                    <Context.Provider 
+                      value={{
+                        index: i,
+                        default: start,
+                        multi: props.multi || false,
+                        open: open,
+                        cv: props.arrow,
+                        table: props.table,
+                        setOpen,
+                        setStart
+                      }}
+                      key={i}
+                    >
+                      {x}
+                    </Context.Provider>
+                  );
+                })}
+              </>
+            }
+          </div>
       }
-      </div>
-    
+    </>
   )
 }
