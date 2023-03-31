@@ -1,0 +1,56 @@
+.sidebar {
+  width: 12rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 1.3rem;
+  padding: calc(3em + 10px) 10px 10px 0;
+  box-sizing: border-box;
+}
+
+.sidebar a {
+  color: inherit;
+  text-decoration: none !important;
+  padding: 8px 20px 8px 20px;
+  border-radius: 0 0.5rem 0.5rem 0;
+  background-color: var(--bg);
+  transition: background-color 0.5s ease;
+  cursor: pointer;
+}
+
+.sidebar a:hover {
+  background: var(--lightGray);
+  background-position: 0px;
+  background-size: 200px;
+} 
+
+.sidebar a.active {
+  background-color: var(--lightPrimary);
+  font-weight: bolder;
+}
+
+.sidebar .subSection {
+  display: inherit;
+  flex-direction: inherit;
+}
+
+.sidebar .subSection hr {
+  border: 1px solid var(--lightGray);
+  margin: 20px;
+}
+
+.sidebar .subSection a.active {
+  background-color: var(--lightSecondary);
+}
+
+.sidebar .subSection h3 {
+  padding-left: 20px;
+  margin-bottom: 1.5rem;
+}
+
+@media screen and (max-width: 900px) {
+  .sidebar {
+    padding: calc(5em + 10px) 10px 10px 0;
+  }
+}

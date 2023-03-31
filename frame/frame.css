@@ -1,0 +1,174 @@
+.pageFrame {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  overflow: hidden;
+  margin-top: 6rem;
+}
+
+.pageFrame .frameBody {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  flex: 2;
+}
+
+.pageFrame .frameBody .pageHeading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 20px;
+}
+
+.pageFrame .frameBody .pageHeading a:hover {
+  filter: opacity(75%);
+}
+
+.pageFrame .frameBody .pageHeading .pageTitle {
+  margin-top: 0.25rem;
+}
+
+.pageFrame .frameBody .pageHeading .titleBar {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+.pageFrame .frameBody .pageHeading .titleBar button {
+  display: none;
+}
+
+.pageFrame .frameBody .contentBody {
+  border-width: 2px 0 0 2px;
+  border-style: solid;
+  border-color: var(--lightGray);
+  border-radius: 0.65rem 0 0 0;
+  box-sizing: border-box;
+  height: 100%;
+  overflow: auto;
+  padding: 10px;
+}
+
+.pageFrame .frameBody .pageHeading .cv {
+  border-style: solid;
+  border-width: 0.1rem 0.1rem 0 0;
+  content: '';
+  display: inline-block;
+  height: 0.45rem;
+  left: 0.25rem;
+  margin-right: 0.75rem;
+  position: relative;
+  top: 0.3rem;
+  transform: rotate(45deg);
+  vertical-align: top;
+  width: 0.45rem;
+}
+
+.pageFrame .frameBody .pageHeading a {
+  color: inherit;
+}
+
+.pageFrame .frameBody .pageHeading a:hover {
+  color: var(--secondary);
+  filter: unset;
+}
+
+@media screen and (max-width: 900px) {
+  .pageFrame .frameSidebar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 3;
+    background-color: rgba(0, 0, 0, 0);
+    height: 100%;
+    width: 100%;
+    display: none;
+    visibility: hidden;
+  }
+
+  .pageFrame .frameSidebar.hidden {
+    display: block;
+    animation: sbFadeOut 0.5s ease;
+  }
+
+  .pageFrame .frameSidebar .sidebar {
+    background-color: var(--bg);
+    transform: translateX(-100%);
+    animation: sbSlideOut 0.5s ease;
+  }
+
+  .pageFrame .frameSidebar.open .sidebar {
+   animation: sbSlideIn 0.5s ease;
+   animation-fill-mode: forwards;
+  }
+
+  .pageFrame .frameSidebar.open {
+    display: block;
+    visibility: hidden;
+    animation: sbFadeIn 0.5s ease;
+    animation-fill-mode: forwards;
+  }
+
+  .pageFrame .frameBody .contentBody {
+    border-radius: 0;
+    border-width: 2px 0 0 0;
+    padding: 10px 5px 10px 5px;
+  }
+
+  .pageFrame .frameBody .pageHeading {
+    padding-left: 10px;
+  }
+
+  .pageFrame .frameBody .pageHeading .titleBar button {
+    display: block;
+    background-color: transparent;
+    border: none;
+  }
+
+  .pageFrame .frameBody .pageHeading .titleBar button svg {
+    fill: var(--primary);
+  }
+}
+
+@keyframes sbFadeIn {
+  0% {
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  100% {
+    visibility: visible;
+    background-color: rgba(0, 0, 0, 0.36);
+  }
+}
+
+@keyframes sbFadeOut {
+  0% {
+    visibility: visible;
+    background-color: rgba(0, 0, 0, 0.36);
+  }
+  100% {
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes sbSlideIn {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes sbSlideOut {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

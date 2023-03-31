@@ -5,13 +5,23 @@ const Context = createContext({});
 
 /*Accordion item wrapper component*/
 const AccordionItem = (props) => {
+  const context = useContext(Context);
+
   return (
     <div
-      className={`section`}
+      className={`section${context.table ? ' tableSection' : ''}`}
     >
       {props.children}
     </div>
   );
+}
+
+const AccordionCol = (props) => {
+  return(
+    <td>
+      {props.children}
+    </td>
+  )
 }
 
 /*Accordion item header component*/
@@ -30,7 +40,7 @@ const AccordionTitle = (props) => {
     } else if(!context.multi && !context.open[i]) {
       setSelected(false);
     }
-  }, [context.open])
+  }, [context, i])
 
   const select = () => {
     if(context.open[i]) {
@@ -57,10 +67,13 @@ const AccordionTitle = (props) => {
 
   return (
     <div 
-      className={`section-title ${context.cv === 'right' ? 'cvright' : 'cvleft'} ${selected ? 'selected' : ''}`.trim()}
+      className={`section-title ${context.table ? 'tableRow ' : (context.cv === 'right' ? 'cvright ' : 'cvleft ') }${selected ? 'selected' : ''}`.trim()}
       onClick={() => select()}
     >
-      {props.children}  
+      {props.children}
+      {context.table &&
+        <td className='tableArrow'></td>
+      }
     </div>
   );
 }
@@ -74,9 +87,9 @@ const AccordionContent = (props) => {
 
   return(
     <div className={`section-content ${context.open[context.index] ? 'selected' : ''}`.trim()}>
-      <p>
+      <td colspan={2}>
         {props.children}
-      </p>
+      </td>
     </div>
   );
 } 
@@ -84,6 +97,7 @@ const AccordionContent = (props) => {
 Accordion.Item = AccordionItem;
 Accordion.Title = AccordionTitle;
 Accordion.Content = AccordionContent;
+Accordion.Col = AccordionCol;
 
 /*Accordion wrapper component*/
 export function Accordion (props) {
@@ -101,8 +115,9 @@ export function Accordion (props) {
 
   return (
     <div
-      className='base accordion'
+      className={`base accordion${props.table ? ' table' : ''}`}
     >
+     
       {children.length > 0 && 
         <>
           {children.map((x, i) => {
@@ -114,8 +129,9 @@ export function Accordion (props) {
                   multi: props.multi || false,
                   open: open,
                   cv: props.arrow,
-                  setOpen, setOpen,
-                  setStart, setStart
+                  table: props.table,
+                  setOpen,
+                  setStart
                 }}
                 key={i}
               >
@@ -125,6 +141,7 @@ export function Accordion (props) {
           })}
         </>
       }
-    </div>
+      </div>
+    
   )
 }

@@ -1,0 +1,84 @@
+.loading {
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.loading div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  opacity: 0%;
+  animation: fadeIn 0.5s ease 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.loading.full {
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+}
+
+.loading.fullScreen {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--bg);
+  z-index: 3;
+}
+
+.loading span {
+  height: 1rem;
+  width: 1rem;
+  background-color: var(--primary);
+  border-radius: 50%;
+  display: inline-block;
+  animation: loading 3s cubic-bezier(0.280, 0.840, 0.420, 1);
+  animation-iteration-count: infinite;
+}
+
+@keyframes loading {
+  0% {
+    transform: translateY(0);
+  }
+  5% {
+    transform: translateY(-10px);
+  }
+  10% {
+    transform: translateY(0);
+  }
+  15% {
+    transform: translateY(-6px);
+  }
+  20% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-4px);
+  }
+  30% {
+    transform: translateY(0);
+  }
+  35% {
+    transform: translateY(-2px);
+  }
+  40% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
