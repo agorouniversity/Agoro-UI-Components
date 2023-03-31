@@ -1,6 +1,6 @@
 .button {
-  color: var(--blue);
-  border: 2px solid var(--blue);
+  color: var(--primary);
+  border: 2px solid var(--primary);
   border-radius: 0.65rem;
   padding: 5px 35px;
 }
@@ -12,7 +12,7 @@
 .button.large {
   padding: 8px 50px 8px 50px;
   --bHeight: calc(1.5rem + 16px) !important;
-  --aShadow: -10px -8px var(--lightBlue), 10px 8px var(--blue);
+  --aShadow: -10px -8px var(--lightPrimary), 10px 8px var(--primary);
 }
 
 .button:disabled {
@@ -27,11 +27,11 @@
 
 .button.buttonA {
   box-shadow: none;
-  box-shadow: 0px 0px var(--lightBlue), 0px 0px var(--blue);
-  -webkit-box-shadow: 0px 0px var(--lightBlue), 0px 0px var(--blue);
-  -moz-box-shadow: 0px 0px var(--lightBlue), 0px 0px var(--blue);
+  box-shadow: 0px 0px var(--lightPrimary), 0px 0px var(--primary);
+  -webkit-box-shadow: 0px 0px var(--lightPrimary), 0px 0px var(--primary);
+  -moz-box-shadow: 0px 0px var(--lightPrimary), 0px 0px var(--primary);
   transition: box-shadow 0.5s ease;
-  --aShadow: -8px -6px var(--lightBlue), 8px 6px var(--blue);
+  --aShadow: -8px -6px var(--lightPrimary), 8px 6px var(--primary);
 }
   
 .button.buttonA:hover {
@@ -55,7 +55,63 @@
 .button.buttonB:hover {
   animation: circleEnter ease 0.5s;
   background-position: center center;
-  color: var(--white);
+  color: var(--bg);
+}
+
+.iconButton {
+  position: relative;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+.iconButton:disabled .iconBg,
+.iconButton:disabled  svg {
+  opacity: 25%;
+  transform: translateX(0) rotate(0deg) !important;
+}
+
+.iconButton.medium, .iconButton.medium svg {
+  display: block;
+  width: 2rem !important;
+  height: 2rem !important;
+}
+
+.iconButton.small, .iconButton.small svg {
+  display: block;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+}
+
+.iconButton.large, .iconButton.large svg {
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.iconButton .iconBg,
+.iconButton .buttonIcon {
+  position: absolute;
+  top: 0;
+}
+
+.iconButton .iconBg {
+  transition: transform 0.5s ease;
+}
+
+.iconButton .iconBg svg,
+.iconButton .iconBg svg path {
+  fill: var(--lightPrimary) !important;
+}
+
+.iconButton .iconBg .light svg,
+.iconButton .iconBg .light svg path {
+  fill: var(--lightPrimary) !important;
+  opacity: 55%;
+}
+
+.iconButton:hover .iconBg {
+  transform: translateX(6px) rotate(10deg);
 }
   
 @keyframes circleEnter {

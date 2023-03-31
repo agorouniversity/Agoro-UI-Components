@@ -4,9 +4,9 @@
 
 Usage: 
 
-`import { ButtonA, ButtonB } from './components/UI/UI';`
+`import { ButtonA, ButtonB, IconButton } from './components/UI/UI';`
 
-ButtonA and ButtonB components support props:
+Buttons components support props:
 
 ```
 id=<string>
@@ -15,6 +15,14 @@ onClick=<function>
 type='submit' or 'reset' or 'button'(default)
 size='large' or omit for small
 disabled
+```
+
+IconButton also supports:
+
+```
+size='large', 'medium' (default), 'small
+icon=<string> (Icon name or omit to incude your own icon as a child)
+light=<bool> (Light colored icon)
 ```
 
 example:
@@ -26,4 +34,12 @@ example:
 >
   Click me
 </ButtonA>
+```
+
+```
+  <IconButton icon='google'/>
+
+  <IconButton>
+    <svg>Svg here</svg>
+  </IconButton>
 ```

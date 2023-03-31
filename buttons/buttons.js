@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Icon } from '../UI';
 import './buttons.css';
 
 /*Button skeleton for easy creation of new buttons*/
@@ -46,4 +47,38 @@ export const ButtonB = (props) => {
       data={props}
     ></Button>
   );
+}
+
+/*Icon button*/
+export const IconButton = (props) => {
+  const [icon, setIcon] = useState(<></>);
+
+  useEffect(() => {
+    setIcon(
+      props.icon 
+      ? <Icon size='auto' light={props.light} icon={props.icon} />
+      : props.children
+    )
+  }, [props.icon, props.light, props.children])
+
+  return(
+    <button
+      id={props.id}
+      className={`base iconButton ${props.size ? props.size : 'medium'} ${props.className ? props.className : ''}`.trim()}
+      onClick={props.onClick}
+      type={props.type || 'button'}
+      disabled={props.disabled}
+    >
+      <div
+        className='iconBg'
+      >
+        {icon}
+      </div>
+      <div
+        className='buttonIcon'
+      >
+        {icon}
+      </div>
+    </button>
+  )
 }
