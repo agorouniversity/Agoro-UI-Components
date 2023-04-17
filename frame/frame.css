@@ -12,6 +12,7 @@
   height: 100%;
   width: 100%;
   flex: 2;
+  overflow-x: hidden;
 }
 
 .pageFrame .frameBody .pageHeading {
@@ -20,10 +21,6 @@
   justify-content: space-between;
   align-items: center;
   padding-right: 20px;
-}
-
-.pageFrame .frameBody .pageHeading a:hover {
-  filter: opacity(75%);
 }
 
 .pageFrame .frameBody .pageHeading .pageTitle {
@@ -50,6 +47,7 @@
   height: 100%;
   overflow: auto;
   padding: 10px;
+  overflow-x: hidden;
 }
 
 .pageFrame .frameBody .pageHeading .cv {
@@ -67,16 +65,24 @@
   width: 0.45rem;
 }
 
-.pageFrame .frameBody .pageHeading a {
+.pageFrame .frameBody .pageHeading .crumbs a {
   color: inherit;
 }
 
-.pageFrame .frameBody .pageHeading a:hover {
+.pageFrame .frameBody .pageHeading .crumbs a:hover {
   color: var(--secondary);
   filter: unset;
 }
 
 @media screen and (max-width: 900px) {
+  .pageFrame .frameBody .pageHeading .crumbs {
+    display: none;
+  }
+
+  .pageFrame .frameBody .pageHeading .pageTitle {
+    margin: 0;
+  }
+
   .pageFrame .frameSidebar {
     position: absolute;
     left: 0;
@@ -119,13 +125,14 @@
   }
 
   .pageFrame .frameBody .pageHeading {
-    padding-left: 10px;
+    padding: 0 10px 10px 10px;
   }
 
   .pageFrame .frameBody .pageHeading .titleBar button {
     display: block;
     background-color: transparent;
     border: none;
+    height: 2.8rem;
   }
 
   .pageFrame .frameBody .pageHeading .titleBar button svg {

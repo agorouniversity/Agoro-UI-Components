@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Card } from '../UI';
-import { getTime, getDate, getDayOfWeek } from '../../../util/time';
+import { getTime, getDate, getDayOfWeek, isPastDue, sortOldest } from '../../../util/time';
 import './calendarstrip.css';
 
 export const Upcoming = (props) => {
@@ -10,13 +11,20 @@ export const Upcoming = (props) => {
       className={`dateBody ${props.className || ''}`.trim()}
     >
       <ul>
-        {props.assignments.slice(0, 3).map((y, i) =>
+        {props.assignments.sort(sortOldest).slice(0, 3).map((y, i) =>
           <li
             key={i}
           >
             <div>
-              <span><a href='/'>{y.assignmentName}</a></span>
               <span>
+                <Link to={`/courses/${props.courseId}/assignments/${y.assignmentId}`}>
+                  {y.assignmentName}
+                </Link>
+              </span>
+              <span
+                //Check if Past due and no submissions (submission check might have to be changed)
+                className={((!y.Submission || Object.keys(y.Submission).length === 0) && isPastDue(y.deadline)) ? 'pastDue' : null}
+              >
                 {props.date
                   ? `${getDate(y.deadline)}`
                   : `${getTime(y.deadline)}`
@@ -28,19 +36,20 @@ export const Upcoming = (props) => {
       </ul>
       {props.assignments.length === 0
         ? <br></br>
-        : <span
+        : <Link
+            to={`/courses/${props.courseId}/assignments/`}
             className='mobile'
           >
             {`${props.assignments.length} Due`}
-          </span>
+          </Link>
       }
       {props.assignments.length > 3 &&
-        <a
-          href='/'
+        <Link
+          to={`/courses/${props.courseId}/assignments`}
           className='more'
         >
           + {props.assignments.length - 3} more
-        </a>
+        </Link>
       }
     </div>
   )
@@ -48,12 +57,12 @@ export const Upcoming = (props) => {
 
 export const Calendar = (props) => {
   const [data, setData] = useState([]);
-  const dates = [0, 1, 2, 3, 4].map(i => {
+  const [dates] = useState([0, 1, 2, 3, 4].map(i => {
     const day = new Date();
     day.setHours(0, 0, 0, 0);
     day.setDate(day.getDate() + i);
     return(day.getTime());
-  });
+  }));
 
   useEffect(() => {
     let tmp = [];
@@ -77,10 +86,11 @@ export const Calendar = (props) => {
       className={`calendar ${props.className || ''}`.trim()}
     >
       <div className='headerBg'></div>
-      {data.map((x) => {
+      {data.map((x, i) => {
         const thisDay = new Date(x.deadline);
         return(
           <div
+            key={i}
             className='date'
           >
             <h3

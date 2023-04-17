@@ -6,7 +6,7 @@ Usage:
 
 `import { Grade } from './components/UI/UI';`
 
-Grade is a pill that changes fill and color based on supplied number
+Grade is a pill that changes fill and color based on supplied percent
 
 Grade supports props:
 

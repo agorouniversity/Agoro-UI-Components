@@ -67,6 +67,17 @@
   justify-content: flex-end;
 }
 
+.headerContainer .header .rightCol h2 {
+  margin: 0;
+  padding-left: 10px;
+  font-size: 1.5rem;
+}
+
+.headerContainer .header .rightCol a {
+  color: var(--bg);
+  text-decoration: none !important;
+}
+
 .headerContainer .headerContent {
   display: flex;
   flex-direction: row;
@@ -96,6 +107,12 @@
   }
 
   .headerContainer.open {
-    background-image: url('./mobileheaderbg.svg');
+    background-image: url('./round.svg');
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .headerContainer .header {
+    padding: 0 20px 0 20px;
   }
 }

@@ -1,4 +1,4 @@
-import { useContext, createContext } from 'react';
+import { useContext, createContext, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import './sidebar.css';
 
@@ -9,11 +9,20 @@ const Item = (props) => {
   const ContextRef = useContext(Context);
   const context = Object.keys(ContextRef).length > 0 ? ContextRef : undefined;
 
+  useEffect(() => {
+  }, [location])
+
+  const match = () => {
+    return((context && `${context.parent}${props.link}` === location) ||
+           (!context && location === props.link) ||
+           (context && props.link === '/assignments' && location.includes('assignments')))
+  }
+
   return(
     <Link
       id={props.id}
       to={context ? `${context.parent}${props.link}` : props.link}
-      className={`${((context && `${context.parent}${props.link}` === location) || (!context && location === props.link)) ? 'active ' : ''}${props.className ? props.className : ''}`.trim()}
+      className={`${ match() ? 'active ' : ''}${props.className ? props.className : ''}`.trim()}
     >
       {props.children}
     </Link>

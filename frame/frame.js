@@ -1,12 +1,13 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { useMatches } from 'react-router-dom';
+import { useMatches, Link } from 'react-router-dom';
+import Context from '../../../context';
 import { Loading } from '../UI';
 import './frame.css';
 
-const Context = createContext({});
+const ChildContext = createContext({});
 
 const Sidebar = (props) => {
-  const { mobileSidebar, closeSidebar } = useContext(Context);
+  const { mobileSidebar, closeSidebar } = useContext(ChildContext);
 
   return(
     <div
@@ -21,7 +22,7 @@ const Sidebar = (props) => {
 const Body = (props) => {
   const [crumbs, setCrumbs] = useState(undefined);
   const matches = useMatches();
-  const { openSidebar } = useContext(Context);
+  const { openSidebar, course, assignmentInfo } = useContext(ChildContext);
 
   useEffect(() => {
     setCrumbs(matches
@@ -39,7 +40,8 @@ const Body = (props) => {
         <div
           className='titleBar'
         >
-          <button 
+          <button
+            type='button'
             onClick={() => openSidebar()}
           >
             <svg viewBox="0 0 100 80" width="2rem" height="3rem">
@@ -49,26 +51,36 @@ const Body = (props) => {
             </svg>
           </button>
           <div>
-            <span>
+            <span className='crumbs'>
               {crumbs 
                 ? <>
                     {crumbs.map((crumb, i) => {
                       if(i !== 0) {
                         return(
-                          <>
+                          <span key={i}>
                             <span 
                               className='cv'
-                              key={i}
                             >  </span>
-                            {crumb}
-                          </>
+                            {crumb.edit
+                              ? <Link
+                                  to={crumb.link}
+                                >
+                                  {crumb.title.replace(':id', course?.courseName).replace(':assignmentId', assignmentInfo?.assignmentName)}
+                                </Link>
+                              : <Link
+                                  to={crumb.link}
+                                >
+                                  {crumb.title}
+                                </Link>
+                            }
+                          </span>
                         );
                       }
                       return(
                         <span
                           key={i}
                         >
-                          {crumb}
+                          <Link to={crumb.link}>{crumb.title}</Link>
                         </span>
                       );
                     })}
@@ -106,6 +118,7 @@ Frame.Body = Body;
 
 export function Frame(props) {
   const [mobileSidebar, setMobileSidebar] = useState('');
+  const { course, assignmentInfo } = useContext(Context);
 
   const openSidebar = () => {
     setMobileSidebar(' open');
@@ -119,8 +132,10 @@ export function Frame(props) {
   }
   
   return(
-    <Context.Provider
+    <ChildContext.Provider
       value={{
+        course,
+        assignmentInfo,
         mobileSidebar,
         openSidebar,
         closeSidebar
@@ -131,6 +146,6 @@ export function Frame(props) {
       >
         {props.children}
       </div>
-    </Context.Provider>
+    </ChildContext.Provider>
   )
 }

@@ -8,8 +8,6 @@ Usage:
 
 (Includes Header, Header.Buttons, Header.DropDown)
 
-Full width header on top of the page
- 
 Header.Buttons includes logo title and right justified buttons
 
 Header components support props:

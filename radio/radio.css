@@ -20,6 +20,14 @@
   cursor: pointer;
 }
 
+/*
+.radio .radioItem:hover .checkmark::after,
+.radio .radioItem:hover .radioItem::after,
+.radio .radioItem input:checked ~ .checkmark::after {
+  border-color: var(--primary);
+}
+*/
+
 .radio .radioItem .label {
   margin-top: 2px;
 }
@@ -48,6 +56,11 @@
   animation-fill-mode: forwards;
 }
 
+.radio .radioItem input:checked ~ .checkmark::after,
+.radio .radioItem input:checked ~ .radiomark::after {
+  border-color: var(--primary);
+}
+
 .radio .radioItem .radiomark::before {
   position: absolute;
   z-index: 0;
@@ -56,9 +69,14 @@
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  border: 5px solid var(--lightGray);
-  background: var(--blue);
+  border: 5px solid inherit;
+  background: var(--primary);
   transform: scale(0);
+  
+}
+
+.radio .radioItem .radiomark::after {
+  margin-left: 0.5px;
 }
 
 .radio .radioItem .radiomark::after,
@@ -86,6 +104,6 @@
     transform: scale(1.1);
   }
   100% {
-    transform: scale(1);
+    transform: scale(101%);
   }
 }

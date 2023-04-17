@@ -1,31 +1,54 @@
-import { useState } from 'react';
-import { ButtonA, TextInput, IconButton } from '../UI';
+import { useEffect, useState } from 'react';
+import { ButtonA, TextInput, IconButton, Loading } from '../UI';
 import './login.css';
 
 export const Login = (props) => {
-  const [error, setError] = useState();
+  const [error, setError] = useState(undefined);
+  const [hide, setHide] = useState(undefined);
+  const [loading, setLoading] = useState(false);
+  const [init, setInit] = useState(true);
 
   const login = async (email, password) => {
-    //Expects a Promise response
-    props.login(email, password).then(
+    setLoading(true);
+    props.login(email, password).then( //Expects a Promise response
       () => props.hide(), //On success
-      (error) => setError(error) //On failure
+      (error) => { //On failure show error
+        setError(error);
+        setLoading(false);
+      }
     );
   }
+  
+  useEffect(() => {
+    if(!props.show && !init) {
+      setTimeout(() => {
+        setHide(true);
+      }, 1000)
+    } else {
+      window.clearTimeout(hide);
+      setLoading(false);
+      setHide(undefined);
+      setInit(false);
+    }
+  }, [props.show, init, hide])
 
   const submit = (event) => {
-    event.preventDefault();
-    login(event.target.email, event.target.password);
+    event.preventDefault(); //Prevent form page reload
+    login(event.target.email, event.target.password); //Login with email & password from form
   }
 
   return(
     <div
       className='loginContainer'
+      style={{display: hide ? 'none': 'flex'}}
     >
       <h1>Login</h1>
       <div
         className='login'
       >
+        {loading &&
+          <Loading size='full'/>
+        }
         {error &&
           <div
             className='error'
@@ -51,7 +74,7 @@ export const Login = (props) => {
             required={true}
             name='password'
           />
-          <a href='/'>Forgot Password?</a>
+          <button className='link'>Forgot Password?</button>
           <ButtonA
             className='submit'
             type='submit'
@@ -65,10 +88,11 @@ export const Login = (props) => {
             <div
               className='socialButtons'
             >
-              <IconButton icon='google'/>
-              <IconButton icon='github'/>
-              <IconButton icon='apple'/>
-              <IconButton icon='linkedin'/>
+              {/*onClick should trigger corresponding login with function whos callback should be a function to call login()*/}
+              <IconButton icon='google' onClick={() => {}}/>
+              <IconButton icon='github' onClick={() => {}}/>
+              <IconButton icon='apple' onClick={() => {}}/>
+              <IconButton icon='linkedin' onClick={() => {}}/>
             </div>
           </div>
         </form>
@@ -76,7 +100,7 @@ export const Login = (props) => {
           className='new'
         >
           <h2>New?</h2>
-          <a href='/'>Create an account</a>
+          <button className='link'>Create an account</button>
           &nbsp;to access the best university patform in the world!
         </div>
       </div>

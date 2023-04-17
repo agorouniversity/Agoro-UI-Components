@@ -1,51 +1,43 @@
 # UI Components
 
-## Calendar
+## Caldendar
 
 Usage: 
 
-`import { Calendar, Upcoming } from './components/UI/UI';`
+`import { Calendar } from './components/UI/UI';` 
 
-Calendar is a component that displays a horizontal list of five days ahead along with the assignments due on each day
 
-Calendar component support props:
+Calendar supports props:
 
 ```
 id=<string>
 className=<string>
-assignments=<array<object>> (List of assignments)
+assignments=<list<object>> (list of assignments with title and due timestamp)
 ```
 
-Assignments array ex:
-
 ```
-  assignments = [
+{
+  assignments: [
     {
-      assignmentName: <string>,
-      deadline: <integer> (timestamp)
+      title: 'assignment 1',
+      due: 1679439138979
+    },
+    {
+      title: 'HW2',
+      due: 1679439006092
+    },
+    {
+      title: 'Project',
+      due: 1679439006092
     }
   ]
+}
 ```
 
 Example:
 
 ```
-<Calendar assignments={assignments} />
-```
-
-Upcoming is a small formatted list of assignments that displays a list of four assignments, due date or time, and a link to view more
-
-Upcoming component support props:
-
-```
-id=<string>
-className=<string>
-date=<boolean> (true = show due date, false = show due time)
-assignments=<array<object>> (List of assignments)
-```
-
-Example:
-
-```
-<Upcoming date={true} assignments={assignments} />
+<Calendar 
+  assignments={assignments}
+/>
 ```

@@ -13,7 +13,7 @@ export const TextInput = (props) => {
     name: props.name,
     ref: props.reference,
     autoComplete: props.autoComplete,
-    defaultValue: props.defaultValue || ''
+    defaultValue: props.defaultValue || '',
   }
 
   const textInputPropsLabel  = {

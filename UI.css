@@ -12,10 +12,37 @@ html {
 a {
   color: var(--secondary);
   text-decoration: none;
+  cursor: pointer;
 }
 
-.link:hover {
-  filter: opacity(75%);
+.link {
+  color: var(--secondary);
+  font-size: inherit;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+.link:hover, 
+a:hover {
+  text-decoration: underline;
+}
+
+.pastDue {
+  color: var(--danger);
+}
+
+.plr:first-of-type {
+  margin-top: inherit
+}
+
+.plr {
+  padding: 0 10px 0 10px;
+  margin: 2rem 0 0.75rem 0;
+}
+
+.sectionHeader {
+  padding-bottom: 1rem;
 }
 
 h1 {

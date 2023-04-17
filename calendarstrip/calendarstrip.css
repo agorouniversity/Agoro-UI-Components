@@ -24,7 +24,7 @@
   height: calc(1.17rem + 20px);
   z-index: 0;
   box-shadow: 0 0 0 1.5px var(--primary);
-  border-radius: 0.57rem 0.57rem 0 0px;
+  border-radius: 0.19rem 0.19rem 0 0px;
 }
 
 .card.calendar .content .date {
@@ -85,6 +85,8 @@
 
 .dateBody .mobile {
   display: none;
+  border: none;
+  font-size: inherit;
 }
 
 @media screen and (max-width: 500px) {

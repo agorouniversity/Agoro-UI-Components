@@ -17,6 +17,8 @@ export const Grade = (props) => {
 
   return(
     <Card
+      onClick={props.onClick}
+      link={props.link}
       id={props.id}
       className={props.className || ''}
     >

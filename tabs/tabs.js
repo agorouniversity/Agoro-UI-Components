@@ -20,10 +20,6 @@ const TabBody = (props) => {
   const { selected } = useContext(Context);
 
   useEffect(() => {
-    console.log(selected)
-  }, [selected])
-
-  useEffect(() => {
     if(Array.isArray(props.children)) {
       setChildren(props.children)
     } else {
@@ -58,6 +54,7 @@ const Title = (props) => {
     >
       {children && children.map((title, i) => 
         <Context.Provider
+          key={i}
           value={{
             ...context,
             index: i
@@ -75,6 +72,7 @@ const TabTitle = (props) => {
 
   return(
     <button
+      type='button'
       className={`title${selected === index ? ' selected' : ''}`}
       onClick={() => setSelected(index)}
     >
@@ -90,10 +88,6 @@ Tabs.Title = TabTitle;
 
 export function Tabs(props) {
   const [selected, setSelected] = useState(0);
-
-  useEffect(() => {
-    setSelected(props.selected - 1);
-  }, [props.selected])
 
   return(
     <Context.Provider

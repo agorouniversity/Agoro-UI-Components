@@ -15,6 +15,15 @@
   flex-wrap: wrap;
   box-sizing: border-box;
   overflow-y: auto;
+  position: relative;
+}
+
+.loginContainer .login .loading {
+  position: absolute;
+  background-color: var(--bg);
+  width: 100% !important;
+  height: 100%;
+  z-index: 2;
 }
 
 .loginContainer .login .account,
@@ -35,7 +44,7 @@
   width: 50%;
 }
 
-.loginContainer .login .account a,
+.loginContainer .login .account .link,
 .loginContainer .login .account .socials {
   margin-left: 10px;
 }

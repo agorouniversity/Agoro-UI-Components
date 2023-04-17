@@ -12,6 +12,10 @@
   border-collapse: collapse;
 }
 
+.tableList.auto table {
+  width: 20rem;
+}
+
 .tableList.full table {
   width: 100%;
   border-collapse: collapse;
@@ -55,7 +59,7 @@
   }
 
   .tableList table {
-    width: 100%;
+    width: 100% !important;
   }
 
   .tableList .items td:last-child,
