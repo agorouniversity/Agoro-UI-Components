@@ -30,6 +30,7 @@ export const MultiSelect = (props) => {
     if(item !== ''){
       setSelected({...selected, [item]: true});
       props.addItem(item);
+      event.target.reset();
       closeDropdown();
     }
   }
@@ -49,6 +50,16 @@ export const MultiSelect = (props) => {
       closeDropdown();
     }
   }
+
+  useEffect(() => {
+    if(props.value) {
+      let tmp = {};
+      props.value.forEach((value) => {
+        tmp[value] = true;
+      });
+      setSelected(tmp);
+      }
+  }, [props.value])
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
@@ -162,6 +173,18 @@ export const Select = (props) => {
   }
 
   useEffect(() => {
+    if(props.items && props.items.indexOf(selected) === -1 && !props.placeholder) {
+      setSelected(props.items[0]);
+    }
+  }, [selected, props.items, props.placeholder])
+
+  useEffect(() => {
+    if(props.value && props.value !== '') {
+      setSelected(props.value);
+    }
+  }, [props.value])
+
+  useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -207,7 +230,12 @@ export const Select = (props) => {
               className={`selectItem${selected === item ? ' selected' : ''}`}
               onClick={() => {
                 setSelected(item);
-                props.addItem(item);
+                if(props.addItem) {
+                  props.addItem(item);
+                }
+                if(props.addObject) {
+                  props.addObject({item: item, index: i});
+                }
                 handleDropdown();
               }}
             >

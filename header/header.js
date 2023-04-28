@@ -42,7 +42,7 @@ export function Header(props) {
   const [close, setClose] = useState(' ');
 
   useEffect(() => {
-    if(props.dropDownOpen === false && close === '') {
+    if(!props.dropDownOpen && close === '') {
       setTimeout(() => {
         setClose('close ');
       }, 550)
@@ -58,13 +58,12 @@ export function Header(props) {
       id={props.id}
       className={`${props.dropDownOpen ? 'open ' : ''}headerBg ${props.className ? props.className : ''}`.trim()}
     >
-      {props.dropDownOpen !== undefined &&
+     
         <div
           className={`${props.dropDownOpen ? 'open ' : ''}headerContainer`}
         >
           {props.children}
         </div>
-      }
     </div>
   )
 }

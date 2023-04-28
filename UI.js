@@ -8,7 +8,7 @@ Components exported below for easy import ex:
 export { Accordion } from './accordion/accordion';
 export { Radio } from './radio/radio';
 export { CheckBox } from './checkBox/checkBox';
-export { ButtonA, ButtonB, IconButton } from './buttons/buttons';
+export { ButtonA, ButtonB, ButtonC, IconButton } from './buttons/buttons';
 export { TextInput } from './textInput/textInput';
 export { Header } from './header/header';
 export { Login } from './login/login';
@@ -22,3 +22,4 @@ export { Card } from './card/card';
 export { Grade } from './grade/grade';
 export { Loading } from './loading/loading';
 export { Tabs } from './tabs/tabs'
+export { DropDown } from './dropDown/dropDown';

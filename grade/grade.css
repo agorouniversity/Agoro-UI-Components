@@ -3,3 +3,55 @@
   border-radius: 0.19rem;
   font-weight: bolder;
 }
+
+.card.gradeWrapper .cardTitle {
+  transition: all 0.5s ease;
+}
+
+.card.gradeWrapper .cardTitle.danger {
+  box-shadow: 0 0 0 2px var(--danger);
+  background-color: var(--danger);
+}
+
+.card.gradeWrapper .cardTitle.warn {
+  box-shadow: 0 0 0 2px var(--warn);
+  background-color: var(--warn);
+}
+
+.card.gradeWrapper .cardTitle.green {
+  box-shadow: 0 0 0 2px var(--green);
+  background-color: var(--green);
+}
+
+.card.gradeWrapper:hover .cardTitle {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.card.gradeWrapper:hover .overlay {
+  opacity: 100%;
+  height: 100%;
+}
+
+.card.gradeWrapper .content {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.card.gradeWrapper .overlay {
+  width: 100%;
+  height: 0%;
+  position: absolute;
+  right: 0;
+  top: 0%;
+  z-index: 1;
+  border-radius: 0.19rem;
+  opacity: 0;
+  transition: all 0.5s ease;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: var(--bg);
+  text-shadow: var(--textShadow);
+}

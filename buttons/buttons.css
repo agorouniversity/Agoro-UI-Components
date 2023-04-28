@@ -3,6 +3,11 @@
   border: 2px solid var(--primary);
   border-radius: 0.65rem;
   padding: 5px 35px;
+  box-sizing: border-box;
+}
+
+a.button {
+  text-decoration: none !important;
 }
 
 .button:hover {
@@ -56,6 +61,26 @@
   animation: circleEnter ease 0.5s;
   background-position: center center;
   color: var(--bg);
+}
+
+.button.buttonA.secondary {
+  color: var(--secondary);
+  border-color: var(--secondary);
+  box-shadow: 0px 0px var(--lightSecondary), 0px 0px var(--secondary);
+}
+
+.button.buttonA.secondary:hover {
+  box-shadow: -10px -8px var(--lightSecondary), 10px 8px var(--secondary);
+}
+
+.button.buttonA.danger {
+  color: var(--danger);
+  border-color: var(--danger);
+  box-shadow: 0px 0px var(--lightDanger), 0px 0px var(--danger);
+}
+
+.button.buttonA.danger:hover {
+  box-shadow: -10px -8px var(--lightDanger), 10px 8px var(--danger);
 }
 
 .iconButton {
@@ -112,6 +137,103 @@
 
 .iconButton:hover .iconBg {
   transform: translateX(6px) rotate(10deg);
+}
+
+.button.buttonC {
+  box-sizing: border-box;
+  position: relative;
+  background-color: var(--primary);
+  color: var(--bg);
+  transition: background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.button.buttonC.secondary {
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+}
+
+.button.buttonC.secondary:hover {
+  color: var(--secondary);
+}
+
+.button.buttonC.danger {
+  background-color: var(--danger);
+  border-color: var(--danger);
+}
+
+.button.buttonC.danger:hover {
+  color: var(--danger);
+}
+
+.button.buttonC:disabled {
+  background-color: var(--lightGray) !important;
+  color: var(--gray) !important;
+  transform: scale(100%) !important;
+  box-shadow: none !important;
+  border-color: var(--lightGray);
+}
+
+.button.buttonC.pressed {
+  animation: bounce 0.75s cubic-bezier(0.280, 0.840, 0.420, 1) 0s;
+}
+
+.button.buttonC.active {
+  transform: scale(95%);
+  box-shadow: none !important;
+}
+
+.button.buttonC:hover {
+  box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.35);
+  background-color: var(--bg);
+  color: var(--primary);
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(95%);
+    transition: box-shadow 0s ease;
+  }
+  20% {
+    transform: scale(105%);
+    box-shadow: 0px 2px 20px 2px rgba(0,0,0,0.35);
+    transition: box-shadow 0s ease;
+  }
+  30% {
+    transform: scale(99%);
+    box-shadow: 0px 2px 4px 2px rgba(0,0,0,0.35);
+    transition: box-shadow 0s ease;
+  }
+  40% {
+    transform: scale(102%);
+    box-shadow: 0px 2px 12px 2px rgba(0,0,0,0.35);
+    transition: box-shadow 0s ease;
+  }
+  100% {
+    transform: scale(100%);
+    box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.35);
+    transition: box-shadow 0s ease;
+  }
+}
+
+.button.buttonC span {
+  position: relative;
+  z-index: 1;
+}
+
+.button.buttonC .test {
+  position: absolute;
+  box-sizing: border-box;
+  border-radius: 0.60rem;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  height: 100%;
+  border: 5px solid var(--bg);
+}
+
+.button.buttonC .test:hover {
+  background-color: var(--lightPrimary);
 }
   
 @keyframes circleEnter {

@@ -25,6 +25,7 @@ const CheckBoxItem = (props) => {
           value={props.value}
           defaultChecked={context.selected}
           onChange={context.onChange}
+          disabled={props.disabled}
         >
         </input>
         <span className='checkmark'>
@@ -57,10 +58,11 @@ export function CheckBox (props) {
     } else {
       setChildren([...props.children]);
     }
-  }, [props.children])
+  }, [props.children, props.selected])
 
   return(
     <div
+      key={props.selected}
       className={`base radio${props.className ? ' ' + props.className : ''}`}
       id={props.id || ''}
     >

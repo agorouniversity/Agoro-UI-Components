@@ -23,6 +23,7 @@ CheckBox.Item supports props:
 ```
 className=<string>
 value=<string> (required)
+disabled=<boolean>
 ```
 
 example:

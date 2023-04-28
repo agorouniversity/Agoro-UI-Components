@@ -89,11 +89,11 @@ form.multiselect {
 }
 
 .multiselect .dropdown li:first-child {
-  border-radius: 0.2rem 0.2rem 0 0;
+  border-radius: 0.1rem 0.1rem 0 0;
 }
 
 .multiselect .dropdown li:last-child {
-  border-radius: 0 0 0.2rem 0.2rem;
+  border-radius: 0 0 0.1rem 0.1rem;
 }
 
 .multiselect .dropdown li.selected,

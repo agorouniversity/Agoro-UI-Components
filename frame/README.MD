@@ -23,6 +23,7 @@ Only Frame.Body supports props:
 ```
 title=<string> (Title of current page)
 rightHeader=<Component> (Element that displays on the right opposite the page title)
+restrict=<boolean> (If true display permission denied instead of page)
 ```
 
 See App.js for example

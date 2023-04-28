@@ -70,6 +70,9 @@ const AccordionTitle = (props) => {
       tmp[i] = false;
       context.setOpen(tmp);
       setSelected(!selected);
+      if(context.onSelect) {
+        context.onSelect(i, !selected);
+      }
       return;
     }
     if(!selected && !context.open[i]) {
@@ -84,18 +87,21 @@ const AccordionTitle = (props) => {
         context.setOpen(tmp);
       }
       setSelected(!selected);
+      if(context.onSelect) {
+        context.onSelect(i, !selected);
+      }
     }
   }
 
   return (
     <>
       {context.table
-        ? <tr 
-            className={`section-title tableRow${selected ? ' selected' : ''}`}
-            onClick={() => select()}
+        ? <tr
+            className={`${props.disabled ? 'disabled ' : ''}section-title tableRow${selected ? ' selected' : ''}`}
+            onClick={() => props.disabled ? null : select()}
           >
             {props.children}
-            <td className='tableArrow'></td>
+            {!props.disabled && <td className='tableArrow'></td>}
           </tr>
         : <div 
             className={`section-title ${context.cv === 'right' ? 'cvright ' : 'cvleft '}${selected ? 'selected' : ''}`.trim()}
@@ -178,12 +184,18 @@ export function Accordion (props) {
   const [children, setChildren] = useState([]);
 
   useEffect(() => {
-    if(!Array.isArray(props.children)) {
+    if(props.table) {
+      setChildren([...props.children.flat(1)]);
+    } else if(!Array.isArray(props.children)) {
       setChildren([props.children]);
     } else {
       setChildren([...props.children]);
     }
-  }, [props.children]);
+  }, [props.children, props.table]);
+
+  useEffect(() => {
+    setStart(props.selected + 1);
+  }, [props.selected])
 
   return (
     <>
@@ -205,7 +217,8 @@ export function Accordion (props) {
                         cv: props.arrow,
                         table: props.table,
                         setOpen,
-                        setStart
+                        setStart,
+                        onSelect: props.onSelect
                       }}
                       key={i}
                     >

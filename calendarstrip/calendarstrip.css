@@ -15,6 +15,7 @@
   text-align: right;
   color: var(--bg);
   border-radius: inherit;
+  text-shadow: var(--textShadow);
 }
 
 .card.calendar .content .headerBg {

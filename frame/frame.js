@@ -21,14 +21,23 @@ const Sidebar = (props) => {
 
 const Body = (props) => {
   const [crumbs, setCrumbs] = useState(undefined);
+  const [permDenied, setPermDenied] = useState(undefined);
   const matches = useMatches();
-  const { openSidebar, course, assignmentInfo } = useContext(ChildContext);
+  const { openSidebar, course, viewingObject } = useContext(ChildContext);
 
   useEffect(() => {
     setCrumbs(matches
       .filter((match) => Boolean(match.handle?.crumb))
       .map((match) => match.handle.crumb(match.data)));
   },[matches])
+
+  useEffect(() => {
+    if(props.restrict !== undefined) {
+      setPermDenied(props.restrict);
+    } else {
+      setPermDenied(false);
+    }
+  }, [props.restrict])
 
   return(
     <div
@@ -65,7 +74,10 @@ const Body = (props) => {
                               ? <Link
                                   to={crumb.link}
                                 >
-                                  {crumb.title.replace(':id', course?.courseName).replace(':assignmentId', assignmentInfo?.assignmentName)}
+                                  {crumb.title
+                                    .replace(':id', course?.courseName)
+                                    .replace(':assignmentId', viewingObject)
+                                    .replace(':studentId', viewingObject)}
                                 </Link>
                               : <Link
                                   to={crumb.link}
@@ -93,7 +105,7 @@ const Body = (props) => {
             <h1
               className='pageTitle'
             >
-              {props.title}
+              {permDenied === false && props.title}
             </h1>
           </div>
         </div>
@@ -102,9 +114,12 @@ const Body = (props) => {
       <div
         className='contentBody'
       >
-        {!props.loading
+        {(!props.loading && !(props.restrict && permDenied === undefined))
           ? <>
-              {props.children}
+              {permDenied !== true
+                ? props.children
+                : 'Permission Denied'
+              }
             </>
           : <Loading size='full'/>
         }
@@ -118,7 +133,7 @@ Frame.Body = Body;
 
 export function Frame(props) {
   const [mobileSidebar, setMobileSidebar] = useState('');
-  const { course, assignmentInfo } = useContext(Context);
+  const { course, viewingObject } = useContext(Context);
 
   const openSidebar = () => {
     setMobileSidebar(' open');
@@ -135,7 +150,7 @@ export function Frame(props) {
     <ChildContext.Provider
       value={{
         course,
-        assignmentInfo,
+        viewingObject,
         mobileSidebar,
         openSidebar,
         closeSidebar

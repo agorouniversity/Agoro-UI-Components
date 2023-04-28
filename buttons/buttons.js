@@ -1,22 +1,45 @@
 import { useEffect, useState } from 'react';
 import { Icon } from '../UI';
 import './buttons.css';
+import { Link } from 'react-router-dom';
 
 /*Button skeleton for easy creation of new buttons*/
-const Button = (props) => {
-  const name = props.class;
-  props = props.data;
+const Button = (data) => {
+  const [props, setProps] = useState(data.data);
+  const name = data.class;
+
+  useEffect(() => {
+    setProps(data.data);
+  }, [data])
 
   return (
-    <button 
-      id={props.id}
-      className={`base button ${name}${props.size ? ' ' + props.size : ''}${props.className ? ' ' + props.className : ''}`}
-      onClick={props.onClick}
-      type={props.type || 'button'}
-      disabled={props.disabled}
-    >
-      {props.children}
-    </button>
+    <>
+      {props.link
+        ? <Link
+            to={props.link}
+            id={props.id}
+            className={`base button${props.color ? ' ' + props.color : ''} ${name}${props.size ? ' ' + props.size : ''}${props.className ? ' ' + props.className : ''}`}
+            onClick={props.onClick}
+            type={props.type || 'button'}
+            disabled={props.disabled}
+            onMouseDown={data.onMouseDown}
+            onMouseUp={data.onMouseUp}
+          >
+            <span>{props.children}</span>
+          </Link>
+        : <button 
+            id={props.id}
+            className={`base button${props.color ? ' ' + props.color : ''} ${name}${props.size ? ' ' + props.size : ''}${props.className ? ' ' + props.className : ''}`}
+            onClick={props.onClick}
+            type={props.type || 'button'}
+            disabled={props.disabled}
+            onMouseDown={data.onMouseDown}
+            onMouseUp={data.onMouseUp}
+          >
+            <span>{props.children}</span>
+          </button>
+      }
+    </>
   );
 }
 
@@ -49,6 +72,23 @@ export const ButtonB = (props) => {
   );
 }
 
+export const ButtonC = (props) => {
+  const [state, setState] = useState('')
+
+  useEffect(() => {
+    
+  }, [])
+
+  return (
+    <Button
+      class={`buttonC ${state}`.trim()}
+      data={props}
+      onMouseDown={() => setState('active')}
+      onMouseUp={() => setState('pressed')}
+    ></Button>
+  );
+}
+
 /*Icon button*/
 export const IconButton = (props) => {
   const [icon, setIcon] = useState(<></>);
@@ -59,7 +99,7 @@ export const IconButton = (props) => {
       ? <Icon size='auto' light={props.light} icon={props.icon} />
       : props.children
     )
-  }, [props.icon, props.light, props.children])
+  }, [props.icon, props.children, props.light])
 
   return(
     <button

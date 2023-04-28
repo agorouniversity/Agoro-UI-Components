@@ -3,31 +3,40 @@ import { Card } from '../UI';
 import './grade.css';
 
 export const Grade = (props) => {
-  const [color, setColor] = useState('');
+  const [color, setColor] = useState(['', '']);
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
-    if(props.grade < 50) {
-      setColor('--lightDanger');
-    } else if(props.grade < 70) {
-      setColor('--lightWarn');
+    let tmpScore = (props.points / props.total) * 100;
+    setScore(tmpScore);
+    if(tmpScore < 50) {
+      setColor(['danger', 'lightDanger']);
+    } else if(tmpScore < 70) {
+      setColor(['warn', 'lightWarn']);
     } else {
-      setColor('--lightPrimary');
+      setColor(['green', 'lightPrimary']);
     }
-  }, [props.grade])
+  }, [props.total, props.points])
 
   return(
     <Card
       onClick={props.onClick}
       link={props.link}
       id={props.id}
-      className={props.className || ''}
+      className={`gradeWrapper ${props.className || ''}`}
     >
+      <Card.Title className={color[0]}>{props.points} / {props.total} points</Card.Title>
       <div
         className='grade'
-        style={{
-          background: `linear-gradient(90deg, var(${color}) ${props.grade}%, transparent ${props.grade}%)`
-        }}
       >
+        <div
+          className='overlay'
+          style={{
+            background: `linear-gradient(90deg, var(--${color[0]}) ${score}%, var(--${color[1]}) ${score}%)`
+           }}
+        >
+          <h1>{score}%</h1>
+        </div>
         {props.children}
       </div>
     </Card>

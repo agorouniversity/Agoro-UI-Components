@@ -14,6 +14,8 @@ className=<string>
 onClick=<function>
 type='submit' or 'reset' or 'button'(default)
 size='large' or omit for small
+link=<route string> (Will make button act as <a> ex: './courses')
+color='Primary' or 'Danger' or 'Warn' (Color of button)
 disabled
 ```
 

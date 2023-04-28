@@ -16,6 +16,8 @@
   box-sizing: border-box;
   overflow-y: auto;
   position: relative;
+  color: #606060 !important;
+  background-color: white !important;
 }
 
 .loginContainer .login .loading {

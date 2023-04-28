@@ -17,6 +17,13 @@ multi=<boolean> (If multiple items can be open at once default false)
 table=<boolean> (If accordion acts like a table)
 ```
 
+Accordion Title supports props:
+
+```
+onSelect=<function> (Function to call when item is selected)
+disabled=<boolean> (If the item is selectable)
+```
+
 Standard example:
 
 ```

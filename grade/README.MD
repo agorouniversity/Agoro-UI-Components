@@ -13,14 +13,16 @@ Grade supports props:
 ```
 id=<string>
 className=<string>
-grade=<float>
+points=<float>
+total=<float>
 ```
 
 Example:
 
 ```
 <Grade 
-  grade={70}>
+  points={70}
+  total={100}
 > 
   70 / 100
 </Grade>

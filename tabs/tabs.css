@@ -10,6 +10,9 @@
   flex-direction: row;
   align-items: flex-start;
   gap: 4px;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
 .tabs .titles .title {
@@ -34,6 +37,10 @@
 
 .tabs .tabBody .tab .content {
   padding: 10px;
+}
+
+.tabs .tabBody .tab .content .content {
+  padding: unset;
 }
 
 .tabs .tabBody .card.tab {

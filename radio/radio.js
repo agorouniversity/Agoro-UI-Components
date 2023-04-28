@@ -24,6 +24,7 @@ const RadioItem = (props) => {
           value={props.value}
           defaultChecked={context.selected}
           onChange={context.onChange}
+          disabled={props.disabled}
         >
         </input>
         <span className='radiomark'></span>

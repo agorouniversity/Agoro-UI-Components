@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 export function Title(props) {
 	return(
 		<div
-			className={`title ${props.className || ''}`.trim()}
+			className={`cardTitle ${props.className || ''}`.trim()}
       id={props.id}
 		>
       <h3>{props.children}</h3>

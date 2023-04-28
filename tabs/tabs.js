@@ -89,6 +89,10 @@ Tabs.Title = TabTitle;
 export function Tabs(props) {
   const [selected, setSelected] = useState(0);
 
+  useEffect(() => {
+    setSelected(props.selected - 1);
+  }, [props.selected])
+
   return(
     <Context.Provider
       value={{

@@ -34,7 +34,7 @@
 
 .radio .radioItem input {
   position: absolute;
-  opacity: 0;
+  display: none;
   cursor: pointer;
 }
 

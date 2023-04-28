@@ -60,15 +60,13 @@
 }
 
 .accordion .section-title.selected, 
-.accordion .section-title:hover {
+.accordion .section-title:hover:not(.disabled) {
   cursor: pointer;
   background-color: var(--primary);
   color: var(--bg);
   transform: scale(102%);
   transform-origin: center;
-  box-shadow: -1px 5px 24px 1px rgba(0,0,0,0.3);
-  -webkit-box-shadow: -1px 5px 24px 1px rgba(0,0,0,0.3);
-  -moz-box-shadow: -1px 5px 24px 1px rgba(0,0,0,0.3);
+  box-shadow: -1px 5px 10px 1px rgba(0,0,0,0.3);
 }
 
 .accordion .section-title .tableArrow,
@@ -79,7 +77,7 @@
 }
 
 .accordion .section-title.selected, 
-.accordion .section-title:hover .tableArrow,
+.accordion .section-title:hover:not(.disabled) .tableArrow,
 .accordion .section-title.selected .tableArrow {
   border: 1px solid var(--primary);
   border-radius: 0 0.3rem 0.3rem 0;
@@ -90,14 +88,14 @@
   border-radius: 0.3rem;
 }
 
-.accordion .section-title:hover .cell:first-child,
+.accordion .section-title:hover:not(.disabled) .cell:first-child,
 .accordion .section-title.selected .cell:first-child {
   border: 1px solid var(--primary);
   border-radius: 0.3rem 0 0 0.3rem;
 }
 
 .accordion .section-title.selected, 
-.accordion .section-title:hover .cell,
+.accordion .section-title:hover:not(.disabled) .cell,
 .accordion .section-title.selected .cell {
   border: 1px solid var(--primary);
 }

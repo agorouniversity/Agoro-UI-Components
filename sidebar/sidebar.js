@@ -15,7 +15,8 @@ const Item = (props) => {
   const match = () => {
     return((context && `${context.parent}${props.link}` === location) ||
            (!context && location === props.link) ||
-           (context && props.link === '/assignments' && location.includes('assignments')))
+           (context && props.link === '/assignments' && location.includes('assignments')) ||
+           (context && props.link === '/students' && location.includes('students')))
   }
 
   return(
