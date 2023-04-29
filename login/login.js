@@ -1,12 +1,14 @@
-import { useEffect, useState } from 'react';
-import { ButtonA, TextInput, IconButton, Loading } from '../UI';
-import './login.css';
+import { useEffect, useState } from "react";
+import { ButtonA, TextInput, IconButton, Loading } from "../UI";
+import "./login.css";
 
 export const Login = (props) => {
   const [error, setError] = useState(undefined);
   const [hide, setHide] = useState(undefined);
   const [loading, setLoading] = useState(false);
   const [init, setInit] = useState(true);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const login = async (email, password) => {
     setLoading(true);
@@ -34,8 +36,15 @@ export const Login = (props) => {
 
   const submit = (event) => {
     event.preventDefault(); //Prevent form page reload
-    login(event.target.email, event.target.password); //Login with email & password from form
-  }
+    login(email, password); //Login with email & password from form
+  };
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
 
   return(
     <div
@@ -53,7 +62,7 @@ export const Login = (props) => {
           <div
             className='error'
           >
-            {error}
+            {"Incorrect Email/Password"}
           </div>
         }
         <form
@@ -65,14 +74,17 @@ export const Login = (props) => {
             type='email' 
             width='full'
             required={true}
-            name='email'
+            name="email"
+            onChange = {handleEmailChange}
+
           />
-          <TextInput 
-            label='Password' 
-            type='password' 
-            width='full'
+          <TextInput
+            label="Password"
+            type="password"
+            width="full"
             required={true}
-            name='password'
+            name="password"
+            onChange = {handlePasswordChange}
           />
           <button className='link'>Forgot Password?</button>
           <ButtonA
@@ -81,9 +93,7 @@ export const Login = (props) => {
           >
             Login
           </ButtonA>
-          <div
-            className='socials'
-          >
+          <div className="socials">
             <h2>Or</h2>
             <div
               className='socialButtons'
@@ -96,14 +106,12 @@ export const Login = (props) => {
             </div>
           </div>
         </form>
-        <div
-          className='new'
-        >
+        <div className="new">
           <h2>New?</h2>
           <button className='link'>Create an account</button>
           &nbsp;to access the best university patform in the world!
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
