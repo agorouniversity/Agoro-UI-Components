@@ -62,7 +62,7 @@ export const Login = (props) => {
           <div
             className='error'
           >
-            {"Incorrect Email/Password"}
+            {error}
           </div>
         }
         <form

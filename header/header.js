@@ -1,21 +1,24 @@
 import { useState, useEffect } from 'react';
+import Logo from '../../../images/logo.png';
+import LogoDark from '../../../images/logoDark.png';
 import './header.css';
+import { Link } from 'react-router-dom';
 
 const HeaderButtons = (props) => {
   return(
     <header
         className='header'
       >
-        <span
+        <Link
+          to='/'
           className='leftCol'
         >
-          <img
-            alt='logo'
-            className='logo'
-            /*Logo goes here*/
-          ></img>
+          <div
+            className='logo img'
+            style={{backgroundImage: `url(${props.dark ? LogoDark : Logo})`}}
+          ></div>
           <h1>Agoro</h1>
-        </span>
+        </Link>
         <div
           className='rightCol'
         >
