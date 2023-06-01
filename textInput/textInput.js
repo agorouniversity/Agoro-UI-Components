@@ -14,6 +14,7 @@ export const TextInput = (props) => {
     ref: props.reference,
     autoComplete: props.autoComplete,
     defaultValue: props.defaultValue || '',
+    pattern: props.pattern
   }
 
   const textInputPropsLabel  = {

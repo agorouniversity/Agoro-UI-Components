@@ -13,7 +13,7 @@ Login support props:
 ```
 show=<boolean> (Show or hide login component)
 hide=<function> (Calls upon successful login - used to hide header dropdown)
-login=<function> (Calls function(email, password) when user attempts to login. Expects a promise response = resolve will call hide() and reject will display error message)
+login=<function> (Calls function(email, password, setUser) when user attempts to login. Expects a promise response = resolve will call hide() and reject will display error message)
 ```
 
 Example:

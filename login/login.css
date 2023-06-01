@@ -18,6 +18,11 @@
   position: relative;
   color: #606060 !important;
   background-color: white !important;
+  transition: max-height 0.5s ease;
+}
+
+.loginContainer .login input {
+  color: #606060;
 }
 
 .loginContainer .login .loading {
@@ -25,7 +30,13 @@
   background-color: var(--bg);
   width: 100% !important;
   height: 100%;
+  bottom: 0;
+  top: 0;
   z-index: 2;
+}
+
+.loginContainer .login .new.loading {
+  min-height: 830px;
 }
 
 .loginContainer .login .account,
@@ -46,6 +57,24 @@
   width: 50%;
 }
 
+.loginContainer .login .account .phoneInput {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.loginContainer .login .account .phoneInput .countryCode {
+  width: fit-content;
+}
+
+.loginContainer .login .account .link {
+  margin-left: 10px !important;
+}
+
+.loginContainer .login .account .phoneInput .countryCode input {
+  width: 100%;
+}
+
 .loginContainer .login .account .link,
 .loginContainer .login .account .socials {
   margin-left: 10px;
@@ -64,12 +93,18 @@
   gap: 10px;
 }
 
-.loginContainer .login .error {
+.loginContainer .login .error,
+.loginContainer .login .success {
   width: min-content;
   flex: 0 0 100%;
+  color: var(--gray);
   background-color: var(--lightDanger);
   text-align: center;
   padding: 5px 0 5px 0;
+}
+
+.loginContainer .login .success {
+  background-color: var(--lightPrimary);
 }
 
 .loginContainer .login .new {
@@ -81,6 +116,13 @@
   margin-bottom: 2rem;
 }
 
+/*
+.loginContainer .login .date input {
+  width: 14.25rem;
+  height: 2.625rem;
+}
+*/
+
 @media screen and (max-width: 900px) {
   .loginContainer {
     padding: 0 1rem 0 1rem;
@@ -91,7 +133,6 @@
   .loginContainer .login .account,
   .loginContainer .login .new {
     flex: 0 0 100%;
-    padding: 0 10px 0 10px;
   }
 
   .loginContainer .login .account .socials {
@@ -104,6 +145,7 @@
   
   .loginContainer .login .new {
     padding-bottom: 20px;
+    padding: 0 20px 20px 20px;
   }
 
   .loginContainer .login .new h2 {
