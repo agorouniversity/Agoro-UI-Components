@@ -4,15 +4,16 @@
 
 Usage: 
 
-`import { Calendar } from './components/UI/UI';` 
+`import { Calendar, Upcoming } from './components/UI/UI';` 
 
+Calendastrip is a small calendar that shows 5 days ahead and the assignments due on each day.
 
 Calendar supports props:
 
 ```
 id=<string>
 className=<string>
-assignments=<list<object>> (list of assignments with title and due timestamp)
+assignments=<array<object>> (Array of assignments with title and due timestamp)
 ```
 
 ```

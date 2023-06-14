@@ -1,0 +1,272 @@
+.card.fullCalendar,
+.card.fullCalendar .content {
+  height: 100%;
+  min-height: 800px;
+  max-height: 1000px;
+}
+
+
+.card.fullCalendar.long,
+.card.fullCalendar.long .content {
+  max-height: 1140px;
+}
+
+.card.fullCalendar:is(.Week, .Day),
+.card.fullCalendar:is(.Week, .Day) .content {
+  height: fit-content;
+  min-height: unset;
+  max-height: unset;
+}
+
+.card .title.fullCalendarHeading {
+  padding: 0 !important;
+}
+
+.card.fullCalendar .content {
+  display: grid;
+  grid-template-columns: repeat(7, calc(100% / 7));
+  grid-template-rows: calc( 19% + 1.17rem + 20px) minmax(1fr, 1fr);
+  padding: 0 !important;
+  position: relative;
+}
+
+.card.fullCalendar.Week .content {
+  display: grid;
+  grid-template-columns: repeat(7, calc(100% / 7));
+  grid-template-rows: unset !important;
+  padding: 0 !important;
+  position: relative;
+}
+
+.card.fullCalendar.Day .content {
+  grid-template-columns: 1fr;
+}
+
+.card.fullCalendar .content .date :is(.dateHeading, .dateHeadingMobile) {
+  margin: 0;
+  padding: 0 4px 10px 4px;
+  text-align: right;
+  color: var(--bg);
+  border-radius: inherit;
+  text-shadow: var(--textShadow);
+}
+
+.card.fullCalendar .content .date .dateHeading {
+  font-size: 1.10rem;
+}
+
+.card.fullCalendar .content .date .dateHeadingMobile {
+  display: none;
+  padding: 0px 0px 10px 0px;
+}
+
+.card.fullCalendar .content .headerBg {
+  background-color: var(--primary);
+  position: absolute;
+  width: 100%;
+  height: calc(1.17rem + 20px);
+  z-index: 0;
+  box-shadow: 0 0 0 1.5px var(--primary);
+  border-radius: 0.19rem 0.19rem 0 0px;
+}
+
+.card.fullCalendar .content .date {
+  padding: 10px 4px 10px 4px;
+  position: relative;
+  z-index: 2;
+}
+
+.card.fullCalendar .content .date:not(.header) {
+  padding-top: 2px;
+}
+
+.card.fullCalendar .content .date.bottom {
+  border-bottom: 2px solid var(--lightGray);
+}
+
+.card.fullCalendar .content .date.end {
+  border-right: none !important;
+}
+
+.card.fullCalendar .content .date:is(.Week, .Day) {
+  padding: 10px 0 0 0;
+}
+
+.card.fullCalendar:is(.Week, .Day) .content .date .dateBody {
+  display: grid;
+  grid-template-rows: repeat(24, 3.5rem);
+}
+
+.card.fullCalendar:is(.Week, .Day) .content .date .dateBody .timeItem {
+  border-bottom: 2px solid var(--lightGray);
+  padding: 4px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.card.fullCalendar:is(.Week, .Day) .content .date .dateBody .timeItem.label::before {
+  content: attr(data-time);
+  position: absolute;
+  min-width: 40px;
+  transform: rotate(-90deg) translate(-10px, -32px);
+  font-size: 0.8rem;
+}
+
+.card.fullCalendar:is(.Week, .Day) .content .date.today .dateBody .timeItem.now {
+  background-color: var(--lightPrimary);
+}
+
+.card.fullCalendar .content .date .dateText {
+  padding: 0 2px 0 2px;
+}
+
+.card.fullCalendar .content .date.otherMonth .dateText.prev {
+  filter: brightness(75%);
+}
+
+.card.fullCalendar .content .date .dateText h3 {
+  font-size: 1.5rem;
+}
+
+.card.fullCalendar:not(.Day, .Week) .content .date.header.today {
+  background: linear-gradient(0deg, var(--lightPrimary) calc(100% - 1.17rem - 21px), transparent calc(100% - 1.17rem - 21px));
+}
+
+.card.fullCalendar:not(.Day, .Week) .content .date.today {
+  background-color: var(--lightPrimary);
+}
+
+.card.fullCalendar:not(.Day, .Week) .content .date.header:hover {
+  background: linear-gradient(0deg, var(--lightSecondary) calc(100% - 1.17rem - 21px), transparent calc(100% - 1.17rem - 21px));
+}
+
+.card.fullCalendar:not(.Day, .Week) .content .date:hover,
+.card.fullCalendar .content .date.header .timeItem:hover {
+  background-color: var(--lightSecondary);
+  cursor: pointer;
+}
+
+.card.fullCalendar:not(.Day) .content .date {
+  border-right: 2px solid var(--lightGray);
+}
+
+.card .title.fullCalendar span {
+  text-align: right;
+}
+
+.dateBody {
+  margin-top: 10px;
+}
+
+.dateBody,
+.dateBody ul,
+.dateBody li {
+  width: 100%;
+  overflow: hidden;
+}
+
+.dateBody .more {
+  display: block;
+  width: 100%;
+  text-align: right;
+  color: var(--gray);
+}
+
+.dateBody ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dateBody ul li div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.dateBody ul li div span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: keep-all;
+  white-space: nowrap;
+  flex-shrink: 2;
+}
+
+.dateBody ul li div span:nth-child(2) {
+  flex-grow: 2;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.dateBody .mobile {
+  display: none;
+  border: none;
+  font-size: inherit;
+}
+
+.dateBody .tableList.full {
+  max-width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  .card.fullCalendar * {
+    border-width: 1px !important;
+  }
+
+  .card.fullCalendar,
+  .card.fullCalendar .content {
+    min-height: unset;
+    height: 90%;
+  }
+
+  .card.fullCalendar .content .date .dateBody ul:not(.timeItem),
+  .card.fullCalendar .content .date .dateBody .more,
+  .card.fullCalendar:not(.Day) .content .date .dateBody div:not(.mobile) {
+    display: none;
+  }
+
+  .card.fullCalendar .content .date .dateBody .mobile {
+    display: block;
+    background-color: var(--lightSecondary);
+    color: var(--gray);
+    font-weight: bold;
+    border-radius: 0.3rem;
+    width: 100%;
+    padding: 0.1rem;
+    text-align: center;
+  }
+
+  .card.fullCalendar .content .date.header h3 {
+    font-size: 1.05rem;
+    text-align: center;
+  }
+
+  .card.fullCalendar.Month .content .dateBody {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 4px;
+  }
+
+  .card.fullCalendar .content .date {
+    padding-bottom: 6px;
+  }
+
+  .card.fullCalendar .content .date.otherMonth .dateText.prev {
+    display: inline-block;
+    font-size: 0.8rem;
+    height: 1rem;
+  }
+}
+
+@media screen and (max-width: 830px) {
+  .card.fullCalendar:not(.Day) .content .date .dateHeading {
+    display: none;
+  }
+
+  .card.fullCalendar:not(.Day) .content .date .dateHeadingMobile {
+    display: block;
+  }
+}

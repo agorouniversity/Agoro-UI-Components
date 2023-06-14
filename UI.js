@@ -24,3 +24,4 @@ export { Loading } from './loading/loading';
 export { Tabs } from './tabs/tabs'
 export { DropDown } from './dropDown/dropDown';
 export { Modal } from './modal/modal';
+export { FullCalendar } from './calendar/calendar';

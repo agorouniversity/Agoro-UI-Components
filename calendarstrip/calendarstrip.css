@@ -88,7 +88,14 @@
   display: none;
   border: none;
   font-size: inherit;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
 }
+
+
 
 @media screen and (max-width: 500px) {
   .card.calendar .content .date .dateHeading .dayMonth {
