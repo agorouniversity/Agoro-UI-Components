@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Card } from '../UI';
+import { useNavigate } from 'react-router-dom';
 import './grade.css';
 
 export const Grade = (props) => {
   const [color, setColor] = useState(['', '']);
   const [score, setScore] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     let tmpScore = (props.points / props.total) * 100;
@@ -21,7 +23,7 @@ export const Grade = (props) => {
   return(
     <Card
       onClick={props.onClick}
-      link={props.link}
+      link={{navigate: navigate, to: props.link}}
       id={props.id}
       className={`gradeWrapper ${props.className || ''}`}
     >

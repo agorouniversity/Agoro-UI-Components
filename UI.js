@@ -23,3 +23,4 @@ export { Grade } from './grade/grade';
 export { Loading } from './loading/loading';
 export { Tabs } from './tabs/tabs'
 export { DropDown } from './dropDown/dropDown';
+export { Modal } from './modal/modal';

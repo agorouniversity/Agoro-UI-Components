@@ -5,22 +5,11 @@
   width: fit-content;
 }
 
-.textInputLabel input, input.textInput {
+.textInputLabel input,
+input.textInput,
+textarea.textInput {
   box-sizing: border-box;
 }
-
-/*
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px var(--bg) inset !important;
-}
-
-input:-webkit-autofill{
-  -webkit-text-fill-color: var(--gray) !important;
-}
-*/
 
 .textInputLabel .textInput.full {
   width: 100%;

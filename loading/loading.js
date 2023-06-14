@@ -3,6 +3,8 @@ import './loading.css';
 export const Loading = (props) => {
   return(
     <div
+      role='progressbar'
+      name='loading'
       id={props.id}
       className={`loading ${props.size ? props.size : 'auto'} ${props.className || ''}`.trim()}
     >

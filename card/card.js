@@ -1,5 +1,4 @@
-import './card.css'
-import { useNavigate } from 'react-router-dom';
+import './card.css';
 
 export function Title(props) {
 	return(
@@ -35,13 +34,11 @@ export function Card(props) {
     width = props.width;
   }
 
-  const navigate = useNavigate();
-
   const click = (event) => {
     if(props.onClick || props.link) {
       let node = event.target.nodeName;
       if(node !== 'BUTTON' && node !== 'A') {
-        (props.onClick || function(){navigate(props.link)}).call();
+        (props.onClick || function(){props.link.navigate(props.link.to)}).call();
       }
     }
   }

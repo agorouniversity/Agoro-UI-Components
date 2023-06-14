@@ -1,0 +1,87 @@
+.modal.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 30;
+  animation: sbFadeIn 0.5s ease;
+  animation-fill-mode: forwards;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: left !important;
+}
+
+.modal.container.close {
+  animation: sbFadeOut 0.5s ease;
+}
+
+.modal .modalCard .content {
+  background-color: var(--bg);
+}
+
+.modal .modalCard {
+  width: 80%;
+  height: 80%;
+  max-width: 700px;
+  visibility: hidden;
+  opacity: 0%;
+  animation: cardSlideDown 0.5s ease;
+  animation-fill-mode: forwards;
+}
+
+.modal .modalCard .body {
+  text-align: left !important;
+}
+
+.modal .modalCard.close {
+  animation: cardSlideUp 0.5s ease;
+}
+
+.modal .modalCard .cardTitle h2 {
+  margin: 0;
+}
+
+.modal .modalCard .footer {
+  text-align: right;
+  border-top: 2px solid var(--lightGray);
+  margin-top: 10px;
+}
+
+.modal .modalCard .footer .loading {
+  margin-top: 10px;
+  text-align: right !important;
+  padding-right: 2.5rem;
+}
+
+.modal .modalCard .footer .loading div {
+  justify-content: flex-end;
+}
+
+@keyframes cardSlideDown {
+  0% {
+    visibility: hidden;
+    transform: translateY(-50px);
+    opacity: 0%;
+  }
+
+  100% {
+    visibility: visible;
+    opacity: 100%;
+  }
+}
+
+@keyframes cardSlideUp {
+  0% {
+    visibility: visible;
+    opacity: 100%;
+  }
+
+  100% {
+    visibility: hidden;
+    transform: translateY(-50px);
+    opacity: 0%;
+  }
+}

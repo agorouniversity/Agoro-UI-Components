@@ -15,12 +15,10 @@ width='auto'(default) or 'medium' or 'full'
 className=<string>
 id=<string>
 onClick=<function>
-link=<string> ('/<route>')
+link=<object> ({navigate: pass in useNavigate(), to: '/<route>'})
 ```
 
 onClick and link will fire when anywhere in the card is clicked besides buttons or links inside the card. Don't set link and onClick as only one can fire when the card is clicked
-
-link accepts a route and assumes you are using React-Router
 
 Card.Title and Card.Body supports props:
 
