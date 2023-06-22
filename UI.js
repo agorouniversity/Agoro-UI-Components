@@ -25,3 +25,6 @@ export { Tabs } from './tabs/tabs'
 export { DropDown } from './dropDown/dropDown';
 export { Modal } from './modal/modal';
 export { FullCalendar } from './calendar/calendar';
+export { PassFailPie } from './charts/pie';
+export { LineChart } from './charts/line';
+export { SubmissionsBarChart } from './charts/bar';
