@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,6 +9,7 @@ import {
   Legend
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import Context from '../../../context';
 
 export const SubmissionsBarChart = (props) => {
   ChartJS.register(
@@ -21,6 +22,8 @@ export const SubmissionsBarChart = (props) => {
   );
   const [options, setOptions] = useState(undefined);
   const [data, setData] = useState(undefined);
+  const { darkMode } = useContext(Context);
+  ChartJS.defaults.color = darkMode.css['--gray'];
 
   useEffect(() => {
     setOptions({
@@ -45,6 +48,9 @@ export const SubmissionsBarChart = (props) => {
         y: {
           min: 0,
           max: props.points,
+          grid: {
+            color: darkMode.css['--lightGray']
+          },
           title: {
             display: true,
             text: `Points / ${props.points}`,
@@ -54,6 +60,9 @@ export const SubmissionsBarChart = (props) => {
           }
         },
         x: {
+          grid: {
+            color: darkMode.css['--lightGray']
+          },
           title: {
             display: true,
             text: 'Submission Number',
@@ -66,7 +75,7 @@ export const SubmissionsBarChart = (props) => {
       maintainAspectRatio: false,
       responsive: true
     });
-  }, [props])
+  }, [props, darkMode])
 
   useEffect(() => {
     let color

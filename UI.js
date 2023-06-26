@@ -24,6 +24,7 @@ export { Loading } from './loading/loading';
 export { Tabs } from './tabs/tabs'
 export { DropDown } from './dropDown/dropDown';
 export { Modal } from './modal/modal';
+export { Badge } from './badge/badge';
 export { FullCalendar } from './calendar/calendar';
 export { PassFailPie } from './charts/pie';
 export { LineChart } from './charts/line';

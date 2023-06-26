@@ -26,6 +26,7 @@ export const LineChart = (props) => {
     Tooltip,
     Legend
   );
+  console.error(darkMode)
   ChartJS.defaults.color = darkMode.css['--gray'];
 
   return(

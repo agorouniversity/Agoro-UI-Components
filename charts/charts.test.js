@@ -1,6 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-
+import { render, screen } from '@testing-library/react';
 import { LineChart } from './line';
 import Context from '../../../context';
 import * as ChartJS from 'react-chartjs-2';
@@ -241,6 +239,9 @@ describe('Submissions bar chart', () => {
         y: {
           min: 0,
           max: 20,
+          grid: {
+            color: mockTheme.darkMode.css['--lightGray']
+          },
           title: {
             display: true,
             text: `Points / 20`,
@@ -250,6 +251,9 @@ describe('Submissions bar chart', () => {
           }
         },
         x: {
+          grid: {
+            color: mockTheme.darkMode.css['--lightGray']
+          },
           title: {
             display: true,
             text: 'Submission Number',

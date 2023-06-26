@@ -16,6 +16,7 @@ className=<string>
 name=<string> (You must set a name, the checkbox items become named name + index)
 selected=<array<int>> or <int> (Which checkbox indicies you want selected by default)
 onChange=<function>
+required=<boolean>
 ```
 
 CheckBox.Item supports props:

@@ -20,7 +20,6 @@ const Button = (data) => {
             id={props.id}
             className={`base button${props.color ? ' ' + props.color : ''} ${name}${props.size ? ' ' + props.size : ''}${props.className ? ' ' + props.className : ''}`}
             onClick={props.onClick}
-            type={props.type || 'button'}
             disabled={props.disabled}
             onMouseDown={data.onMouseDown}
             onMouseUp={data.onMouseUp}
@@ -35,6 +34,7 @@ const Button = (data) => {
             disabled={props.disabled}
             onMouseDown={data.onMouseDown}
             onMouseUp={data.onMouseUp}
+            form={props.form}
           >
             <span>{props.children}</span>
           </button>
@@ -108,6 +108,7 @@ export const IconButton = (props) => {
       onClick={props.onClick}
       type={props.type || 'button'}
       disabled={props.disabled}
+      title={props.title}
     >
       <div
         className='iconBg'

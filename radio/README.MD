@@ -16,6 +16,7 @@ className=<string>
 name=<string> (You must set a name, the radio buttons will inherit the same name)
 selected=<int> (Which radio button index you want selected by default)
 onChange=<function>
+required=<boolean>
 ```
 
 Radio.Item supports props:

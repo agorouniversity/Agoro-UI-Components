@@ -1,0 +1,19 @@
+.badgeWrapper .badge {
+  border-radius: 50%;
+  color: var(--bg);
+  padding: 5px;
+  min-width: 0.75rem;
+  height: 0.75rem;
+  line-height: 0.75rem;
+  font-size: 0.85rem;
+  position: absolute;
+  right: -5px;
+  top: 0;
+  font-weight: bold;
+  text-align: center;
+}
+
+.badgeWrapper {
+  position: relative;
+  display: inline-block;
+}

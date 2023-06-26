@@ -18,13 +18,14 @@ const RadioItem = (props) => {
         </span>
         <input
           id={context.id}
-          className={props.className || ''}
+          className={props.className}
           name={context.name}
           type='radio'
           value={props.value}
           defaultChecked={context.selected}
           onChange={context.onChange}
           disabled={props.disabled}
+          required={context.required}
         >
         </input>
         <span className='radiomark'></span>
@@ -48,7 +49,7 @@ export function Radio (props) {
   return(
     <div
       className={`base radio${props.className ? ' ' + props.className : ''}`}
-      id={props.id || ''}
+      id={props.id}
     >
       {children.length > 0 &&    
         <>
@@ -59,7 +60,8 @@ export function Radio (props) {
                   name: props.name,
                   id: `${props.name}-${props.id || 'radioItem'}-${i}`,
                   onChange: props.onChange,
-                  selected: props.selected === i ? true : false
+                  selected: props.selected === i ? true : false,
+                  required: props.required
                 }}
                 key={i}
               >
