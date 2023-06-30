@@ -23,7 +23,7 @@ export const Grade = (props) => {
   return(
     <Card
       onClick={props.onClick}
-      link={{navigate: navigate, to: props.link}}
+      link={props.link && {navigate: navigate, to: props.link}}
       id={props.id}
       className={`gradeWrapper ${props.className || ''}`}
     >

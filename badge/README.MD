@@ -2,9 +2,9 @@
 
 ## Badge
 
-Usage: 
+Usage:
 
-`import { Badge } from './components/UI/UI';` 
+`import { Badge } from './components/UI/UI';`
 
 (Includes Badge, Badge.Only)
 

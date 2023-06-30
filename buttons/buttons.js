@@ -34,6 +34,7 @@ const Button = (data) => {
             disabled={props.disabled}
             onMouseDown={data.onMouseDown}
             onMouseUp={data.onMouseUp}
+            title={props.title}
             form={props.form}
           >
             <span>{props.children}</span>

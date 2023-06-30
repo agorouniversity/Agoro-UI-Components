@@ -11,7 +11,8 @@ const Row = (heading, props) => {
     >
       <Context.Provider
         value={{
-          heading
+          heading: heading,
+          onClick: props.onClick
         }}
       >
         {props.children}
@@ -29,6 +30,7 @@ const Col = (props) => {
         ? <td
             id={props.id}
             className={props.className}
+            onClick={context.onClick}
           >
             {props.children}
           </td>
