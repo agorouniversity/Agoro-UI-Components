@@ -26,8 +26,7 @@ export const LineChart = (props) => {
     Tooltip,
     Legend
   );
-  console.error(darkMode)
-  ChartJS.defaults.color = darkMode.css['--gray'];
+  ChartJS.defaults.color = darkMode?.css['--gray'];
 
   return(
     <div className='chart'>
@@ -43,7 +42,7 @@ export const LineChart = (props) => {
               min: props.min || 0,
               max: props.max,
               grid: {
-                color: darkMode.css['--lightGray']
+                color: darkMode?.css['--lightGray']
               },
               title: {
                 display: true,
@@ -55,7 +54,7 @@ export const LineChart = (props) => {
             },
             x: {
               grid: {
-                color: darkMode.css['--lightGray']
+                color: darkMode?.css['--lightGray']
               },
               title: {
                 display: true,

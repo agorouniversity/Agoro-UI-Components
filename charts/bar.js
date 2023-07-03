@@ -23,7 +23,7 @@ export const SubmissionsBarChart = (props) => {
   const [options, setOptions] = useState(undefined);
   const [data, setData] = useState(undefined);
   const { darkMode } = useContext(Context);
-  ChartJS.defaults.color = darkMode.css['--gray'];
+  ChartJS.defaults.color = darkMode?.css['--gray'];
 
   useEffect(() => {
     setOptions({
@@ -49,7 +49,7 @@ export const SubmissionsBarChart = (props) => {
           min: 0,
           max: props.points,
           grid: {
-            color: darkMode.css['--lightGray']
+            color: darkMode?.css['--lightGray']
           },
           title: {
             display: true,
@@ -61,7 +61,7 @@ export const SubmissionsBarChart = (props) => {
         },
         x: {
           grid: {
-            color: darkMode.css['--lightGray']
+            color: darkMode?.css['--lightGray']
           },
           title: {
             display: true,

@@ -11,7 +11,7 @@ import { useContext } from 'react';
 export const PassFailPie = (props) => {
   const { darkMode } = useContext(Context);
   ChartJS.register(ArcElement, Tooltip, Legend);
-  ChartJS.defaults.color = darkMode.css['--gray'];
+  ChartJS.defaults.color = darkMode?.css['--gray'];
 
   return(
     <div className='chart'>
