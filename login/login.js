@@ -226,11 +226,11 @@ export const Login = (props) => {
         {loading &&
           <Loading className={mode === 'New Account' ? 'new' : null} size='full'/>
         }
-        {error &&
+        {(error || props.errorMessage) &&
           <div
             className='error'
           >
-            {String(error)}
+            {error ? String(error) : props.errorMessage}
           </div>
         }
         {success &&
