@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import { useSearchParams } from 'react-router-dom';
 import { ButtonA, TextInput, IconButton, Loading } from "../UI";
-import { cognitoVerify, cognitoResendCode, cognitoNewAccount, cognitoNewPassword } from '../../../util/cognito.js';
+import { apiVerify, apiResendCode, apiNewAccount, apiNewPassword, passwordVerify } from '../../../util/auth.js';
 import "./login.css";
 
 export const Login = (props) => {
@@ -28,6 +28,7 @@ export const Login = (props) => {
 
   const login = async (email, password, event) => {
     setLoading(true);
+    email = email.toLowerCase();
     props.login(email, password).then( //Expects a Promise response
       () => {
         props.hide();
@@ -38,9 +39,13 @@ export const Login = (props) => {
       (error) => {
         if(error === 'newPasswordRequired') {
           forgotPassword(null, email);
-        } else {
-          onError(error);
+          return;
         }
+        if(error === 'Account is not verified. Please verify your email\n') {
+          setMode('New Account');
+          setnewAccount({ email: email, created: true});
+        }
+        onError(error);
       }
     );
   }
@@ -71,18 +76,9 @@ export const Login = (props) => {
   };
 
   const checkPassword = (password1, password2) => {
-    if(password1 !== password2) {
-      setError('Passwords do not match');
-      accountForm.current.scroll({
-        top: 0,
-        behavior: 'smooth'
-      });
-      return(false);
-    }
-    const strongPassword = new RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,15})')
-    console.log('match', strongPassword.test(password1))
-    if(!strongPassword.test(password1)) {
-      setError('Password must be 8 - 15 characters and contain at least one: special character, uppercase letter, lowercase letter, number');
+    const err = passwordVerify(password1, password2);
+    if(err) {
+      setError(err);
       accountForm.current.scroll({
         top: 0,
         behavior: 'smooth'
@@ -95,16 +91,27 @@ export const Login = (props) => {
   const createNew = async (event) => {
     event.preventDefault();
     let tmpNewAcc = {...newAccount};
+    tmpNewAcc.email = tmpNewAcc.email.toLowerCase();
     tmpNewAcc.phone = `+${newAccount.countryCode || '1'}${newAccount.phone}`;
+    let i = 0;
+    for (const [key, value] of Object.entries(tmpNewAcc)) {
+      newAccount[key] = value.trim();
+      if(newAccount[key] === '') {
+        setError(`${event.target.elements[String(i)].labels[0].innerText} cannot be blank`);
+        return;
+      }
+      i++;
+    }
     console.log(newAccount);
     if(!checkPassword(newAccount.password, newAccount.confirmPassword)) {
       return;
     }
     setLoading(true);
-    cognitoNewAccount(tmpNewAcc)
+    apiNewAccount(tmpNewAcc)
     .then(
       () => {
         setLoading(false);
+        setError(undefined);
         setnewAccount({...newAccount, created: true});
       },
       onError
@@ -115,12 +122,12 @@ export const Login = (props) => {
     event?.preventDefault();
     setLoading(true);
     const verificationCode = account?.code || event.target['0'].value;
-    const email = account.email;
-    cognitoVerify(email, verificationCode)
+    const email = account.email.toLowerCase();
+    apiVerify(email, verificationCode)
     .then(
       () => {
         setLoading(false);
-        setSuccess('Account verified, pleae login');
+        setSuccess('Account verified, please login');
         setError(undefined);
         console.log('Verify success!');
         setnewAccount(undefined);
@@ -149,7 +156,7 @@ export const Login = (props) => {
 
   const resend = () => {
     setLoading(true);
-    cognitoResendCode(newAccount.email)
+    apiResendCode(newAccount.email.toLowerCase())
     .then(
       () => {
         setLoading(false);
@@ -165,7 +172,7 @@ export const Login = (props) => {
     setLoading(true);
     const email = loginEmail || event.target['email'].value;
     console.log(email);
-    cognitoNewPassword(email)
+    apiNewPassword(email.toLowerCase())
     .then(
       (result) => {
         setLoading(false);
@@ -187,7 +194,7 @@ export const Login = (props) => {
     }
     setLoading(true);
     console.log(code, password);
-    cognitoNewPassword(newAccount.email, code, password)
+    apiNewPassword(newAccount.email.toLowerCase(), code, password)
     .then(
       (result) => {
         setLoading(false);
@@ -226,7 +233,7 @@ export const Login = (props) => {
         {loading &&
           <Loading className={mode === 'New Account' ? 'new' : null} size='full'/>
         }
-        {(error || props.errorMessage) &&
+        {(error || (props.errorMessage && mode === 'Login')) &&
           <div
             className='error'
           >
@@ -295,45 +302,8 @@ export const Login = (props) => {
                     onChange={(event) => setnewAccount({...newAccount, email: event.target.value})}
                   />
                   <TextInput
-                    className='date'
-                    label='Birthday'
-                    width='full'
-                    type='date'
-                    required={true}
-                    onChange={(event) => setnewAccount({...newAccount, birthday: event.target.value})}
-                  />
-                  <TextInput
-                    name='address'
-                    className='address'
-                    label='Address'
-                    width='full'
-                    type='text'
-                    required={true}
-                    onChange={(event) => setnewAccount({...newAccount, address: event.target.value})}
-                  />
-                  <div className="phoneInput">
-                    <TextInput
-                      className='countryCode'
-                      label='Country Code +'
-                      width='auto'
-                      type='number'
-                      defaultValue='1'
-                      pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                      required={true}
-                      onChange={(event) => setnewAccount({...newAccount, countryCode: event.target.value})}
-                    />
-                    <TextInput
-                      className='phone'
-                      label='Phone Number'
-                      width='full'
-                      type='tel'
-                      required={true}
-                      onChange={(event) => setnewAccount({...newAccount, phone: event.target.value})}
-                    />
-                  </div>
-                  <TextInput
                     className='nameGiven'
-                    label='Given Name'
+                    label='First Name'
                     width='full'
                     type='text'
                     required={true}
@@ -341,7 +311,7 @@ export const Login = (props) => {
                   />
                   <TextInput
                     className='nameFamily'
-                    label='Family Name'
+                    label='Last Name'
                     width='full'
                     type='text'
                     required={true}
@@ -446,7 +416,12 @@ export const Login = (props) => {
         {mode === 'Login' &&
           <div className="new">
             <h2>New?</h2>
-            <button className='link' onClick={() => {setnewAccount({}); setMode('New Account')}}>Create an account</button>
+            <button className='link' onClick={() => {
+              setnewAccount({});
+              setMode('New Account')
+            }}>
+              Create an account
+            </button>
             &nbsp;to access the best university patform in the world!
           </div>
         }
