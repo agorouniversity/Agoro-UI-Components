@@ -75,9 +75,9 @@ const Body = (props) => {
                                   to={crumb.link}
                                 >
                                   {crumb.title
-                                    .replace(':id', course?.courseName)
-                                    .replace(':assignmentId', viewingObject)
-                                    .replace(':studentId', viewingObject)}
+                                    .replace(':id', (course?.courseName || (props.error && 'Error')))
+                                    .replace(':assignmentId', viewingObject || (props.error && 'Error'))
+                                    .replace(':studentId', viewingObject || (props.error && 'Error'))}
                                 </Link>
                               : <Link
                                   to={crumb.link}
@@ -105,7 +105,10 @@ const Body = (props) => {
             <h1
               className='pageTitle'
             >
-              {permDenied === false && props.title}
+              {(permDenied === false && props.title)
+                ? props.title
+                : (!props.error && <>&nbsp;</>)
+              }
             </h1>
           </div>
         </div>
@@ -114,14 +117,29 @@ const Body = (props) => {
       <div
         className='contentBody'
       >
-        {(!props.loading && !(props.restrict && permDenied === undefined))
+        {!props.error
           ? <>
-              {permDenied !== true
-                ? props.children
-                : 'Permission Denied'
+              {(!props.loading && !(props.restrict && permDenied === undefined))
+                ? <>
+                    {permDenied !== true
+                      ? props.children
+                      : <div className='pageError'>
+                          <span className='title'>
+                            Permission Denied
+                          </span>
+                          <Link to='/'>Return Home</Link>
+                        </div>
+                    }
+                  </>
+                : <Loading size='full'/>
               }
             </>
-          : <Loading size='full'/>
+          : <div className='pageError'>
+              <div className='title'>
+                {props.error}
+              </div>
+              <Link to='/'>Return Home</Link>
+            </div>
         }
       </div>
     </div>
