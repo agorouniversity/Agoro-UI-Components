@@ -390,6 +390,7 @@ export const Icon = (props) => {
     <div
       className={`icon${props.light === false ? ' dark' : ''}${props.light ? ' light ' : ' '}${props.size ? props.size : 'medium'}`.trim()}
       id={props.id}
+      title={props.title}
     >
       {icons[props.icon]}
     </div>

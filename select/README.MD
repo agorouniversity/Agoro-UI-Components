@@ -32,6 +32,7 @@ addItem=<function> (Callback when an item is selected)
 addObject=<function> (Callback when item is selected returns {index: <int>, item: <string> })
 value=<string> (Default selected value)
 items=<array<string>> (List of items to select from)
+disabled=<boolean>
 ```
 
 Example:

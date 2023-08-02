@@ -1,29 +1,28 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Table } from '../UI';
-import { getTime, getDate, getDayOfWeek, isPastDue, sortOldest } from '../../../util/time';
+import { getTime, getDate, getDayOfWeek, getColor, sortNewest, convertTime } from '../../../util/time';
 import './calendarstrip.css';
 
 export const Upcoming = (props) => {
   const Assignment = ({ assignment, time }) => {
-    const hour = (new Date(assignment.deadline)).getHours();
+    const hour = (new Date(assignment.deadline.T)).getHours();
 
     return(
       <div>
         <span data-hour={hour}>
-          <Link to={`/courses/${props.courseId}/assignments/${assignment.assignmentId}`}>
+          <Link to={`/courses/${props.courseID || assignment.courseID}/assignments/${assignment.assignmentID}`}>
             {assignment.assignmentName}
           </Link>
         </span>
         <span
-          //Check if Past due and no submissions (submission check might have to be changed)
-          className={((!assignment.Submission || Object.keys(assignment.Submission).length === 0) && isPastDue(assignment.deadline)) ? 'pastDue' : null}
+          className={getColor(assignment)}
           data-hour={hour}
           data-time={time}
         >
           {props.date
-            ? `${getDate(assignment.deadline)}`
-            : `${getTime(assignment.deadline)}`
+            ? `${getDate(assignment.deadline.T)}`
+            : `${getTime(assignment.deadline.T)}`
           }
         </span>
       </div>
@@ -34,7 +33,7 @@ export const Upcoming = (props) => {
     return(
       <Table.Row>
         <Table.Col>
-          <Link to={`/courses/${props.courseId}/assignments/${assignment.assignmentId}`}>
+          <Link to={`/courses/${assignment.courseID}/assignments/${assignment.assignmentID}`}>
             {assignment.assignmentName}
           </Link>
         </Table.Col>
@@ -43,11 +42,11 @@ export const Upcoming = (props) => {
         </Table.Col>
         <Table.Col
           //Check if Past due and no submissions (submission check might have to be changed)
-          className={((!assignment.Submission || Object.keys(assignment.Submission).length === 0) && isPastDue(assignment.deadline)) ? 'pastDue' : null}
+          className={getColor(assignment)}
         >
           {props.date
-            ? `${getDate(assignment.deadline)}`
-            : `${getTime(assignment.deadline)}`
+            ? `${getDate(assignment.deadline.T)}`
+            : `${getTime(assignment.deadline.T)}`
           }
         </Table.Col>
       </Table.Row>
@@ -62,7 +61,7 @@ export const Upcoming = (props) => {
       {props.calendar?.hours
         ? <>
             {Array.from({ length: 24 }, (value, index) => index).map((y) => {
-              const assignments = props.assignments.filter(assignment => new Date(assignment.deadline).getHours() === y);
+              const assignments = props.assignments.filter(assignment => new Date(convertTime(assignment.deadline.T)).getHours() === y);
               const time = y > 11 ? (y - 12 || 12) + ' PM' : (y || 12) + ' AM';
               return(
                 <ul
@@ -98,7 +97,7 @@ export const Upcoming = (props) => {
         : <>
             {!props.full
               ? <ul>
-                  {props.assignments.sort(sortOldest).slice(0, 3).map((y, i) =>
+                  {props.assignments.sort(sortNewest).slice(0, 3).map((y, i) =>
                     <li
                       key={i}
                     >
@@ -118,7 +117,7 @@ export const Upcoming = (props) => {
                       Due
                     </Table.Col>
                   </Table.Heading>
-                  {props.assignments.sort(sortOldest).map((y, i) =>
+                  {props.assignments.sort(sortNewest).map((y, i) =>
                     <AssignmentFull key={i} assignment={y} />
                   )}
                 </Table>
@@ -128,7 +127,7 @@ export const Upcoming = (props) => {
       {!props.calendar && (props.assignments.length === 0
         ? <br></br>
         : <Link
-            to={`/courses/${props.courseId}/assignments/`}
+            to={`/courses/${props.assignments[0].courseID}/assignments/`}
             className='mobile'
           >
             {`${props.assignments.length} Due`}
@@ -144,7 +143,7 @@ export const Upcoming = (props) => {
       )}
       {(props.assignments.length > 3 && !props.full) &&
         <Link
-          to={`/courses/${props.courseId}/assignments`}
+          to={`/courses/${props.assignments[0].courseID}/assignments`}
           className='more'
         >
           + {props.assignments.length - 3} more
@@ -169,7 +168,7 @@ export const Calendar = (props) => {
       tmp.push({
         deadline: date,
         assignments: props.assignments.filter(x => {
-          const assignmentDate = new Date(x.deadline);
+          const assignmentDate = new Date(convertTime(x.deadline.T));
           assignmentDate.setHours(0, 0, 0, 0);
           return(assignmentDate.getTime() === date);
         })

@@ -208,7 +208,9 @@ export const Select = (props) => {
       <button
         type='button'
         className='button'
+        disabled={props.disabled}
         onClick={handleDropdown}
+        name={props.name}
       >
         {selected
           ? selected
@@ -216,8 +218,8 @@ export const Select = (props) => {
         }
       </button>
       <span
-        className='arrow'
-        onClick={handleDropdown}
+        className={`arrow${props.disabled ? ' disabled' : ''}`}
+        onClick={!props.disabled ? handleDropdown : null}
       ></span>
       <div
         className={`dropdown ${dropdown}`}

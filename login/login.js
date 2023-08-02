@@ -346,7 +346,6 @@ export const Login = (props) => {
                   <div className='plr'>Account created, please check email for verification code</div>
                   <TextInput
                     label="Verification Code"
-                    type="number"
                     defaultValue={newAccount?.code || ''}
                     width="auto"
                     required={true}
@@ -386,8 +385,7 @@ export const Login = (props) => {
             onSubmit={newPassword}
           >
             <TextInput
-              label='Verification Code' 
-              type='number' 
+              label='Verification Code'
               width='auto'
               required={true}
               defaultValue={newAccount?.code || ''}

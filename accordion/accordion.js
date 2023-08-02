@@ -184,12 +184,14 @@ export function Accordion (props) {
   const [children, setChildren] = useState([]);
 
   useEffect(() => {
-    if(props.table) {
-      setChildren([...props.children.flat(1)]);
-    } else if(!Array.isArray(props.children)) {
-      setChildren([props.children]);
-    } else {
-      setChildren([...props.children]);
+    if(props.children) {
+      if(props.table && Array.isArray(props.children)) {
+        setChildren([...props.children.flat(1)]);
+      } else if(!Array.isArray(props.children)) {
+        setChildren([props.children]);
+      } else {
+        setChildren([...props.children]);
+      }
     }
   }, [props.children, props.table]);
 

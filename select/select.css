@@ -73,6 +73,8 @@ form.multiselect {
   border-radius: 0.3rem;
   background-color: var(--bg);
   box-sizing: border-box;
+  max-height: 50vh;
+  overflow-y: auto;
 }
 
 .multiselect .dropdown div ul {
@@ -140,6 +142,15 @@ form.multiselect {
 .multiselect .selected div span {
   cursor: pointer;
   margin-left: 0.5rem;
+}
+
+.select button:disabled {
+  background-color: var(--lightGray);
+}
+
+.select .arrow.disabled {
+  color: var(--gray);
+  cursor: default;
 }
 
 @keyframes slidedown {

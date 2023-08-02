@@ -61,12 +61,11 @@ export function Header(props) {
       id={props.id}
       className={`${props.dropDownOpen ? 'open ' : ''}headerBg ${props.className ? props.className : ''}`.trim()}
     >
-     
-        <div
-          className={`${props.dropDownOpen ? 'open ' : ''}headerContainer`}
-        >
-          {props.children}
-        </div>
+      <div
+        className={`${props.dropDownOpen ? 'open ' : ''}headerContainer`}
+      >
+        {props.children}
+      </div>
     </div>
   )
 }

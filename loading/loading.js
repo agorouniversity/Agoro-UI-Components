@@ -6,7 +6,7 @@ export const Loading = (props) => {
       role='progressbar'
       name='loading'
       id={props.id}
-      className={`loading ${props.size ? props.size : 'auto'} ${props.className || ''}`.trim()}
+      className={`loading ${props.size ? props.size : 'auto'} ${props.className || ''}${props.fadeIn ? 'fadeIn' : ''}`.trim()}
     >
       <div>
         <span></span>

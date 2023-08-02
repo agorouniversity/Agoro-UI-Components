@@ -5,7 +5,7 @@ import './modal.css';
 const Context = createContext({});
 
 export const Body = (props) => {
-  const { up, submit, loading, dismiss } = useContext(Context);
+  const { up, submit, loading, dismiss, error } = useContext(Context);
 
   return(
     <Card.Body>
@@ -14,11 +14,21 @@ export const Body = (props) => {
         <div className='footer'>
           {!loading
             ? <>
+                {error &&
+                  <div className='error'>Error: {error}</div>
+                }
                 {dismiss
-                  ? <ButtonA color='secondary' onClick={up}>Close</ButtonA>
+                  ? <ButtonA
+                      className='right'
+                      color='secondary'
+                      onClick={up}
+                    >
+                      Close
+                    </ButtonA>
                   : <>
                       <ButtonA type='submit'>Confirm</ButtonA>
                       <ButtonA
+                        className='right' 
                         color='danger'
                         onClick={up}
                       >
@@ -52,16 +62,19 @@ export function Modal (props) {
   const [slideUp, setSlideUp] = useState('');
   const [loading, setLoading] = useState(false);
   const [display, setDisplay] = useState(props.open !== undefined ? props.open : false);
+  const [error, setError] = useState(undefined);
 
   useEffect(() => {
     setDisplay(props.open);
     setLoading(false);
+    setError(undefined);
   }, [props.open])
 
   const up = useCallback(() => {
     setSlideUp('close');
     setTimeout(() => {
       setDisplay(false);
+      setError(undefined);
       setSlideUp('');
       props.cancel();
     }, 500)
@@ -70,12 +83,16 @@ export function Modal (props) {
   const submit = (event) => {
     event.preventDefault();
     setLoading(true);
+    setError(undefined);
     props.confirm(event).then(
       () => {
         up();
         setLoading(false);
       },
-      () => setLoading(false)
+      (err) => {
+        setError(err);
+        setLoading(false);
+      }
     );
   }
 
@@ -98,14 +115,14 @@ export function Modal (props) {
   }, [display, up])
 
   return(
-    <Context.Provider value={{up, submit, dismiss: props.closeBtn, loading}}> 
+    <Context.Provider value={{up, submit, dismiss: props.closeBtn || props.error, loading, error}}> 
       {display
         ? <div
             key={display}
             id={props.id}
             className={`modal container ${slideUp}`}
           >
-            <Card className={`modalCard ${slideUp}`}>
+            <Card className={`modalCard${props.error ? ' error' : ''} ${slideUp}`}>
               {props.children}
             </Card>
           </div>

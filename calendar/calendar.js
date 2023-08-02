@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Card, Modal, Upcoming } from '../UI';
-import { getDayOfWeek } from '../../../util/time';
+import { convertTime, getDayOfWeek } from '../../../util/time';
 import './calendar.css';
 
 export const FullCalendar = (props) => {
@@ -53,7 +53,7 @@ export const FullCalendar = (props) => {
     if(props.type === 'Week' || props.type === 'Day') {
       return(
         list.filter((assignment) => {
-          let due = new Date(assignment.deadline);
+          let due = new Date(convertTime(assignment.deadline.T));
           return(parseInt(event.target.dataset.hour) === due.getHours());
         })
       )
@@ -61,14 +61,13 @@ export const FullCalendar = (props) => {
     return(list);
   }
 
-
   useEffect(() => {
     setData(
       dates.map((date, i) => ({
         deadline: date.date,
         otherMonth: date.otherMonth,
         assignments: props.assignments.filter(x => {
-          const assignmentDate = new Date(x.deadline);
+          const assignmentDate = new Date(convertTime(x.deadline.T));
           assignmentDate.setHours(0, 0, 0, 0);
           return(assignmentDate.getTime() === date.date);
         })

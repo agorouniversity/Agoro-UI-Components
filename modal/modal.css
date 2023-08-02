@@ -34,10 +34,16 @@
 
 .modal .modalCard .body {
   text-align: left !important;
+  padding-bottom: 0;
 }
 
 .modal .modalCard.close {
   animation: cardSlideUp 0.5s ease;
+}
+
+.modal .modalCard.error .cardTitle {
+  box-shadow: 0 0 0 2px var(--danger);
+  background-color: var(--danger);
 }
 
 .modal .modalCard .cardTitle h2 {
@@ -45,19 +51,45 @@
 }
 
 .modal .modalCard .footer {
-  text-align: right;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
   border-top: 2px solid var(--lightGray);
   margin-top: 10px;
+  padding-top: 10px;
+}
+
+.modal .modalCard .footer .button {
+  margin-top: 0;
+  align-self: flex-end;
+}
+
+.modal .modalCard .footer .button.right {
+  margin-right: 0;
+}
+
+.modal .modalCard .footer .error {
+  color: var(--danger);
+
+  margin-bottom: 10px;
 }
 
 .modal .modalCard .footer .loading {
-  margin-top: 10px;
+  margin-bottom: 10px;
   text-align: right !important;
   padding-right: 2.5rem;
 }
 
 .modal .modalCard .footer .loading div {
   justify-content: flex-end;
+}
+
+@media screen and (max-width: 600px) {
+  .modal .modalCard .footer .button {
+    padding: 5px 20px 5px 20px;
+  }
 }
 
 @keyframes cardSlideDown {

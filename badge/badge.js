@@ -2,13 +2,17 @@ import './badge.css';
 
 const Only = (props) => {
   return(
-    <div
-      className={`badge ${props.className || ''}`.trim()}
-      id={props.id}
-      style={{backgroundColor: props.color ? `var(--${props.color})` : 'var(--danger)'}}
-    >
-      {props.number}
-    </div>
+    <>
+      {props.number &&
+        <div
+          className={`badge ${props.className || ''}`.trim()}
+          id={props.id}
+          style={{backgroundColor: props.color ? `var(--${props.color})` : 'var(--danger)'}}
+        >
+          {props.number}
+        </div>
+      }
+    </>
   )
 }
 

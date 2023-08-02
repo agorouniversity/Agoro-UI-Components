@@ -37,7 +37,8 @@ export const TextInput = (props) => {
           ? <textarea
               {...textInputPropsLabel}
           ></textarea>
-          : <input 
+          : <input
+              disabled={props.disabled}
               {...textInputPropsLabel}
           ></input>
         }

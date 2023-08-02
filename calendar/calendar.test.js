@@ -10,7 +10,9 @@ const mockAssignment = (date, name='HW 3') => {
       courseID: 1,
       totalPoints: 50,
       points: 30,
-      deadline: date.getTime()
+      deadline: {
+        T: date.getTime()
+      }
     }
   )
 }

@@ -55,3 +55,8 @@ textarea.textInput {
   font-size: 1rem;
   color: var(--gray);
 }
+
+.textInput:disabled {
+  color: var(--lightGray);
+  border-color: var(--lightGray);
+}
