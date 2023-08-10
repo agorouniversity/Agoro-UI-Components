@@ -31,7 +31,7 @@ data=<array<integer>> ([# of passing, # of failing])
 
 ```
 data=<array<float>>
-filter=<array< boolean, <array<float>> >> ([])
+filter=<boolean>
 points=<float> (Max points possible)
 testCase=<integer || undefined> (If chart should use test case score instead)
 click=<function> (When a bar is clicked)

@@ -39,7 +39,7 @@ export const Grade = (props) => {
                 background: `linear-gradient(90deg, var(--${color[0]}) ${score}%, var(--${color[1]}) ${score}%)`
               }}
             >
-              <h1>{score}%</h1>
+              <h1>{score.toFixed(2)}%</h1>
             </div>
             {props.children}
           </div>

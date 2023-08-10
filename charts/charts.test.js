@@ -207,12 +207,14 @@ describe('Pass/Fail pie chart', () => {
 })
 
 describe('Submissions bar chart', () => {
+  const mockSubmissions = [{ submissionPoints: 10 }, { submissionPoints: 6 }];
+
   test('Chart is shown', () => {
     render(
       <Context.Provider value={mockTheme}>
         <SubmissionsBarChart
-          data={[10, 6]}
-          filter={[false, [{submissionPoints: 10}, {submissionPoints: 6}]]}
+          data={mockSubmissions}
+          filter={undefined}
           points={20}
         />
       </Context.Provider>
@@ -285,8 +287,8 @@ describe('Submissions bar chart', () => {
     render(
       <Context.Provider value={mockTheme}>
         <SubmissionsBarChart
-          data={[10, 6]}
-          filter={[false, [{submissionPoints: 10}, {submissionPoints: 6}]]}
+          data={mockSubmissions}
+          filter={undefined}
           points={20}
         />
       </Context.Provider>
@@ -303,8 +305,8 @@ describe('Submissions bar chart', () => {
     render(
       <Context.Provider value={mockTheme}>
         <SubmissionsBarChart
-          data={[10, 6]}
-          filter={[false, [{submissionPoints: 10}, {submissionPoints: 6}]]}
+          data={mockSubmissions}
+          filter={undefined}
           points={20}
           selected={0}
         />
@@ -334,8 +336,8 @@ describe('Submissions bar chart', () => {
     render(
       <Context.Provider value={mockTheme}>
         <SubmissionsBarChart
-          data={[10, 6]}
-          filter={[true, [{submissionPoints: 10}, {submissionPoints: 6, display: true}]]}
+          data={[...mockSubmissions, { submissionPoints: 9, display: true }]}
+          filter={'test'}
           points={20}
           selected={0}
         />
@@ -346,12 +348,12 @@ describe('Submissions bar chart', () => {
     expect(mockChart).toHaveReturnedWith(JSON.stringify({
       ...mockChartData,
       data: {
-        labels: [1, 2],
+        labels: [1, 2, 3],
         datasets: [
           {
             label: 'Submission',
-            data: [10, 6],
-            backgroundColor: ['#C1E1CF', '#357150']
+            data: [10, 6, 9],
+            backgroundColor: ['#C1E1CF', '#C1E1CF', '#357150']
           }
         ]
       }
@@ -365,17 +367,14 @@ describe('Submissions bar chart', () => {
     render(
       <Context.Provider value={mockTheme}>
         <SubmissionsBarChart
-          data={[10, 6]}
-          filter={[false, [
-            {
-              submissionPoints: 10,
-              testCases: [{score: 5}]
-            },
-            {
-              submissionPoints: 6,
-              testCases: [{score: 1}]
-            }
-          ]]}
+          data={[{
+            testcases: [
+              {
+                score: 5
+              }
+            ]
+          }]}
+          filter={undefined}
           points={20}
           testCase={0}
         />
@@ -386,11 +385,11 @@ describe('Submissions bar chart', () => {
     expect(mockChart).toHaveReturnedWith(JSON.stringify({
       ...mockChartData,
       data: {
-        labels: [1, 2],
+        labels: [1],
         datasets: [
           {
             label: 'Submission',
-            data: [5, 1],
+            data: [5],
             backgroundColor: ['#C1E1CF']
           }
         ]

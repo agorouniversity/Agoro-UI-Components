@@ -13,7 +13,10 @@ export const TextInput = (props) => {
     name: props.name,
     ref: props.reference,
     autoComplete: props.autoComplete,
-    defaultValue: props.defaultValue || '',
+    defaultValue:
+      (props.defaultValue !== null && props.defaultValue !== undefined)
+        ? props.defaultValue
+        : '',
     pattern: props.pattern
   }
 

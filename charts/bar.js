@@ -79,8 +79,8 @@ export const SubmissionsBarChart = (props) => {
 
   useEffect(() => {
     let color
-    if(props.filter[0]) {
-      color = props.filter[1]
+    if(props.filter) {
+      color = props.data
     } else if(props.selected !== undefined) {
       color = props.data.map((x, i) => i === props.selected ? {display: true} : null)
     } else {
@@ -91,11 +91,11 @@ export const SubmissionsBarChart = (props) => {
       datasets: [
         {
           label: 'Submission',
-          data: props.filter[1].map((submission) => {
+          data: props.data.map((submission) => {
             if(props.testCase === undefined) {
               return(submission.submissionPoints);
             } else {
-              return(submission.testCases[props.testCase].score);
+              return(submission.testcases[props.testCase].score);
             }
           }),
           backgroundColor: color.map(x => x?.display ? '#357150' : '#C1E1CF')
