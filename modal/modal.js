@@ -19,7 +19,6 @@ export const Body = (props) => {
                 }
                 {dismiss
                   ? <ButtonA
-                      className='right'
                       color='secondary'
                       onClick={up}
                     >
@@ -28,7 +27,6 @@ export const Body = (props) => {
                   : <>
                       <ButtonA type='submit'>Confirm</ButtonA>
                       <ButtonA
-                        className='right' 
                         color='danger'
                         onClick={up}
                       >

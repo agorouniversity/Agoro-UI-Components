@@ -74,11 +74,7 @@ export const ButtonB = (props) => {
 }
 
 export const ButtonC = (props) => {
-  const [state, setState] = useState('')
-
-  useEffect(() => {
-    
-  }, [])
+  const [state, setState] = useState('');
 
   return (
     <Button

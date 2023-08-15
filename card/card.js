@@ -48,6 +48,8 @@ export function Card(props) {
       className={`card ${props.width ? width + ' ' : ''}${(props.onClick || props.link) ? 'click ' : ''}${props.className ? props.className : ''}`.trim()}
       style={{width: `${rem}rem`}}
       id={props.id}
+      title={props.title}
+      role={(props.onClick || props.link) ? 'button' : null}
     >
       <div
         className='content'
