@@ -10,6 +10,9 @@ const Tab = (props) => {
       className='tab'
       width='full'
     >
+      {props.disabled &&
+        <div className='disableTab'></div>
+      }
       {props.children}
     </Card>
   )

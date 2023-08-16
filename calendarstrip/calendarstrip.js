@@ -9,7 +9,7 @@ export const Upcoming = (props) => {
     const hour = (new Date(assignment.deadline.T)).getHours();
 
     return(
-      <div>
+      <div title={assignment.assignmentName}>
         <span data-hour={hour}>
           <Link to={`/courses/${props.courseID || assignment.courseID}/assignments/${assignment.assignmentID}`}>
             {assignment.assignmentName}

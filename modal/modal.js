@@ -10,7 +10,9 @@ export const Body = (props) => {
   return(
     <Card.Body>
       <form onSubmit={submit}>
-        {props.children}
+        <div className='formContent'>
+          {props.children}
+        </div>
         <div className='footer'>
           {!loading
             ? <>

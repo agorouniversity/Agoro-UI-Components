@@ -119,7 +119,7 @@ const Body = (props) => {
       >
         {!props.error
           ? <>
-              {(!props.loading && !(props.restrict && permDenied === undefined))
+              {((permDenied === true || !props.loading) && !(props.restrict && permDenied === undefined))
                 ? <>
                     {permDenied !== true
                       ? props.children

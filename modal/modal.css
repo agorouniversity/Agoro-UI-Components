@@ -12,6 +12,7 @@
   align-items: center;
   justify-content: center;
   text-align: left !important;
+  box-sizing: border-box;
 }
 
 .modal.container.close {
@@ -20,6 +21,8 @@
 
 .modal .modalCard .content {
   background-color: var(--bg);
+  box-sizing: border-box;
+  max-height: 100%;
 }
 
 .modal .modalCard {
@@ -35,6 +38,23 @@
 .modal .modalCard .body {
   text-align: left !important;
   padding-bottom: 0;
+  height: 100%;
+}
+
+.modal .modalCard .body form {
+  max-height: calc(80vh - 20px - 1.7rem - 10px - 20px - 1rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.modal .modalCard .body .formContent {
+  overflow-y: auto;
+  height: 100%;
+  flex-shrink: 2;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  max-height: 100%;
 }
 
 .modal .modalCard.close {
@@ -59,6 +79,7 @@
   border-top: 2px solid var(--lightGray);
   margin-top: 10px;
   padding-top: 10px;
+  flex: 2 2;
 }
 
 .modal .modalCard .footer .button {

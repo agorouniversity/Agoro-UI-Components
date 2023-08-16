@@ -12,11 +12,13 @@ const AccordionItem = (props) => {
       {context.table
         ? <tbody
             className='section tableSection'
+            role='button'
           >
             {props.children}
           </tbody>
         : <div
             className='section'
+            role='button'
           >
             {props.children}
           </div>

@@ -281,10 +281,10 @@ export const Login = (props) => {
                 className='socialButtons'
               >
                 {/*onClick should trigger corresponding login with function whos callback should be a function to call login()*/}
-                <IconButton icon='google' onClick={() => {}}/>
-                <IconButton icon='github' onClick={() => {}}/>
-                <IconButton icon='apple' onClick={() => {}}/>
-                <IconButton icon='linkedin' onClick={() => {}}/>
+                <IconButton title='Coming soon!' icon='google' onClick={() => {}}/>
+                <IconButton title='Coming soon!' icon='github' onClick={() => {}}/>
+                <IconButton title='Coming soon!' icon='apple' onClick={() => {}}/>
+                <IconButton title='Coming soon!' icon='linkedin' onClick={() => {}}/>
               </div>
             </div>
           </form>
@@ -341,6 +341,7 @@ export const Login = (props) => {
               : <form
                   className='account'
                   onSubmit={(event) => verify(event, newAccount)}
+                  key={newAccount}
                 >
                   <br></br>
                   <div className='plr'>Account created, please check email for verification code</div>
@@ -349,7 +350,7 @@ export const Login = (props) => {
                     defaultValue={newAccount?.code || ''}
                     width="auto"
                     required={true}
-                    name="confirmPassword"
+                    name="verifyCode"
                   />
                   <button className='link' type='button' onClick={resend}>Resend Verification Email</button>
                   <br></br>
@@ -420,7 +421,7 @@ export const Login = (props) => {
             }}>
               Create an account
             </button>
-            &nbsp;to access the best university patform in the world!
+            &nbsp;to access the best university platform in the world!
           </div>
         }
       </div>
