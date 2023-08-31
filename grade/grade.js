@@ -35,7 +35,7 @@ export const Grade = (props) => {
           className={`gradeWrapper${props.points === '-' ? ' disabled ' : ' '}${props.className || ''}`}
           title={props.title}
         >
-          <Card.Title className={color[0]}>{props.points} / {props.total} points</Card.Title>
+          <Card.Title className={color[0]}>{!isNaN(props.points) ? props.points.toFixed(2) : props.points} / {props.total} points</Card.Title>
           <div
             className='grade'
           >

@@ -188,8 +188,8 @@ export const Login = (props) => {
   const newPassword = (event) => {
     event.preventDefault();
     const code = event.target['code'].value;
-    const password = event.target['password'].value;
-    if(!checkPassword(password, event.target['confirmPassword'].value)) {
+    const password = event.target.elements.password.value;
+    if(!checkPassword(password, event.target.elements.password2.value)) {
       return;
     }
     setLoading(true);
@@ -404,7 +404,7 @@ export const Login = (props) => {
               type="password"
               width="full"
               required={true}
-              name="confirmPassword"
+              name="password2"
             />
             <span>
               <ButtonA type='submit'>Change Password</ButtonA>

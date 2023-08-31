@@ -376,7 +376,7 @@ describe('Submissions bar chart', () => {
           }]}
           filter={undefined}
           points={20}
-          testCase={0}
+          testCase={() => ({ score: 5 })}
         />
       </Context.Provider>
     )

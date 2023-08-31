@@ -95,14 +95,14 @@ export const SubmissionsBarChart = (props) => {
             if(props.testCase === undefined) {
               return(submission.submissionPoints);
             } else {
-              return(submission.testcases[props.testCase].score);
+              return(props.testCase(submission.testcaseResults).score);
             }
           }),
           backgroundColor: color.map(x => x?.display ? '#357150' : '#C1E1CF')
         }
       ]
     })
-  }, [props.data, props.testCase, props.filter, props.selected])
+  }, [props])
 
   return(
     <>

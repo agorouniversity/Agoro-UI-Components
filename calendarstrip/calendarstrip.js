@@ -143,7 +143,7 @@ export const Upcoming = (props) => {
       )}
       {(props.assignments.length > 3 && !props.full) &&
         <Link
-          to={`/courses/${props.assignments[0].courseID}/assignments`}
+          to={`/courses/${props.courseID || props.assignments[0].courseID}/assignments`}
           className='more'
         >
           + {props.assignments.length - 3} more
@@ -201,7 +201,7 @@ export const Calendar = (props) => {
                 {`${getDate(thisDay)}`}
               </span>
             </h3>
-            <Upcoming assignments={x.assignments} />
+            <Upcoming assignments={x.assignments} courseID={x.courseID} />
           </div>
         )
       })}
