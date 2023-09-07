@@ -7,15 +7,19 @@ import './frame.css';
 const ChildContext = createContext({});
 
 const Sidebar = (props) => {
-  const { mobileSidebar, closeSidebar } = useContext(ChildContext);
+  const { mobileSidebar, closeSidebar, full } = useContext(ChildContext);
 
   return(
-    <div
-      onClick={() => closeSidebar()}
-      className={`frameSidebar${mobileSidebar}`}
-    >
-      {props.children}
-    </div>
+    <>
+      {!full &&
+        <div
+          onClick={() => closeSidebar()}
+          className={`frameSidebar${mobileSidebar}`}
+        >
+          {props.children}
+        </div>
+      }
+    </>
   )
 }
 
@@ -23,13 +27,13 @@ const Body = (props) => {
   const [crumbs, setCrumbs] = useState(undefined);
   const [permDenied, setPermDenied] = useState(undefined);
   const matches = useMatches();
-  const { openSidebar, course, viewingObject } = useContext(ChildContext);
+  const { openSidebar, course, viewingObject, full } = useContext(ChildContext);
 
   useEffect(() => {
     setCrumbs(matches
       .filter((match) => Boolean(match.handle?.crumb))
       .map((match) => match.handle.crumb(match.data)));
-  },[matches])
+  }, [matches])
 
   useEffect(() => {
     if(props.restrict !== undefined) {
@@ -43,77 +47,81 @@ const Body = (props) => {
     <div
       className={`frameBody ${props.className || ''}`.trim()}
     >
-      <div
-        className='pageHeading'
-      >
+      {!full &&
         <div
-          className='titleBar'
+          className='pageHeading'
         >
-          <button
-            type='button'
-            onClick={() => openSidebar()}
+          <div
+            className='titleBar'
           >
-            <svg viewBox="0 0 100 80" width="2rem" height="3rem">
-              <rect width="100" height="0.6rem"></rect>
-              <rect y="30" width="100" height="0.6rem"></rect>
-              <rect y="60" width="100" height="0.6rem"></rect>
-            </svg>
-          </button>
-          <div>
-            <span className='crumbs'>
-              {crumbs 
-                ? <>
-                    {crumbs.map((crumb, i) => {
-                      if(i !== 0) {
+            <button
+              type='button'
+              onClick={() => openSidebar()}
+            >
+              <svg viewBox="0 0 100 80" width="2rem" height="3rem">
+                <rect width="100" height="0.6rem"></rect>
+                <rect y="30" width="100" height="0.6rem"></rect>
+                <rect y="60" width="100" height="0.6rem"></rect>
+              </svg>
+            </button>
+            <div>
+              <span className='crumbs'>
+                {crumbs
+                  ? <>
+                      {crumbs.map((crumb, i) => {
+                        if(i !== 0) {
+                          return(
+                            <span key={i}>
+                              <span
+                                className='cv'
+                              >  </span>
+                              {crumb.edit
+                                ? <Link
+                                    to={crumb.link}
+                                  >
+                                    {crumb.title
+                                      .replace(':id', (course?.courseName || (props.error && 'Error')))
+                                      .replace(':assignmentId', viewingObject || (props.error && 'Error'))
+                                      .replace(':studentId', viewingObject || (props.error && 'Error'))}
+                                  </Link>
+                                : <Link
+                                    to={crumb.link}
+                                  >
+                                    {crumb.title}
+                                  </Link>
+                              }
+                            </span>
+                          );
+                        }
                         return(
-                          <span key={i}>
-                            <span 
-                              className='cv'
-                            >  </span>
-                            {crumb.edit
-                              ? <Link
-                                  to={crumb.link}
-                                >
-                                  {crumb.title
-                                    .replace(':id', (course?.courseName || (props.error && 'Error')))
-                                    .replace(':assignmentId', viewingObject || (props.error && 'Error'))
-                                    .replace(':studentId', viewingObject || (props.error && 'Error'))}
-                                </Link>
-                              : <Link
-                                  to={crumb.link}
-                                >
-                                  {crumb.title}
-                                </Link>
-                            }
+                          <span
+                            key={i}
+                          >
+                            <Link to={crumb.link}>{crumb.title}</Link>
                           </span>
                         );
-                      }
-                      return(
-                        <span
-                          key={i}
-                        >
-                          <Link to={crumb.link}>{crumb.title}</Link>
-                        </span>
-                      );
-                    })}
-                  </>
-                : <span>
-                    &nbsp;
-                  </span>
-              }
-            </span>
-            <h1
-              className='pageTitle'
-            >
-              {(permDenied === false && props.title)
-                ? props.title
-                : (!props.error && <>&nbsp;</>)
-              }
-            </h1>
+                      })}
+                    </>
+                  : <span>
+                      &nbsp;
+                    </span>
+                }
+              </span>
+              <h1
+                className='pageTitle'
+              >
+                {(permDenied === false && props.title)
+                  ? props.title
+                  : (!props.error && <>&nbsp;</>)
+                }
+              </h1>
+            </div>
           </div>
+          {(!full && !props.loading) &&
+            props.rightHeader
+          }
         </div>
-        {props.rightHeader}
-      </div>
+      }
       <div
         className='contentBody'
       >
@@ -171,11 +179,12 @@ export function Frame(props) {
         viewingObject,
         mobileSidebar,
         openSidebar,
-        closeSidebar
+        closeSidebar,
+        full: props.full
       }}
     >
       <div
-        className='pageFrame'
+        className={`pageFrame${props.full ? ' full' : ''}`}
       >
         {props.children}
       </div>

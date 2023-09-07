@@ -104,6 +104,22 @@
   width: 100%;
 }
 
+/*Full (no sidebar & header)*/
+
+.pageFrame.full {
+  justify-content: center;
+}
+
+.pageFrame.full .contentBody {
+  border: none !important;
+  box-shadow: none !important;
+  padding-top: 0;
+}
+
+.pageFrame.full .frameBody {
+  padding: 0;
+}
+
 @media screen and (min-width: 1700px) {
   .pageFrame .frameBody .contentBody {
     box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.35);
