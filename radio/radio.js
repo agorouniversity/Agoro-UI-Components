@@ -50,6 +50,7 @@ export function Radio (props) {
     <div
       className={`base radio${props.className ? ' ' + props.className : ''}`}
       id={props.id}
+      key={props.selected}
     >
       {children.length > 0 &&    
         <>

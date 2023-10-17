@@ -26,7 +26,6 @@ const CheckBoxItem = (props) => {
           defaultChecked={context.selected}
           onChange={context.onChange}
           disabled={props.disabled}
-          required={context.required}
         >
         </input>
         <span className='checkmark'>
@@ -63,7 +62,6 @@ export function CheckBox (props) {
 
   return(
     <div
-      key={props.selected}
       className={`base radio${props.className ? ' ' + props.className : ''}`}
       id={props.id}
     >
@@ -78,7 +76,6 @@ export function CheckBox (props) {
                   index: i,
                   onChange: props.onChange,
                   selected: selected(i),
-                  required: props.required
                 }}
                 key={i}
               >

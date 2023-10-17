@@ -39,7 +39,7 @@ export const SubmissionsBarChart = (props) => {
         tooltip: {
           callbacks: {
             label: (event) =>
-              (`${(event.raw / props.points * 100).toFixed(2)}%`),
+              (`${(event.raw / (props.points ?? props.totalPoints) * 100).toFixed(2)}%`),
             title: (event) => (`Submission ${event[0].dataIndex + 1}`)
           }
         }
@@ -47,13 +47,13 @@ export const SubmissionsBarChart = (props) => {
       scales: {
         y: {
           min: 0,
-          max: props.points,
+          max: (props.points ?? props.totalPoints),
           grid: {
             color: darkMode?.css['--lightGray']
           },
           title: {
             display: true,
-            text: `Points / ${props.points}`,
+            text: `Points / ${(props.points ?? props.totalPoints)}`,
             font: {
               size: 14
             }

@@ -1,7 +1,9 @@
+import { useEffect, useState } from 'react';
 import './textInput.css';
 
 export const TextInput = (props) => {
-  let textInputProps = {
+  const tmpProps = {
+    ...props,
     id: props.id,
     className: `base textInput ${props.width ? props.width + ' ' : '' }${props.className || ''}`.trim(),
     placeholder: props.placeholder,
@@ -18,13 +20,26 @@ export const TextInput = (props) => {
       (props.defaultValue !== null && props.defaultValue !== undefined)
         ? props.defaultValue
         : '',
-    pattern: props.pattern
+    pattern: props.pattern,
+    readOnly: props.readOnly
   }
 
-  const textInputPropsLabel  = {
-    ...textInputProps,
+  const [textInputProps, setTextInputProps] = useState({ ...tmpProps })
+
+  const [textInputPropsLabel, setTextInputPropsLabel] = useState({
+    ...tmpProps,
     className: `base textInput${props.width === 'medium' || props.width === 'full' ? ' full' : ''}`,
-  }
+  })
+
+  useEffect(() => {
+    if(props.value) {
+      setTextInputProps({ ...textInputProps, value: props.value });
+      if(props.label) {
+        setTextInputPropsLabel({ ...textInputPropsLabel, value: props.value });
+      }
+    }
+    /* eslint-disable react-hooks/exhaustive-deps */
+  }, [props.value, props.label])
 
   return (
     <>
@@ -32,8 +47,9 @@ export const TextInput = (props) => {
       ? <label
           id={props.id}
           className={`base textInputLabel ${props.width ? props.width : ''} ${props.className ? props.className : ''} `.trim()}
+          title={props.title}
         >
-          <span>
+          <span title={props.title}>
             {props.label}
           </span>
           <br></br>

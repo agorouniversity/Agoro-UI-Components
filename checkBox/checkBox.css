@@ -2,7 +2,7 @@
   border-radius: 0.3rem;
 }
 
-.radio .radioItem input:checked ~ .checkmark .checkmarkContainer {
+.radio .radioItem input[type='checkbox']:checked ~ .checkmark .checkmarkContainer {
   
   animation: radioBounce 1s cubic-bezier(0.280, 0.840, 0.420, 1) 0s;
   animation-fill-mode: forwards;
