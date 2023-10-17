@@ -76,7 +76,7 @@ export const LineChart = (props) => {
               data: props.data,
               fill: false,
               backgroundColor: '#c1e1cfb1',
-              borderColor: "#C1E1CF"
+              borderColor: darkMode?.css['--primary']
             }
           ]
         }}

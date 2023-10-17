@@ -116,6 +116,10 @@
   background-color: var(--lightPrimary);
 }
 
+.date.today .dateText {
+  font-weight: bold;
+}
+
 .card.fullCalendar .content .date .dateText {
   padding: 0 2px 0 2px;
 }
@@ -133,7 +137,7 @@
 }
 
 .card.fullCalendar:not(.Day, .Week) .content .date.today {
-  background-color: var(--lightPrimary);
+  background-color: color-mix(in srgb, var(--lightPrimary) 75%, transparent);
 }
 
 .card.fullCalendar:not(.Day, .Week) .content .date.header:hover {

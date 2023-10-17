@@ -38,7 +38,7 @@ describe.each([
     days.forEach(day =>
       expect(screen.getByText(day)).toBeInTheDocument()
     )
-    const cells = screen.getAllByRole('gridcell', { name: 'day cell' });
+    const cells = screen.getAllByTitle('Day');
     expect([35, 42]).toContain(cells.length);
   });
 
@@ -53,7 +53,7 @@ describe.each([
 
     const day = new RegExp(`^${(date).getDate()}$`);
     expect(screen.getByText(day)).toBeInTheDocument();
-    const cells = screen.getAllByRole('gridcell', { name: 'hour cell' });
+    const cells = screen.getAllByTitle('Hour');
     expect(cells).toHaveLength(168);
   });
 
@@ -68,7 +68,7 @@ describe.each([
 
     const day = new RegExp(`^${(date).getDate()}$`);
     expect(screen.getByText(day)).toBeInTheDocument();
-    const cells = screen.getAllByRole('gridcell', { name: 'hour cell' });
+    const cells = screen.getAllByTitle('Hour');
     expect(cells).toHaveLength(24);
   });
 

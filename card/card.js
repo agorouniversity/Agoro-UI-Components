@@ -6,7 +6,9 @@ export function Title(props) {
 			className={`cardTitle ${props.className || ''}`.trim()}
       id={props.id}
 		>
-      <h3>{props.children}</h3>
+      {props.children &&
+        <h3>{props.children}</h3>
+      }
 		</div>
 	);
 }
@@ -49,7 +51,7 @@ export function Card(props) {
       style={{width: `${rem}rem`}}
       id={props.id}
       title={props.title}
-      role={(props.onClick || props.link) ? 'button' : null}
+      role={(props.onClick || props.link) ? 'button' : props.role}
     >
       <div
         className='content'

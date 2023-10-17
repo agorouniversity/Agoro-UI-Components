@@ -30,7 +30,6 @@
 	color: var(--bg);
 	background-color: var(--primary);
 	padding: 10px;
-  text-shadow: var(--textShadow);
 }
 
 .card .content .cardTitle h3 {

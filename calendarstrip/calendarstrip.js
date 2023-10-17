@@ -67,8 +67,8 @@ export const Upcoming = (props) => {
                 <ul
                   key={y}
                   className={`timeItem${(new Date()).getHours() === y ? ' now' : ''}${props.calendar?.hoursLabel ? ' label' : ''}`}
-                  role='gridcell'
-                  aria-label='hour cell'
+                  title='Hour'
+                  role='button'
                   data-time={time}
                   data-hour={y}
                 >

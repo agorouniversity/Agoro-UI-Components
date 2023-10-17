@@ -2,7 +2,12 @@ import './dropDown.css';
 
 const Button = (props) => {
   return(
-    <div className='dropBtn'>
+    <div
+      className='dropBtn'
+      aria-haspopup={true}
+      aria-expanded={false}
+      tabIndex={0}
+    >
       {props.children}
     </div>
   )
@@ -13,13 +18,15 @@ const Menu = (props) => {
     <div
       style={{width: props.width}}
       className={`dropdown`}
+      tabIndex={-1}
+      aria-hidden={true}
     >
       <div className='content'>
         {props.children}
       </div>
     </div>
   )
-}
+} 
 
 DropDown.Button = Button;
 DropDown.Menu = Menu;

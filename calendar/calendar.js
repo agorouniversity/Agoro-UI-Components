@@ -129,8 +129,8 @@ export const FullCalendar = (props) => {
                         })
                       : null
                 }
-                role='gridcell'
-                aria-label='day cell'
+                title='Day'
+                role='button'
                 className={`date${rows !== 0 ? ' bottom' : ''}${(i + 1) % 7 === 0 ? ' end' : ''}${today ? ' today' : ''}${i < 7 ? ' header' : ''}${x.otherMonth ? ' otherMonth' : ''} ${props.type}`}
               >
                 {i < 7 &&

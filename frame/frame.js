@@ -57,6 +57,7 @@ const Body = (props) => {
             <button
               type='button'
               onClick={() => openSidebar()}
+              title='menu'
             >
               <svg viewBox="0 0 100 80" width="2rem" height="3rem">
                 <rect width="100" height="0.6rem"></rect>

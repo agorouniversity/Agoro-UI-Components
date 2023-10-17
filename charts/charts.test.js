@@ -83,7 +83,7 @@ describe('Line chart', () => {
             data: [10, 6],
             fill: false,
             backgroundColor: '#c1e1cfb1',
-            borderColor: "#C1E1CF"
+            borderColor: mockTheme.darkMode.css['--primary']
           }
         ]
       }

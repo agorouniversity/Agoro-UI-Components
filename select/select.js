@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useId } from 'react';
 import { TextInput } from '../UI';
-import './select.css'
+import './select.css';
 
 export const MultiSelect = (props) => {
   const [dropdown, setDropdown] = useState('');
@@ -9,6 +9,7 @@ export const MultiSelect = (props) => {
 
   const element = useRef();
   const parentElement = useRef();
+  const id = useId();
 
   const textChanged = (event) => {
     setDropdown('open');
@@ -82,6 +83,12 @@ export const MultiSelect = (props) => {
         name='multiselect'
         onChange={textChanged}
         autoComplete='off'
+        id={`selectButton-${id}`}
+        aria={{
+          'aria-expanded': dropdown === 'open' ? true : false,
+          'aria-haspopup': 'listbox',
+          'aria-controls': `selectList-${id}`,
+        }}
       />
       <span
         className={`arrow${props.label ? ' label' : ''}`}
@@ -96,21 +103,31 @@ export const MultiSelect = (props) => {
         className={`dropdown ${dropdown}`}
       >
         <div>
-        <ul>
-          {search.map((item, i) => 
-            <li
-              key={i}
-              className={`selectItem${selected[item] ? ' selected' : ''}`}
-              onClick={() => {
-                setSelected({...selected, [item]: selected[item] ? false : true});
-                props.addItem(item);
-                closeDropdown();
-              }}
-            >
-              {item}
-            </li>  
-          )}
-        </ul>
+          <ul
+            role='listbox'
+            tabIndex={-1}
+            aria-hidden={dropdown === 'open' ? false : true}
+            aria-labelledby={props.label ? `selectLabel-${id}` : null}
+            id={`selectList-${id}`}
+            aria-multiselectable={true}
+          >
+            {search.map((item, i) => 
+              <li
+                role='option'
+                key={i}
+                className={`selectItem${selected[item] ? ' selected' : ''}`}
+                aria-selected={selected[item] ? true : false}
+                tabIndex={0}
+                onClick={() => {
+                  setSelected({...selected, [item]: selected[item] ? false : true});
+                  props.addItem(item);
+                  closeDropdown();
+                }}
+              >
+                {item}
+              </li>  
+            )}
+          </ul>
         </div>
       </div>
       <div
@@ -146,6 +163,7 @@ export const MultiSelect = (props) => {
 export const Select = (props) => {
   const [dropdown, setDropdown] = useState('');
   const [selected, setSelected] = useState(undefined);
+  const id = useId();
 
   const element = useRef();
 
@@ -200,6 +218,7 @@ export const Select = (props) => {
       {props.label &&
         <span
           className='label'
+          id={`selectLabel-${id}`}
         >
           {props.label}
           <br></br>
@@ -211,6 +230,11 @@ export const Select = (props) => {
         disabled={props.disabled}
         onClick={handleDropdown}
         name={props.name}
+        id={`selectButton-${id}`}
+        aria-labelledby={props.label ? `selectLabel-${id}` : null}
+        aria-expanded={dropdown === 'open' ? true : false}
+        aria-haspopup='listbox'
+        aria-controls={`selectList-${id}`}
       >
         {selected
           ? selected
@@ -225,26 +249,34 @@ export const Select = (props) => {
         className={`dropdown ${dropdown}`}
       >
         <div>
-        <ul>
-          {props.items.map((item, i) => 
-            <li
-              key={i}
-              className={`selectItem${selected === item ? ' selected' : ''}`}
-              onClick={() => {
-                setSelected(item);
-                if(props.addItem) {
-                  props.addItem(item);
-                }
-                if(props.addObject) {
-                  props.addObject({item: item, index: i});
-                }
-                handleDropdown();
-              }}
-            >
-              {item}
-            </li>  
-          )}
-        </ul>
+          <ul
+            role='listbox'
+            tabindex={-1}
+            aria-hidden={dropdown === 'open' ? false : true}
+            aria-labelledby={props.label ? `selectLabel-${id}` : null}
+            id={`selectList-${id}`}
+          >
+            {props.items.map((item, i) => 
+              <li
+                role='option'
+                aria-selected={selected === item ? true : false}
+                key={i}
+                className={`selectItem${selected === item ? ' selected' : ''}`}
+                onClick={() => {
+                  setSelected(item);
+                  if(props.addItem) {
+                    props.addItem(item);
+                  }
+                  if(props.addObject) {
+                    props.addObject({item: item, index: i});
+                  }
+                  handleDropdown();
+                }}
+              >
+                {item}
+              </li>  
+            )}
+          </ul>
         </div>
       </div>
     </div>

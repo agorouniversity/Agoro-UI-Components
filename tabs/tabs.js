@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState, useId } from 'react';
 import { Card } from '../UI';
 import './tabs.css';
 
@@ -20,7 +20,7 @@ const Tab = (props) => {
 
 const TabBody = (props) => {
   const [children, setChildren] = useState([]);
-  const { selected } = useContext(Context);
+  const { selected, id } = useContext(Context);
 
   useEffect(() => {
     if(Array.isArray(props.children)) {
@@ -33,6 +33,10 @@ const TabBody = (props) => {
   return(
     <div
       className='tabBody'
+      role='tabpanel'
+      id={`tabPanel-${id}-${selected}`}
+      aria-labelledby={`tabButton-${id}-${selected}`}
+      tabIndex={0}
     >
       {children[selected]}
     </div>
@@ -71,13 +75,18 @@ const Title = (props) => {
 }
 
 const TabTitle = (props) => {
-  const { setSelected, index, selected } = useContext(Context);
+  const { setSelected, index, selected, id } = useContext(Context);
 
   return(
     <button
       type='button'
       className={`title${selected === index ? ' selected' : ''}`}
       onClick={() => setSelected(index)}
+      role='tab'
+      id={`tabButton-${id}-${index}`}
+      aria-controls={`tabPanel-${id}-${index}`}
+      aria-selected={selected === index ? true : false}
+      tabindex={selected === index ? 0 : -1}
     >
       {props.children}
     </button>
@@ -91,6 +100,7 @@ Tabs.Title = TabTitle;
 
 export function Tabs(props) {
   const [selected, setSelected] = useState(0);
+  const id = useId();
 
   useEffect(() => {
     setSelected(props.selected - 1);
@@ -100,12 +110,14 @@ export function Tabs(props) {
     <Context.Provider
       value={{
         selected,
-        setSelected
+        setSelected,
+        id
       }}
     >
       <div
         id={props.id}
         className={`tabs ${props.className || ''}`.trim()}
+        role='tablist'
       >
         {props.children}  
       </div>

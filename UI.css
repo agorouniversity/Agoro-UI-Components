@@ -62,7 +62,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.7rem;
+  font-size: 1.9rem;
 }
 
 h3 {
@@ -79,4 +79,11 @@ p {
 
 button:hover {
   cursor: pointer;
+}
+
+@media (prefers-reduced-motion) {
+  #root * {
+    transition-duration: 0s !important;
+    animation-duration: 0ms !important;
+  }
 }

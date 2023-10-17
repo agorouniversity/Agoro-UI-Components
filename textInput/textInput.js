@@ -12,6 +12,7 @@ export const TextInput = (props) => {
     onBlur: props.onBlur,
     name: props.name,
     ref: props.reference,
+    title: props.title,
     autoComplete: props.autoComplete,
     defaultValue:
       (props.defaultValue !== null && props.defaultValue !== undefined)
@@ -41,6 +42,7 @@ export const TextInput = (props) => {
               {...textInputPropsLabel}
           ></textarea>
           : <input
+              aria-labelledby={props.id}
               disabled={props.disabled}
               {...textInputPropsLabel}
           ></input>
@@ -52,6 +54,7 @@ export const TextInput = (props) => {
               {...textInputProps}
           ></textarea>
           : <input
+              aria-label={props.ariaLabel}
               {...textInputProps}
           ></input>
         }
