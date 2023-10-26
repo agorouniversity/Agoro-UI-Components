@@ -43,7 +43,7 @@ export const Login = (props) => {
         }
         if(error === 'Account is not verified. Please verify your email\n') {
           setMode('New Account');
-          setnewAccount({ email: email, created: true});
+          setnewAccount({ email: email, created: true });
         }
         onError(error);
       }
@@ -90,7 +90,7 @@ export const Login = (props) => {
 
   const createNew = async (event) => {
     event.preventDefault();
-    let tmpNewAcc = {...newAccount};
+    let tmpNewAcc = { ...newAccount };
     tmpNewAcc.email = tmpNewAcc.email.toLowerCase();
     tmpNewAcc.phone = `+${newAccount.countryCode || '1'}${newAccount.phone}`;
     let i = 0;
@@ -102,7 +102,7 @@ export const Login = (props) => {
       }
       i++;
     }
-    console.log(newAccount);
+
     if(!checkPassword(newAccount.password, newAccount.confirmPassword)) {
       return;
     }
@@ -112,7 +112,7 @@ export const Login = (props) => {
       () => {
         setLoading(false);
         setError(undefined);
-        setnewAccount({...newAccount, created: true});
+        setnewAccount({ ...newAccount, created: true });
       },
       onError
     );
@@ -129,7 +129,6 @@ export const Login = (props) => {
         setLoading(false);
         setSuccess('Account verified, please login');
         setError(undefined);
-        console.log('Verify success!');
         setnewAccount(undefined);
         setMode('Login');
       },
@@ -143,13 +142,12 @@ export const Login = (props) => {
     const loginMode = searchParams.get('login_mode');
     if(email && code && loginMode === 'new_account') {
       setMode('New Account');
-      const account = {email: email, code: code, created: true};
+      const account = { email: email, code: code, created: true };
       setnewAccount(account);
-      console.log('params: ', email, code);
       verify(undefined, account);
     } else if(email && code && loginMode === 'new_password') {
       setMode('New Password');
-      setnewAccount({email: email, code: code});
+      setnewAccount({ email: email, code: code });
       setError(undefined);
     }
   }, [searchParams, verify])
@@ -171,7 +169,6 @@ export const Login = (props) => {
     event.preventDefault();
     setLoading(true);
     const email = loginEmail || event.target['email'].value;
-    console.log(email);
     apiNewPassword(email.toLowerCase())
     .then(
       (result) => {
@@ -193,7 +190,6 @@ export const Login = (props) => {
       return;
     }
     setLoading(true);
-    console.log(code, password);
     apiNewPassword(newAccount.email.toLowerCase(), code, password)
     .then(
       (result) => {
@@ -299,7 +295,7 @@ export const Login = (props) => {
                     width='full'
                     required={true}
                     name="email"
-                    onChange={(event) => setnewAccount({...newAccount, email: event.target.value})}
+                    onChange={(event) => setnewAccount((prev) => ({ ...prev, email: event.target.value }))}
                   />
                   <TextInput
                     className='nameGiven'
@@ -307,7 +303,7 @@ export const Login = (props) => {
                     width='full'
                     type='text'
                     required={true}
-                    onChange={(event) => setnewAccount({...newAccount, nameGiven: event.target.value})}
+                    onChange={(event) => setnewAccount((prev) => ({ ...prev, nameGiven: event.target.value }))}
                   />
                   <TextInput
                     className='nameFamily'
@@ -315,7 +311,7 @@ export const Login = (props) => {
                     width='full'
                     type='text'
                     required={true}
-                    onChange={(event) => setnewAccount({...newAccount, nameFamily: event.target.value})}
+                    onChange={(event) => setnewAccount((prev) => ({ ...prev, nameFamily: event.target.value }))}
                   />
                   <TextInput
                     label="Password"
@@ -323,7 +319,7 @@ export const Login = (props) => {
                     width="full"
                     required={true}
                     name="password"
-                    onChange={(event) => setnewAccount({...newAccount, password: event.target.value})}
+                    onChange={(event) => setnewAccount((prev) => ({ ...prev, password: event.target.value }))}
                   />
                   <TextInput
                     label="Confirm Password"
@@ -331,7 +327,7 @@ export const Login = (props) => {
                     width="full"
                     required={true}
                     name="confirmPassword"
-                    onChange={(event) => setnewAccount({...newAccount, confirmPassword: event.target.value})}
+                    onChange={(event) => setnewAccount((prev) => ({ ...prev, confirmPassword: event.target.value }))}
                   />
                   <span>
                     <ButtonA type='submit'>Create Account</ButtonA>
@@ -344,7 +340,7 @@ export const Login = (props) => {
                   key={newAccount}
                 >
                   <br></br>
-                  <div className='plr'>Account created, please check email for verification code</div>
+                  <div className='plr'>Account created, please check {newAccount.email} for verification code</div>
                   <TextInput
                     label="Verification Code"
                     defaultValue={newAccount?.code || ''}
