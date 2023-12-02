@@ -1,6 +1,6 @@
 {
   "name": "@agoro-ui/agoro-ui-components",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "The UI Components used by Agoro webpages",
   "main": "src/UI.js",
   "scripts": {
@@ -24,5 +24,14 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.20.1",
     "react-scripts": "^5.0.1"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.23.3"
   }
 }
