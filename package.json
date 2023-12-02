@@ -1,6 +1,6 @@
 {
   "name": "@agoro-ui/agoro-ui-components",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The UI Components used by Agoro webpages",
   "main": "src/UI.js",
   "scripts": {
