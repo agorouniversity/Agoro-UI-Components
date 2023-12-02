@@ -10,4 +10,6 @@ The React Component Library Used by Agoro Webpages
 
 ## To Publish:
 
+`yarn build`
+
 `yarn publish --access public`

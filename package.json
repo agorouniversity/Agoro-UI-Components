@@ -5,7 +5,7 @@
   "main": "dist/bundle.js",
   "scripts": {
     "test": "react-scripts test",
-    "bundle": "webpack --config webpack.config.js"
+    "build": "webpack --config webpack.config.js"
   },
   "files": [
     "dist"
