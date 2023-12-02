@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useMatches, Link } from 'react-router-dom';
-import Context from '../../../context';
+import { Context } from '../context';
 import { Loading } from '../UI';
 import './frame.css';
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Table } from '../UI';
-import { getTime, getDate, getDayOfWeek, getColor, sortNewest, convertTime } from '../../../util/time';
+import { getTime, getDate, getDayOfWeek, getColor, sortNewest, convertTime } from '../utils/time';
 import './calendarstrip.css';
 
 export const Upcoming = (props) => {

@@ -1,19 +1,28 @@
 {
-  "name": "agoro-ui-components",
+  "name": "@agoro-ui/agoro-ui-components",
   "version": "1.0.0",
-  "description": "The React Component Library Used by Agoro Webpages",
-  "main": "index.js",
+  "description": "The UI Components used by Agoro webpages",
+  "main": "src/UI.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "react-scripts test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/agorouniversity/Agoro-UI-Components.git"
-  },
-  "author": "",
-  "license": "MIT",
+  "repository": "git+https://github.com/agorouniversity/Agoro-UI-Components.git",
+  "keywords": [
+    "Agoro"
+  ],
+  "author": "Agoro",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/agorouniversity/Agoro-UI-Components/issues"
   },
-  "homepage": "https://github.com/agorouniversity/Agoro-UI-Components#readme"
+  "homepage": "https://github.com/agorouniversity/Agoro-UI-Components#readme",
+  "dependencies": {
+    "@testing-library/jest-dom": "^6.1.5",
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/user-event": "^14.5.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.1",
+    "react-scripts": "^5.0.1"
+  }
 }
