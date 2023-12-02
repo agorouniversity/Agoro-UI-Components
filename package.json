@@ -1,11 +1,15 @@
 {
   "name": "@agoro-ui/agoro-ui-components",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "The UI Components used by Agoro webpages",
-  "main": "src/UI.js",
+  "main": "dist/bundle.js",
   "scripts": {
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "bundle": "webpack --config webpack.config.js"
   },
+  "files": [
+    "dist"
+  ],
   "repository": "git+https://github.com/agorouniversity/Agoro-UI-Components.git",
   "keywords": [
     "Agoro"
@@ -32,6 +36,12 @@
     ]
   },
   "devDependencies": {
-    "@babel/preset-react": "^7.23.3"
+    "@babel/core": "^7.23.5",
+    "@babel/preset-env": "^7.23.5",
+    "@babel/preset-react": "^7.23.3",
+    "babel-jest": "^29.7.0",
+    "css-loader": "^6.8.1",
+    "style-loader": "^3.3.3",
+    "webpack-cli": "^5.1.4"
   }
 }

@@ -7,3 +7,7 @@ The React Component Library Used by Agoro Webpages
 `yarn install`
 
 `yarn test`
+
+## To Publish:
+
+`yarn publish --access public`
