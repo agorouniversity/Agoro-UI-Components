@@ -29,3 +29,6 @@ export { FullCalendar } from './calendar/calendar';
 export { PassFailPie } from './charts/pie';
 export { LineChart } from './charts/line';
 export { SubmissionsBarChart } from './charts/bar';
+export {DiscussionBox} from './discussionBox/discussionBox';
+export {ReplyBox} from './replyBox/replyBox';
+export {Searchbar} from './searchbar/searchbar';
