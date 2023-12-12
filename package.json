@@ -1,19 +1,47 @@
 {
-  "name": "agoro-ui-components",
-  "version": "1.0.0",
-  "description": "The React Component Library Used by Agoro Webpages",
-  "main": "index.js",
+  "name": "@agoro-ui/agoro-ui-components",
+  "version": "1.0.3",
+  "description": "The UI Components used by Agoro webpages",
+  "main": "dist/bundle.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "react-scripts test",
+    "build": "webpack --config webpack.config.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/agorouniversity/Agoro-UI-Components.git"
-  },
-  "author": "",
-  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "repository": "git+https://github.com/agorouniversity/Agoro-UI-Components.git",
+  "keywords": [
+    "Agoro"
+  ],
+  "author": "Agoro",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/agorouniversity/Agoro-UI-Components/issues"
   },
-  "homepage": "https://github.com/agorouniversity/Agoro-UI-Components#readme"
+  "homepage": "https://github.com/agorouniversity/Agoro-UI-Components#readme",
+  "dependencies": {
+    "@testing-library/jest-dom": "^6.1.5",
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/user-event": "^14.5.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.1",
+    "react-scripts": "^5.0.1"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.5",
+    "@babel/preset-env": "^7.23.5",
+    "@babel/preset-react": "^7.23.3",
+    "babel-jest": "^29.7.0",
+    "css-loader": "^6.8.1",
+    "style-loader": "^3.3.3",
+    "webpack-cli": "^5.1.4"
+  }
 }

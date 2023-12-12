@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Card, Modal, Upcoming } from '../UI';
-import { convertTime, getDayOfWeek } from '../../../util/time';
+import { convertTime, getDayOfWeek } from '../utils/time';
 import './calendar.css';
 
 export const FullCalendar = (props) => {
