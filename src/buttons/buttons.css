@@ -108,6 +108,12 @@ a.button {
   height: 1.5rem !important;
 }
 
+.iconButton.xsmall, .iconButton.xsmall svg {
+  display: block;
+  width: 1.0rem !important;
+  height: 1.0rem !important;
+}
+
 .iconButton.large, .iconButton.large svg {
   display: block;
   width: 2.5rem;

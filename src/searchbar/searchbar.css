@@ -1,0 +1,49 @@
+.searchbar {
+  width: 100%;
+  display: flex;
+  gap: 8px;
+  align-items:center;
+}
+
+.searchInput {
+  width: 100%;
+}
+
+.searchDiv {
+  width: 70%;
+  position: relative;
+  align-items: center;
+  margin: auto;
+}
+
+.magnifyingGlass {
+  position: absolute;
+  z-index: 1;
+  right: 1%;
+  margin-top: 1%;
+}
+
+.classTag {
+  display: flex;
+  gap: 20px;
+  width:100%;
+}
+
+.tagButtons {
+  display: flex;
+}
+
+.addDiv {
+  position: relative;
+}
+
+.sendIcon {
+  position: absolute;
+  z-index: 1;
+  right: 1%;
+  margin-top: 5%;
+}
+
+.tagEditing {
+  position: relative;
+}
