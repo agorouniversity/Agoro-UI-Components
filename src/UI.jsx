@@ -12,7 +12,7 @@ export { ButtonA, ButtonB, ButtonC, IconButton } from './buttons/buttons';
 export { TextInput } from './textInput/textInput';
 export { Header } from './header/header';
 export { Table } from './table/table';
-export { Frame } from './frame/frame';
+// export { Frame } from './frame/frame';
 export { Select, MultiSelect } from './select/select';
 export { Icon } from './icons/icons';
 export { Sidebar } from './sidebar/sidebar';

@@ -1,4 +1,5 @@
 import './icons.css';
+import React from 'react';
 
 const icons = {
   settings: (
