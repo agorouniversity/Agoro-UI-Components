@@ -1,5 +1,5 @@
 import './replyBox.css';
-import {IconButton, Modal, TextInput} from '../UI';
+import {IconButton, Modal, TextInput} from '../src/UI';
 import { useContext, useState} from 'react';
 import Context from '../../../context';
 import { post, put } from '../../../util/api';

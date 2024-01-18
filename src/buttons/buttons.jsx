@@ -1,56 +1,61 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Icon } from '../UI';
+import {Theme} from "../theme/Theme";
 import './buttons.css';
 import { Link } from 'react-router-dom';
 
 /*Button skeleton for easy creation of new buttons*/
-const Button = (data) => {
-  const [props, setProps] = useState(data.data);
-  const name = data.class;
+const Button = (props) => {
+  const [state, setState] = useState(props.data);
 
   useEffect(() => {
-    setProps(data.data);
-  }, [data])
+    setState(props.data);
+  }, [props.data]);
+
+  const { link, id, color, size, className, onClick, disabled, onMouseDown, onMouseUp, type, title, form, children } = state;
 
   return (
-    <>
-      {props.link
-        ? <Link
-            to={props.link}
-            id={props.id}
-            className={`base button${props.color ? ' ' + props.color : ''} ${name}${props.size ? ' ' + props.size : ''}${props.className ? ' ' + props.className : ''}`}
-            onClick={props.onClick}
-            disabled={props.disabled}
-            onMouseDown={data.onMouseDown}
-            onMouseUp={data.onMouseUp}
-          >
-            <span>{props.children}</span>
-          </Link>
-        : <button 
-            id={props.id}
-            className={`base button${props.color ? ' ' + props.color : ''} ${name}${props.size ? ' ' + props.size : ''}${props.className ? ' ' + props.className : ''}`}
-            onClick={props.onClick}
-            type={props.type || 'button'}
-            disabled={props.disabled}
-            onMouseDown={data.onMouseDown}
-            onMouseUp={data.onMouseUp}
-            title={props.title}
-            form={props.form}
-          >
-            <span>{props.children}</span>
-          </button>
-      }
-    </>
+      <>
+        {link ? (
+            <Link
+                to={link}
+                id={id}
+                className={`base button${color ? ' ' + color : ''} ${name}${size ? ' ' + size : ''}${className ? ' ' + className : ''}`}
+                onClick={onClick}
+                disabled={disabled}
+                onMouseDown={onMouseDown}
+                onMouseUp={onMouseUp}
+            >
+              <span>{children}</span>
+            </Link>
+        ) : (
+            <button
+                id={id}
+                className={`base button${color ? ' ' + color : ''} ${name}${size ? ' ' + size : ''}${className ? ' ' + className : ''}`}
+                onClick={onClick}
+                type={type || 'button'}
+                disabled={disabled}
+                onMouseDown={onMouseDown}
+                onMouseUp={onMouseUp}
+                title={title}
+                form={form}
+            >
+              <span>{children}</span>
+            </button>
+        )}
+      </>
   );
-}
+};
 
 /*Double shadow button*/
 export const ButtonA = (props) => {
   return (
-    <Button
-      class='buttonA'
-      data={props}
-    ></Button>
+    <Theme>
+      <Button
+        class='buttonA'
+        data={props}
+      ></Button>
+    </Theme>
   );
 }
 
