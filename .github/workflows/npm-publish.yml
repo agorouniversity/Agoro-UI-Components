@@ -4,10 +4,13 @@
 name: Node.js Package
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_dispatch:
+    inputs:
+      Version:
+        description: 'Package Version Number'
+        required: true
+        default: "1.0.0"
+        type: string
 
 jobs:
   build:
@@ -24,6 +27,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - run: "json -I -f package.json -e \"this.version=${{inputs.Version}}\""
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
