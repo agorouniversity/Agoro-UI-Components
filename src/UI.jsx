@@ -1,10 +1,18 @@
 /*CSS shared by many components*/
 import './UI.css';
+import React from 'react';
 
 /*
 Components exported below for easy import ex:
   import { ButtonA, ButtonB, TextInput, Accordion, Radio, Checkbox, Table } from './components/UI/UI';
 */
+
+const Box = (props) => {
+    return (
+        <div className="box">Hello World</div>
+    )
+}
+export { Box };
 export { Accordion } from './accordion/accordion';
 export { Radio } from './radio/radio';
 export { CheckBox } from './checkBox/checkBox';

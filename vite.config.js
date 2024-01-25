@@ -1,6 +1,7 @@
 //vite.config.js
 import { resolve } from "path";
 import { defineConfig } from "vite";
+import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 
 export default defineConfig ({
     build: {
@@ -11,7 +12,11 @@ export default defineConfig ({
             fileName: "index",
         },
         rollupOptions: {
-            external: ["react"],
+            external: ["react", "react-dom", "react-router-dom"],
+            output: {
+                manualChunks: undefined,
+            },
         },
     },
+    plugins: [cssInjectedByJsPlugin()]
 });

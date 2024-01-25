@@ -52,7 +52,7 @@ export const ButtonA = (props) => {
   return (
     <Theme>
       <Button
-        class='buttonA'
+        className='buttonA'
         data={props}
       ></Button>
     </Theme>
