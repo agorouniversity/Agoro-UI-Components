@@ -59,7 +59,7 @@ jobs:
       - name: Build Distribution
         run: yarn build
 
-      - run: cat .npmrc
+      - run: cat .npmcr
 
       - name: Publish
         run: yarn publish
