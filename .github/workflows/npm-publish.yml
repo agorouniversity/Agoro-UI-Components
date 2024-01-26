@@ -59,6 +59,8 @@ jobs:
       - name: Build Distribution
         run: yarn build
 
+      - run: echo ${{ secrets.GITHUB_TOKEN }}
+
       - name: Publish
         run: yarn publish
         env:
