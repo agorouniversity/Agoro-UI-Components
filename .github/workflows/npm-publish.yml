@@ -38,7 +38,7 @@ jobs:
         with:
           node-version: 20
           registry-url: https://npm.pkg.github.com
-          scope: '@agorouniversity'
+          always-auth: true
       - name: Install Json CLI
         run: "npm install json -g"
       - name: Change package.json version number
