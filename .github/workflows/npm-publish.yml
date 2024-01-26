@@ -63,3 +63,5 @@ jobs:
 
       - name: Publish
         run: yarn publish
+        env:
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
