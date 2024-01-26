@@ -14,6 +14,10 @@ on:
         default: "0.0.1"
         type: string
 
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
