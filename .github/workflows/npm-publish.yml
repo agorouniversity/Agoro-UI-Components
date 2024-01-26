@@ -51,7 +51,7 @@ jobs:
       - name: Change package.json version number
         run: "json -I -f package.json -e \"this.version=\'$VERSION\'\""
         env:
-          VERSION: "0.0.1"
+          VERSION: "0.0.2"
 
       - name: Install Dependencies
         run: yarn
@@ -59,9 +59,7 @@ jobs:
       - name: Build Distribution
         run: yarn build
 
-      - run: yarn --version
-
       - name: Publish
-        run: npm publish --registry=https://npm.pkg.github.com
+        run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
