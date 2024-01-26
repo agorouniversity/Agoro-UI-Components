@@ -41,7 +41,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20.x
+          node-version: 14.x
           registry-url: 'https://npm.pkg.github.com'
           always-auth: true
 
@@ -59,7 +59,7 @@ jobs:
       - name: Build Distribution
         run: yarn build
 
-      - run: cat .npmcr
+      - run: yarn --version
 
       - name: Publish
         run: yarn publish
