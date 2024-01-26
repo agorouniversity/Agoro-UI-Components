@@ -20,12 +20,12 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+
       - name: Install Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-#      - name: Install Yarn
-#        run: npm install -g yarn
+
       #- run: yarn test
 
   publish-package:
@@ -34,22 +34,28 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 20.x
           registry-url: https://npm.pkg.github.com
           always-auth: true
+
       - name: Install Json CLI
         run: "npm install json -g"
+
       - name: Change package.json version number
         run: "json -I -f package.json -e \"this.version=\'$VERSION\'\""
         env:
           VERSION: "0.0.1"
+
       - name: Install Dependencies
         run: yarn
+
       - name: Build Distribution
         run: yarn build
+
       - name: Publish
-        run: yarn publish --access public
+        run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
