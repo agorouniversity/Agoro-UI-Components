@@ -44,7 +44,7 @@ jobs:
       - name: Change package.json version number
         run: "json -I -f package.json -e \"this.version=$VERSION\""
         env:
-          VERSION: 0.0.1
+          VERSION: "0.0.1"
       - name: Install Dependencies
         run: yarn
       - name: Build Distribution
