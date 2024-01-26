@@ -42,7 +42,7 @@ jobs:
       - name: Install Json CLI
         run: "npm install json -g"
       - name: Change package.json version number
-        run: "json -I -f package.json -e \"this.version=$VERSION\""
+        run: "json -I -f package.json -e \"this.version=\'$VERSION\'\""
         env:
           VERSION: "0.0.1"
       - name: Install Dependencies
