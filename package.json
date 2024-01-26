@@ -1,6 +1,6 @@
 {
   "name": "@agoro-ui/agoro-ui-components",
-  "version": "1.0.3",
+  "version": "0.0.1",
   "description": "The UI Components used by Agoro webpages",
   "main": "dist/bundle.js",
   "scripts": {
@@ -10,7 +10,10 @@
   "files": [
     "dist"
   ],
-  "repository": "git+https://github.com/agorouniversity/Agoro-UI-Components.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/agorouniversity/Agoro-UI-Components.git"
+  },
   "keywords": [
     "Agoro"
   ],
@@ -24,6 +27,7 @@
     "@testing-library/jest-dom": "^6.1.5",
     "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^14.5.1",
+    "json": "^11.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.20.1",
