@@ -1,5 +1,5 @@
 {
-  "name": "@agoro-ui/agoro-ui-components",
+  "name": "agoro-ui-components",
   "version": "0.0.1",
   "description": "The UI Components used by Agoro webpages",
   "main": "dist/bundle.js",

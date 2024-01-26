@@ -34,6 +34,7 @@ jobs:
     permissions:
       contents: read
       id-token: write
+      packages: write
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -59,6 +60,6 @@ jobs:
         run: yarn build
 
       - name: Publish
-        run: npm publish
+        run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
