@@ -40,7 +40,7 @@ jobs:
           registry-url: https://npm.pkg.github.com
           scope: '@agorouniversity'
       - name: Install Json CLI
-        run: "npm install json"
+        run: "npm install json -g"
       - name: Change package.json version number
         run: "json -I -f package.json -e \"this.version=${{ inputs.version }}\""
       - name: Install Dependencies
