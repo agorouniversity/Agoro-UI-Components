@@ -1,5 +1,5 @@
 {
-  "name": "@agoro-ui/agoro-ui-components",
+  "name": "@agorouniversity/agoro-ui-components",
   "version": "0.0.1",
   "description": "The UI Components used by Agoro webpages",
   "main": "dist/index.umd.js",
@@ -11,7 +11,10 @@
   "files": [
     "dist"
   ],
-  "repository": "git+https://github.com/agorouniversity/Agoro-UI-Components.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/agorouniversity/Agoro-UI-Components.git"
+  },
   "keywords": [
     "Agoro"
   ],
