@@ -4,6 +4,9 @@
 name: Publish package to Github Packages
 
 on:
+  push:
+    branches:
+      - create-docs-site
   workflow_dispatch:
     inputs:
       version:
@@ -22,17 +25,13 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 20.x
 
       - run: yarn test
 
   publish-package:
     needs: test
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
-      packages: write
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -49,7 +48,7 @@ jobs:
       - name: Change package.json version number
         run: "json -I -f package.json -e \"this.version=\'$VERSION\'\""
         env:
-          VERSION: ${{ inputs.version }}
+          VERSION: 0.0.3
 
       - name: Install Dependencies
         run: yarn

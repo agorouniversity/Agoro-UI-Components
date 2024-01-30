@@ -6,7 +6,8 @@
   "module": "dist/index.mjs",
   "scripts": {
     "test": "vite test",
-    "build": "vite build --outDir dist"
+    "build": "vite build --outDir dist",
+    "dev": "cd docs && vite"
   },
   "files": [
     "dist"
