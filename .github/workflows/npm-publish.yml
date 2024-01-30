@@ -4,6 +4,9 @@
 name: Publish package to Github Packages
 
 on:
+  push:
+    branches:
+      - create-docs-site
   workflow_dispatch:
     inputs:
       version:
@@ -48,7 +51,7 @@ jobs:
       - name: Change package.json version number
         run: "json -I -f package.json -e \"this.version=\'$VERSION\'\""
         env:
-          VERSION: ${{ inputs.version }}
+          VERSION: 0.0.3
 
       - name: Install Dependencies
         run: yarn
