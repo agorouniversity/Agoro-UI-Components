@@ -1,16 +1,18 @@
 import { useState } from 'react'
-import { ButtonA, Box, Header } from "@agoro-ui/agoro-ui-components";
+import {ButtonA, Box, Sidebar} from "@agorouniversity/agoro-ui-components";
+import { Header } from '@agorouniversity/agoro-ui-components';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import ButtonPage from "./pages/buttons.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-        <Header />
-        <Box />
-        <div>
-            <ButtonA color='Primary' type='submit'>Test</ButtonA>
-        </div>
+        <BrowserRouter location="" navigator="">
+            <Routes>
+                <Route path="/buttons" element={ <ButtonPage />}/>
+            </Routes>
+        </BrowserRouter>
     </>
   )
 }

@@ -4,7 +4,7 @@
 
 Usage: 
 
-`import { Header } from './components/UI/UI';`
+`import { Header } from '@agorouniversity/agoro-ui-components';`
 
 (Includes Header, Header.Buttons, Header.DropDown)
 
