@@ -20,7 +20,7 @@ const Button = (props) => {
             <Link
                 to={link}
                 id={id}
-                className={`base button${color ? ' ' + color : ''} ${name}${size ? ' ' + size : ''}${className ? ' ' + className : ''}`}
+                className={`base button${color ? ' ' + color : ''}${size ? ' ' + size : ''}${className ? ' ' + className : ''}`}
                 onClick={onClick}
                 disabled={disabled}
                 onMouseDown={onMouseDown}
@@ -31,7 +31,7 @@ const Button = (props) => {
         ) : (
             <button
                 id={id}
-                className={`base button${color ? ' ' + color : ''} ${name}${size ? ' ' + size : ''}${className ? ' ' + className : ''}`}
+                className={`base button${color ? ' ' + color : ''}${size ? ' ' + size : ''}${className ? ' ' + className : ''}`}
                 onClick={onClick}
                 type={type || 'button'}
                 disabled={disabled}
