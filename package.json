@@ -1,11 +1,13 @@
 {
   "name": "@agorouniversity/agoro-ui-components",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The UI Components used by Agoro webpages",
-  "main": "dist/bundle.js",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.mjs",
   "scripts": {
-    "test": "react-scripts test",
-    "build": "webpack --config webpack.config.js"
+    "test": "vite test",
+    "build": "vite build --outDir dist",
+    "dev": "cd docs && vite"
   },
   "files": [
     "dist"
@@ -23,16 +25,7 @@
     "url": "https://github.com/agorouniversity/Agoro-UI-Components/issues"
   },
   "homepage": "https://github.com/agorouniversity/Agoro-UI-Components#readme",
-  "dependencies": {
-    "@testing-library/jest-dom": "^6.1.5",
-    "@testing-library/react": "^14.1.2",
-    "@testing-library/user-event": "^14.5.1",
-    "json": "^11.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.20.1",
-    "react-scripts": "^5.0.1"
-  },
+  "dependencies": {},
   "babel": {
     "presets": [
       "@babel/preset-env",
@@ -40,12 +33,21 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.23.5",
-    "@babel/preset-env": "^7.23.5",
+    "@babel/cli": "^7.23.4",
+    "@babel/core": "^7.23.7",
+    "@babel/preset-env": "^7.23.8",
     "@babel/preset-react": "^7.23.3",
+    "@testing-library/dom": "^9.3.3",
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/user-event": "^14.5.2",
     "babel-jest": "^29.7.0",
-    "css-loader": "^6.8.1",
-    "style-loader": "^3.3.3",
-    "webpack-cli": "^5.1.4"
+    "vite": "^5.0.11",
+    "vite-plugin-css-injected-by-js": "^3.3.1",
+    "vite-plugin-string": "^1.2.2"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.1"
   }
 }

@@ -1,0 +1,156 @@
+.theme {
+  width: 100%;
+  height: 100%; 
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg);
+  color: var(--gray);
+  overflow: hidden;
+}
+
+.theme,
+.theme > * {
+  transition: color 0.5s ease, background-color 0.5s ease, border 0.5s ease, box-shadow 0.5s ease;
+}
+
+.pillButton {
+  width: unset;
+  padding: 4px 8px;
+  transition: background-color 0.5s ease;
+}
+
+.pillButton:hover {
+  background-color: color-mix(in srgb, var(--lightGray) 70%, black);
+}
+
+.pillButton h3 {
+  margin: 0;
+}
+
+.pillButton {
+  background-color: var(--lightGray);
+  border-radius: 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  transition: all 0.5s ease;
+  box-sizing: border-box;
+}
+
+/* DropDown override */
+.dropdown .content {
+  border: none !important;
+  background-color: var(--lightGray) !important;
+}
+
+.dropdown .content li button {
+  color: var(--gray) !important;
+}
+
+.iconButton .iconBg {
+  display: none;
+}
+
+.modal.container {
+  animation: sbFadeIn 0.5s ease, blurIn 0.5s ease !important;
+  animation-fill-mode: forwards !important;
+}
+
+.modal.container.close {
+  animation: sbFadeOut 0.5s ease, blurOut 0.5s ease !important;
+}
+
+.buttonA {
+  background-color: var(--primary) !important;
+  color: color-mix(in srgb, white 90%, black) !important;
+  box-shadow: none !important;
+  border: none !important;
+  transition: background-color 0.5s ease !important;
+}
+
+.buttonA:hover {
+  background-color: color-mix(in srgb, var(--primary) 50%, transparent) !important;
+}
+
+.buttonA.danger {
+  background-color: var(--danger) !important;
+}
+
+.buttonA.danger:hover {
+  background-color: color-mix(in srgb, var(--danger) 50%, transparent) !important;
+}
+
+.buttonA.secondary {
+  background-color: var(--secondary) !important;
+  color: var(--bg) !important;
+}
+
+.buttonA.secondary:hover {
+  background-color: color-mix(in srgb, var(--secondary) 50%, transparent) !important;
+}
+
+.modalCard .body {
+  background-color: var(--lightGray);
+  border-radius: 0 0 0.3rem 0.3rem !important;
+  border: none !important;
+}
+
+.modalCard .content,
+.modalCard .cardTitle {
+  border: none !important;
+  box-shadow: none !important;
+  gap: 0 !important;
+  width: 100%;
+}
+
+.modalCard .body form {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes blurIn {
+  0% {
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+  }
+  100% {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
+
+@keyframes blurOut {
+  0% {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  100% {
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+  }
+}
+
+@keyframes sbFadeIn {
+  0% {
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  100% {
+    visibility: visible;
+    background-color: var(--shadow);
+  }
+}
+
+@keyframes sbFadeOut {
+  0% {
+    visibility: visible;
+    background-color: var(--shadow);
+  }
+  100% {
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0);
+  }
+}

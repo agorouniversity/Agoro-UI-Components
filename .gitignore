@@ -6,3 +6,6 @@
 
 # log files
 *.log
+
+# IDE files
+/.idea

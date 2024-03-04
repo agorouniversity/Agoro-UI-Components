@@ -1,5 +1,5 @@
 import './discussionBox.css';
-import {IconButton, Modal, TextInput, ButtonC, ButtonA} from '../UI';
+import {IconButton, Modal, TextInput, ButtonC, ButtonA} from '../src/UI';
 import { useNavigate  } from "react-router-dom";
 import { useContext, useState} from 'react';
 import Context from '../../../context';

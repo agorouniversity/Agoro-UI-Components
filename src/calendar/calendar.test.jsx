@@ -3,6 +3,7 @@ import '@testing-library/jest-dom'
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { FullCalendar } from './calendar';
+import React from 'react';
 
 const mockAssignment = (date, name='HW 3') => {
   return(

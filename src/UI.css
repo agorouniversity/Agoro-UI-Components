@@ -87,3 +87,7 @@ button:hover {
     animation-duration: 0ms !important;
   }
 }
+
+.box {
+  background-color: blue;
+}

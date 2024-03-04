@@ -1,5 +1,5 @@
 import './searchbar.css';
-import {IconButton, ButtonA, ButtonC, TextInput, Modal, Select, Accordion, CheckBox} from '../UI';
+import {IconButton, ButtonA, ButtonC, TextInput, Modal, Select, Accordion, CheckBox} from '../src/UI';
 import {useNavigate } from "react-router-dom";
 import { useContext, useState, useEffect } from 'react';
 import Context from '../../../context';
