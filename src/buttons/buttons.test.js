@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom'
-import { ButtonA, ButtonB, IconButton } from './buttons';
+import { Button, ButtonB, IconButton } from './buttons';
 
 test('Badge displays', () => {
   render(
-    <ButtonA number={50}></ButtonA>
+    <Button number={50}></Button>
   )
 
   expect(screen.getByText('50')).toBeInTheDocument();

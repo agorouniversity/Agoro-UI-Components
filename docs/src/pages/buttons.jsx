@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonA, ButtonB } from '@agorouniversity/agoro-ui-components';
+import { Button } from '@agorouniversity/agoro-ui-components';
 
 
 {/* <ButtonA
@@ -18,7 +18,7 @@ import { ButtonA, ButtonB } from '@agorouniversity/agoro-ui-components';
 export default function ButtonPage() {
     return (
         <>
-            <ButtonA
+            <Button
                 // id='thisbutton'
                 // className='thisclass'
                 // onClick={() => console.log('clicked')}
@@ -29,9 +29,9 @@ export default function ButtonPage() {
                 // disabled={true}
             >
                 regular button
-            </ButtonA>
+            </Button>
 
-            <ButtonA
+            <Button
                 // id='thisbutton'
                 // className='thisclass'
                 // onClick={() => console.log('clicked')}
@@ -42,9 +42,9 @@ export default function ButtonPage() {
                 // disabled={true}
             >
                 large danger button
-            </ButtonA>
+            </Button>
 
-            <ButtonA
+            <Button
                 // id='thisbutton'
                 // className='thisclass'
                 // onClick={() => console.log('clicked')}
@@ -55,9 +55,9 @@ export default function ButtonPage() {
                 // disabled={true}
             >
                 small submit warning button
-            </ButtonA>
+            </Button>
 
-            <ButtonA
+            <Button
                 // id='thisbutton'
                 // className='thisclass'
                 // onClick={() => console.log('clicked')}
@@ -68,9 +68,9 @@ export default function ButtonPage() {
                 disabled={true}
             >
                 disabled reset button
-            </ButtonA>
+            </Button>
 
-            <ButtonA
+            <Button
                 // id='thisbutton'
                 // className='thisclass'
                 // onClick={() => console.log('clicked')}
@@ -81,7 +81,7 @@ export default function ButtonPage() {
                 // disabled={true}
             >
                 secondary button
-            </ButtonA>
+            </Button>
         </>
         )
 }
