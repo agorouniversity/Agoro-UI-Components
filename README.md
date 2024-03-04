@@ -19,8 +19,12 @@ Run unit tests:
 
 Installing dependencies:
 
-`cd docs && yarn install`
+Open one terminal and run: `yarn build --watch`
 
+Open a second terminal and run:
+`cd docs`
+
+`yarn install`
 
 `yarn dev`
 
