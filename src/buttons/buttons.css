@@ -6,21 +6,48 @@
   box-sizing: border-box;
   width: fit-content;
   text-align: center;
+  box-shadow: 0px 0px var(--lightPrimary), 0px 0px var(--lightPrimary);
+  /* -webkit-box-shadow: 0px 0px var(--lightPrimary), 0px 0px var(--primary); */
+  /* -moz-box-shadow: 0px 0px var(--lightPrimary), 0px 0px var(--primary); */
+  transition: box-shadow 0.5s ease;
+  --aShadow: 0.2rem 0.2rem var(--lightPrimary);
+}
+
+.button.small {
+  /* padding: 2px 10px; */
+  padding: 0.5rem 0.5rem;
+  font-size: 0.5rem;
+  /* --bHeight: calc(1.5rem + 10px); */
+  /* --aShadow: 0.1rem 0.1rem; */
+}
+
+.button.large {
+  /* padding: 20px 50px; */
+  padding: 1.5rem 1.5rem;
+  font-size: 1.5rem;
+  /* --bHeight: calc(2rem + 16px) !important; */
+  /* --aShadow: 0.4rem 0.4rem; */
 }
 
 .button.secondary {
   color: var(--secondary);
   border: 2px solid var(--secondary);
+  box-shadow: 0px 0px var(--lightSecondary), 0px 0px var(--lightSecondary);
+  --aShadow: 0.2rem 0.2rem var(--lightSecondary);
 }
 
 .button.Danger {
   color: var(--danger);
   border: 2px solid var(--danger);
+  box-shadow: 0px 0px var(--lightDanger), 0px 0px var(--lightDanger);
+  --aShadow: 0.2rem 0.2rem var(--lightDanger);
 }
 
 .button.Warn {
   color: var(--warn);
   border: 2px solid var(--warn);
+  box-shadow: 0px 0px var(--lightWarn), 0px 0px var(--warn);
+  --aShadow: 0.2rem 0.2rem var(--lightWarn);
 }
 
 /* a.button {
@@ -29,22 +56,10 @@
 
 .button:hover {
   cursor: pointer;
-}
-
-.button.small {
-  /* padding: 2px 10px; */
-  padding: 0.5rem 0.5rem;
-  font-size: 0.5rem;
-  /* --bHeight: calc(1.5rem + 10px); */
-  /* --aShadow: -6px -4px var(--lightPrimary), 6px 4px var(--primary); */
-}
-
-.button.large {
-  /* padding: 20px 50px; */
-  padding: 1.5rem 1.5rem;
-  font-size: 1.5rem;
-  /* --bHeight: calc(2rem + 16px) !important; */
-  /* --aShadow: -10px -8px var(--lightPrimary), 10px 8px var(--primary); */
+  box-shadow: var(--aShadow);
+  /* -webkit-box-shadow: var(--aShadow); */
+  /* -moz-box-shadow: var(--aShadow); */
+  transition: box-shadow 0.5s ease;
 }
 
 .button:disabled {
