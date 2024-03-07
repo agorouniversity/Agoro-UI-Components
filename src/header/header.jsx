@@ -7,7 +7,8 @@ import { Link } from 'react-router-dom';
 const HeaderButtons = (props) => {
   return(
     <header
-        className='header'
+        className={`header${props.color ? ' ' + props.color : ''}`}
+        style={{backgroundColor: props.color}}
       >
         <Link
           to='/'
@@ -59,10 +60,10 @@ export function Header(props) {
   return(
     <div
       id={props.id}
-      className={`${props.dropDownOpen ? 'open ' : ''}headerBg ${props.className ? props.className : ''}`.trim()}
+      className={`${props.dropDownOpen ? 'open' : ''}headerBg${props.className ? ' ' + props.className : ''}`.trim()}
     >
       <div
-        className={`${props.dropDownOpen ? 'open ' : ''}headerContainer`}
+        className={`${props.dropDownOpen ? 'open' : ''} headerContainer`}
       >
         {props.children}
       </div>
