@@ -5,7 +5,7 @@ export default function HeaderPage() {
     return (
         <>
           <Header dropDownOpen={false}>
-            <Header.Buttons dark={true} color='#32a852'>
+            <Header.Buttons dark={true} color='#32a852' size='large'>
               <button>Logout</button>
             </Header.Buttons>
             <Header.DropDown>

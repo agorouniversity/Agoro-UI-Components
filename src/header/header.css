@@ -1,17 +1,10 @@
 .headerBg {
   width: 100%;
-  height: 5rem;
+  /* height: 5rem; */
   z-index: 4;
   position: absolute;
-  /* background-color: rgba(255, 255, 255, 0); */
-  /* background-color: var(--primary); */
-  /* background-color: var(--green) !important; */
   transition: background-color 2s ease, height 0s ease 1.5s !important;
 }
-
-/* .headerContainer .primary {
-  background-color: var(--primary);
-} */
 
 .headerBg.open {
   transition: background-color 2s ease, height 0s ease 0s !important;
@@ -28,7 +21,7 @@
 .headerContainer {
   display: flex;
   flex-direction: column;
-  height: 5rem;
+  /* height: 5rem; */
   width: 100%;
   /* background-color: var(--primary); */
   /* background-image: url('blank.svg'); */
@@ -36,30 +29,31 @@
   transition: height 0.75s ease, background-image 0.5s ease !important;
   backdrop-filter: opacity(0%);
   background-position: bottom;
-  background-size: 100vw;
+  /* background-size: 100vw; */
   background-repeat: no-repeat;
   box-sizing: border-box;
 }
 
 .headerContainer.open {
-  height: 90%;
+  /* height: 90%; */
   backdrop-filter: opacity(0%);
   background-image: url('headerbg.svg');
 }
 
+.headerContainer .header h1 {
+  height: fit-content;
+  margin: 0;
+  transition: color 0.5s ease;
+}
+
 .headerContainer .header {
-  /* background-color: #4287f5; */
+  height: fit-content;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  line-height: 5rem;
+  line-height: 3rem;
   padding: 0 2rem 0 2rem;
-}
-
-.headerContainer .header h1 {
-  margin: 0;
-  transition: color 0.5s ease;
 }
 
 .headerContainer .header .leftCol {
@@ -71,11 +65,25 @@
 }
 
 .headerContainer .header .leftCol .img {
-  width: 3rem;
+  width: 2rem;
   height: 2rem;
   background-repeat: no-repeat;
-  background-size: contain;
-  transition: background-image 0.5s ease
+  background-size: 1.5rem;
+  background-position-y: center;
+  transition: background-image 0.5s ease;
+}
+
+.headerContainer .header .small {
+  font-size: 1rem;
+  line-height: 0.5rem;
+  background-size: 1rem !important;
+}
+
+.headerContainer .header .large {
+  width: 3rem !important;
+  font-size: 3rem;
+  line-height: 4rem;
+  background-size: 2rem !important;
 }
 
 .headerContainer .header .rightCol {
@@ -93,7 +101,7 @@
 .headerContainer .header .rightCol h2 {
   margin: 0;
   padding-left: 10px;
-  font-size: 1.5rem;
+  /* font-size: 1.5rem; */
 }
 
 .headerContainer .header .rightCol a {
@@ -111,7 +119,7 @@
   justify-content: center;
   align-self: stretch;
   box-sizing: border-box;
-  height: calc(90% - 5rem);
+  /* height: calc(90% - 5rem); */
 }
 
 .headerContainer.open .headerContent {

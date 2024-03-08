@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const HeaderButtons = (props) => {
   return(
     <header
-        className={`header${props.color ? ' ' + props.color : ''}`}
+        className='header'
         style={{backgroundColor: props.color}}
       >
         <Link
@@ -15,10 +15,10 @@ const HeaderButtons = (props) => {
           className='leftCol'
         >
           <div
-            className='logo img'
+            className={`logo img${props.size ? ' ' + props.size : ''}`}
             style={{backgroundImage: `url(${props.dark ? LogoDark : Logo})`}}
           ></div>
-          <h1>Agoro</h1>
+          <h1 className={`h1${props.size ? ' ' + props.size : ''}`}>Agoro</h1>
         </Link>
         <div
           className='rightCol'
@@ -60,10 +60,10 @@ export function Header(props) {
   return(
     <div
       id={props.id}
-      className={`${props.dropDownOpen ? 'open' : ''}headerBg${props.className ? ' ' + props.className : ''}`.trim()}
+      className={`${props.dropDownOpen ? 'open' : ''}headerBg${props.className ? ' ' + props.className : ''}`}
     >
       <div
-        className={`${props.dropDownOpen ? 'open' : ''} headerContainer`}
+        className={`${props.dropDownOpen ? 'open' : ''} headerContainer${props.className ? ' ' + props.className : ''}`}
       >
         {props.children}
       </div>
