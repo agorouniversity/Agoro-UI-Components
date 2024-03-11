@@ -14,7 +14,8 @@
   text-decoration: none !important;
   padding: 8px 20px 8px 20px;
   border-radius: 0 0.5rem 0.5rem 0;
-  background-color: var(--bg);
+  /* background-color: var(--bg); */
+  background-color: #ff9e9e;
   transition: background-color 0.5s ease;
   cursor: pointer;
 }
@@ -30,24 +31,24 @@
   font-weight: bolder;
 }
 
-.sidebar .subSection {
+/* .sidebar .subSection {
   display: inherit;
   flex-direction: inherit;
-}
+} */
 
-.sidebar .subSection hr {
+/* .sidebar .subSection hr {
   border: 1px solid var(--lightGray);
   margin: 20px;
-}
+} */
 
-.sidebar .subSection a.active {
+/* .sidebar .subSection a.active {
   background-color: var(--lightSecondary);
-}
+} */
 
-.sidebar .subSection h3 {
+/* .sidebar .subSection h3 {
   padding-left: 20px;
   margin-bottom: 1.5rem;
-}
+} */
 
 @media screen and (max-width: 900px) {
   .sidebar {
