@@ -54,7 +54,7 @@ const SubSection = (props) => {
 }
 
 Sidebar.Item = Item;
-Sidebar.SubSection = SubSection
+Sidebar.SubSection = SubSection;
 
 export function Sidebar(props) {
   return(
