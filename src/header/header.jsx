@@ -3,6 +3,7 @@ import Logo from '../images/logo.png';
 import LogoDark from '../images/logoDark.png';
 import './header.css';
 import { Link } from 'react-router-dom';
+import { DropDown } from '../UI';
 
 const HeaderButtons = (props) => {
   return(
@@ -34,7 +35,35 @@ const HeaderDropDown = (props) => {
     <div
       className='headerContent'
     >
-      {props.children}
+      <DropDown>
+        <DropDown.Button>
+          <button>Options</button>
+          {/* {props.children} */}
+        </DropDown.Button>
+        {/* <DropDown.Menu>
+          <span>Theme</span>
+            <ul>
+              <li
+                className={darkMode.mode === 'system' ? 'selected' : null}
+                onClick={() => changeTheme('system')}
+              >
+                <button>System</button>
+              </li>
+              <li
+                className={darkMode.mode === 'light' ? 'selected' : null}
+                onClick={() => changeTheme('light')}
+              >
+                <button>Light</button>
+              </li>
+              <li
+                className={darkMode.mode === 'dark' ? 'selected' : null}
+                onClick={() => changeTheme('dark')}
+              >
+                <button>Dark</button>
+              </li>
+            </ul>
+        </DropDown.Menu> */}
+      </DropDown>
     </div>
   )
 }
@@ -44,7 +73,7 @@ Header.DropDown = HeaderDropDown;
 
 export function Header(props) {
   const [close, setClose] = useState(' ');
-
+ 
   useEffect(() => {
     if(!props.dropDownOpen && close === '') {
       setTimeout(() => {
@@ -60,7 +89,7 @@ export function Header(props) {
   return(
     <div
       id={props.id}
-      className={`${props.dropDownOpen ? 'open' : ''}headerBg${props.className ? ' ' + props.className : ''}`}
+      className={`${props.dropDownOpen ? 'open' : ''} headerBg${props.className ? ' ' + props.className : ''}`}
     >
       <div
         className={`${props.dropDownOpen ? 'open' : ''} headerContainer${props.className ? ' ' + props.className : ''}`}

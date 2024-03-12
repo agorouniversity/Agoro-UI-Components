@@ -1,15 +1,18 @@
 import React from 'react';
-import { Header } from '@agorouniversity/agoro-ui-components';
+import { Header, ButtonA } from '@agorouniversity/agoro-ui-components';
 
 export default function HeaderPage() {
     return (
         <>
-          <Header dropDownOpen={false}>
+          <Header>
             <Header.Buttons dark={true} color='#32a852' size='large'>
-              <button>Logout</button>
+              <Button>Home</Button>
+              <Button>Options</Button>
+              <Button>Logout</Button>
             </Header.Buttons>
             <Header.DropDown>
             {/* <Login /> */}
+              <Button>Option 1</Button>
             </Header.DropDown>
           </Header>
         </>

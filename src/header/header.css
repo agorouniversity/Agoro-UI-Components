@@ -27,7 +27,7 @@
   /* background-image: url('blank.svg'); */
   color: var(--bg);
   transition: height 0.75s ease, background-image 0.5s ease !important;
-  backdrop-filter: opacity(0%);
+  /* backdrop-filter: opacity(0%); */
   background-position: bottom;
   /* background-size: 100vw; */
   background-repeat: no-repeat;
@@ -35,8 +35,8 @@
 }
 
 .headerContainer.open {
-  /* height: 90%; */
-  backdrop-filter: opacity(0%);
+  height: 90%;
+  /* backdrop-filter: opacity(0%); */
   background-image: url('headerbg.svg');
 }
 
@@ -112,7 +112,7 @@
 .headerContainer .headerContent {
   display: flex;
   flex-direction: row;
-  opacity: 0%;
+  /* opacity: 0%; */
   transition: opacity 0.5s ease 0s !important;
   flex: 2;
   padding: 0 0 1rem 0;
