@@ -16,7 +16,7 @@ export { Box };
 export { Accordion } from './accordion/accordion';
 export { Radio } from './radio/radio';
 export { CheckBox } from './checkBox/checkBox';
-export { ButtonA, ButtonB, ButtonC, IconButton } from './buttons/buttons';
+export { ButtonA as Button, ButtonB, ButtonC, IconButton } from './buttons/buttons';
 export { TextInput } from './textInput/textInput';
 export { Header } from './header/header';
 export { Table } from './table/table';

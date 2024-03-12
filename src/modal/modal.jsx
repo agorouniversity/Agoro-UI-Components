@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
-import { ButtonA, Card, Loading } from '../UI';
+import { Button, Card, Loading } from '../UI';
 import './modal.css';
 
 const Context = createContext({});
@@ -20,20 +20,20 @@ export const Body = (props) => {
                   <div className='error'>Error: {error}</div>
                 }
                 {dismiss
-                  ? <ButtonA
+                  ? <Button
                       color='secondary'
                       onClick={up}
                     >
                       Close
-                    </ButtonA>
+                    </Button>
                   : <>
-                      <ButtonA type='submit'>Confirm</ButtonA>
-                      <ButtonA
+                      <Button type='submit'>Confirm</Button>
+                      <Button
                         color='danger'
                         onClick={up}
                       >
                         Cancel
-                      </ButtonA>
+                      </Button>
                     </>
                 }
               </>
