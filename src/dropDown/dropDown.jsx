@@ -22,7 +22,7 @@ const Menu = (props) => {
       tabIndex={-1}
       aria-hidden={true}
     >
-      <div className='content'>
+      <div className={`content ${props.dark ? 'dark' : 'light'}`}>
         {props.children}
       </div>
     </div>
@@ -37,7 +37,7 @@ export function DropDown(props) {
   return(
     <div
       id={props.id}
-      className={`dropDown ${props.className ? props.className : ''}`.trim()}
+      className={`dropDown${props.className ? ' ' + props.className : ''} ${props.dark ? 'dark' : 'light'}`.trim()}
     >
       {props.children}
     </div>
