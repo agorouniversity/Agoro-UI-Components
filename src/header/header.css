@@ -8,7 +8,7 @@
 
 .headerBg.open {
   transition: background-color 2s ease, height 0s ease 0s !important;
-  background-color: var(--bg);
+  /* background-color: var(--bg); */
   height: 100%;
   overflow: hidden;
 }
@@ -25,7 +25,7 @@
   width: 100%;
   /* background-color: var(--primary); */
   /* background-image: url('blank.svg'); */
-  color: var(--bg);
+  /* color: var(--bg); */
   transition: height 0.75s ease, background-image 0.5s ease !important;
   /* backdrop-filter: opacity(0%); */
   background-position: bottom;
@@ -80,16 +80,25 @@
 }
 
 .headerContainer .header .large {
-  width: 3rem !important;
-  font-size: 3rem;
-  line-height: 4rem;
+  /* width: 3rem !important; */
+  /* font-size: 3rem; */
+  /* line-height: 4rem; */
   background-size: 2rem !important;
+}
+
+.headerContainer .header .dark {
+  color: #000000;
+}
+
+.headerContainer .header .light {
+  color: #ffffff;
 }
 
 .headerContainer .header .rightCol {
   display: flex;
   flex-direction: row;
   align-items: center;
+  align-content: flex-end;
   justify-content: flex-end;
   transition: all 0.75s ease !important;
 }
@@ -105,7 +114,7 @@
 }
 
 .headerContainer .header .rightCol a {
-  color: var(--bg);
+  /* color: var(--bg); */
   text-decoration: none !important;
 }
 
@@ -115,7 +124,7 @@
   /* opacity: 0%; */
   transition: opacity 0.5s ease 0s !important;
   flex: 2;
-  padding: 0 0 1rem 0;
+  /* padding: 0 0 1rem 0; */
   justify-content: center;
   align-self: stretch;
   box-sizing: border-box;
