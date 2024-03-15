@@ -7,7 +7,7 @@ export default function HeaderPage() {
           <Header>
             <Header.Buttons dark={false} color='#32a852' size='small'>
               <Button link="/" size='small' color='Danger'>Home</Button>
-              <Header.DropDown>
+              <Header.DropDown buttonSize='small' buttonTitle='Options' dropdownTitle='Theme'>
                 <Button>System</Button>
                 <Button>Light</Button>
                 <Button>Dark</Button>

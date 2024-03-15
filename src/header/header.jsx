@@ -38,10 +38,10 @@ const HeaderDropDown = (props) => {
     >
       <DropDown>
         <DropDown.Button>
-          <Button size="small">Options</Button>
+          <Button size={props.buttonSize}>{props.buttonTitle}</Button>
         </DropDown.Button>
-        <DropDown.Menu dark={false}>
-          <span>Theme</span>
+        <DropDown.Menu dark={true}>
+          <span>{props.dropdownTitle}</span>
           {props.children}
         </DropDown.Menu>
       </DropDown>
