@@ -3,21 +3,24 @@ import Logo from '../images/logo.png';
 import LogoDark from '../images/logoDark.png';
 import './header.css';
 import { Link } from 'react-router-dom';
+import { Button, DropDown } from '../UI';
+import {Theme} from "../theme/Theme";
 
 const HeaderButtons = (props) => {
   return(
     <header
         className='header'
+        style={{backgroundColor: props.color}}
       >
         <Link
           to='/'
           className='leftCol'
         >
           <div
-            className='logo img'
+            className={`logo img${props.size ? ' ' + props.size : ''}`}
             style={{backgroundImage: `url(${props.dark ? LogoDark : Logo})`}}
           ></div>
-          <h1>Agoro</h1>
+          <h1 className={`h1${props.size ? ' ' + props.size : ''} ${props.dark ? 'dark' : 'light'}`}>Agoro</h1>
         </Link>
         <div
           className='rightCol'
@@ -33,7 +36,15 @@ const HeaderDropDown = (props) => {
     <div
       className='headerContent'
     >
-      {props.children}
+      <DropDown>
+        <DropDown.Button>
+          <Button size={props.buttonSize}>{props.buttonTitle}</Button>
+        </DropDown.Button>
+        <DropDown.Menu dark={true}>
+          <span>{props.dropdownTitle}</span>
+          {props.children}
+        </DropDown.Menu>
+      </DropDown>
     </div>
   )
 }
@@ -43,7 +54,7 @@ Header.DropDown = HeaderDropDown;
 
 export function Header(props) {
   const [close, setClose] = useState(' ');
-
+ 
   useEffect(() => {
     if(!props.dropDownOpen && close === '') {
       setTimeout(() => {
@@ -57,15 +68,17 @@ export function Header(props) {
   }, [])
 
   return(
-    <div
-      id={props.id}
-      className={`${props.dropDownOpen ? 'open ' : ''}headerBg ${props.className ? props.className : ''}`.trim()}
-    >
+    <Theme>
       <div
-        className={`${props.dropDownOpen ? 'open ' : ''}headerContainer`}
+        id={props.id}
+        className={`${props.dropDownOpen ? 'open' : ''} headerBg${props.className ? ' ' + props.className : ''}`}
       >
-        {props.children}
+        <div
+          className={`${props.dropDownOpen ? 'open' : ''} headerContainer${props.className ? ' ' + props.className : ''}`}
+        >
+          {props.children}
+        </div>
       </div>
-    </div>
+    </Theme>
   )
 }
